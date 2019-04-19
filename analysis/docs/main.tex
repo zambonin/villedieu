@@ -30,7 +30,8 @@
     \end{enumerate}
     \item
     \begin{enumerate}
-        \item Largest $n \in \mathbb{N}$ such that $t = \frac{f(n)}{10^{10}}$.
+        \item Largest $n \in \mathbb{N}$ such that $t \leq \frac{f(n)}{10^{10}}$. Let $t_{1}, \dots, t_{7}$ be
+        the number of seconds in each period of the header row.
         \begin{table}[htbp]
             \renewcommand{\arraystretch}{1.2}
             \setlength{\tabcolsep}{7pt}
@@ -38,7 +39,7 @@
             \begin{tabular}{l*{7}{r}}
                 \toprule
                     $f(n)$ / $t$ & 1 second & 1 minute & 1 hour & 1 day & 1 month & 1 year & 1 century \\
-                    $\log_{2} n$ & & & & & & \\
+                    $\log_{2} n$ & $2^{t_{1} \cdot 10^{10}}$ & $2^{t_{2} \cdot 10^{10}}$ & $2^{t_{3} \cdot 10^{10}}$ & $2^{t_{4} \cdot 10^{10}}$ & $2^{t_{5} \cdot 10^{10}}$ & $2^{t_{6} \cdot 10^{10}}$ & $2^{t_{7} \cdot 10^{10}}$ \\
                     $\sqrt{n}$   &  \\
                     $n$          &  \\
                     $n \log_{2} n$ & \\
