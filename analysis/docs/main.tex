@@ -19,8 +19,18 @@
     \item 
     \begin{enumerate}
         \item Let the functions that represent the complexity of algorithms $A$ and $B$ be $f(n) = n^{3}$ and $g(n) = 128n^{2}$, respectively, with $n \in \mathbb{N}$. Further, consider $t(n) = \frac{f(n)}{g(n)} \Rightarrow \frac{n}{128}$. By the ratio $t(n)$, algorithm $A$ is faster than $B$ when $n > 128$.
-        \item Let the old and new computers be named $N_{1}$ and $N_{2}$, respectively, and $f(n) = 2^{n}$. The equation $t = \frac{2^{N_{1}}}{s}$ gives the time spent to solve an instance of $f(n)$ such that $N_{1}$ executes $s$ instructions per second. Analogously, let $t = \frac{2^{N_{2}}}{20s}$ represent the previous equation for the new computer. Solving for $N_{2}$ in terms of $N_{1}$,
-        $\frac{2^{N_{1}}}{s} = \fra$
+        \item Let the old and new computers be named $N_{1}$ and $N_{2}$, respectively, and $f(n) = 2^{n}$. The equation $t = \frac{2^{N_{1}}}{s}$ gives the time spent to solve an instance of $f(n)$ such that $N_{1}$ executes $s$ instructions per second. Analogously, let $t = \frac{2^{N_{2}}}{20s}$ represent the previous equation for the new computer. Solving for $N_{2}$ in terms of $N_{1}$:
+        \begin{align*}
+            \frac{2^{N_{1}}}{s} = \frac{2^{N_{2}}}{20s} \\
+            2^{N_{2}} = 20 \cdot 2^{N_{1}} \\
+            N_{2} = N_{1} + \log_{2} 20 \\
+            N_{2} \approx N_{1} + 4.32.
+        \end{align*}
+    \end{enumerate}
+    \item
+    \begin{enumerate}
+        \item 
+        \item 
     \end{enumerate}
 \end{enumerate}
 
