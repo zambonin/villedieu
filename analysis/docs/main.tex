@@ -43,7 +43,7 @@
 
 \section{Rationale for Q2a}
 
-Let $t_{1}, \dots, t_{7}$ be the number of seconds in each period of the header row and $s = 10^{10}$. The table below solves the equation $t_{i} \leq \frac{f(n)}{s}$ for $n$, that is, it gives $n = f^{-1}(t_{i} s)$. Deducing $f^{-1}$ is not trivial for some of the rows. In the case of $n \log_{2} n = c$ for some constant $c$, the Lambert $W$-function is used:
+Let $t_{1}, \dots, t_{7}$ be the number of seconds in each period of the header row and $s = 10^{10}$. The equation $t_{i} = \frac{f(n)}{s}$ for $n$ has to be solved in order to find out the maximum $n$ allowed to execute for a period of time using $f(n)$, \emph{i.e.} $n = f^{-1}(t_{i} s)$. Deducing $f^{-1}$ is not trivial for some of the rows. In the case of $n \log_{2} n = c$ for some constant $c$, the Lambert $W$-function is used:
 \begin{align*}
     n \log_{2} n &= c \\
     n \ln n &= c \ln 2 \\
@@ -51,11 +51,12 @@ Let $t_{1}, \dots, t_{7}$ be the number of seconds in each period of the header 
     \ln n &= W(c \ln 2) \\
     n &= \euler^{W(c \ln 2)}.
 \end{align*}
-Moreover, to invert the factorial function some definitions from~\cite{Cantrell:200110:misc} are used to construct a strict inverse, if the input is an integer. Consider the single positive zero of the digamma function $\psi_{0} \approx 1.46163214496836$. Then, the inverse factorial function $i(n)$ is equal to
+Moreover, to invert the factorial function some definitions from~\cite{Cantrell:200110:misc} are used to construct a strict inverse, if the input is an integer. Consider the single positive zero of the digamma function $\psi_{0} \approx 1.46163214496836$ and the gamma function $\Gamma(x)$. The inverse factorial function is equal to
 \begin{align*}
-    n = \left[\frac{\ln\frac{x + c}{\sqrt{2 \pi}} - 1}{W(\frac{1}{e}\ln\frac{x + c}{\sqrt{2 \pi}} - 1)} + \frac{1}{2}\right] - 1, \qquad c = \frac{1}{e} \sqrt{2 \pi} - \Gamma(\psi_{0}).
+    i(n) = \left[\frac{\ln\frac{n + c}{\sqrt{2 \pi}} - 1}{W(\frac{1}{e}\ln\frac{n + c}{\sqrt{2 \pi}} - 1)} + \frac{1}{2}\right] - 1, \qquad c = \frac{1}{e} \sqrt{2 \pi} - \Gamma(\psi_{0}).
 \end{align*}
 
+The table below shows the exact values for $n = f^{-1}(t_{i} s)$.
 \begin{table}[htbp]
     \renewcommand{\arraystretch}{1.2}
     \setlength{\tabcolsep}{7pt}
