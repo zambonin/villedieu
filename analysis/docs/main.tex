@@ -34,7 +34,26 @@
     \end{enumerate}
     \item 
     \begin{enumerate}
-        \item 
+        \item Let $t_{1}, \dots, t_{7}$ be the number of seconds in each period of the header row and $s = 10^{10}$. The values in the table below represent $n \leq f^{-1}(t_{i} s), n \in \mathbb{N}$.
+        \begin{table}[htbp]
+            \renewcommand{\arraystretch}{1.2}
+            \setlength{\tabcolsep}{7pt}
+            \centering
+            \begin{tabular}{l*{7}{r}}
+                \toprule
+                    $f(n)$ / $t$ & 1 second & 1 minute & 1 hour & 1 day & 1 month & 1 year & 1 century \\ \midrule
+                    $\log_{2} n$ & $2^{t_{1} s}$ & $2^{t_{2} s}$ & $2^{t_{3} s}$ & $2^{t_{4} s}$ & $2^{t_{5} s}$ & $2^{t_{6} s}$ & $2^{t_{7} s}$ \\
+                    $\sqrt{n}$ & $(t_{1} s)^{2}$ & $(t_{2} s)^{2}$ & $(t_{3} s)^{2}$ & $(t_{4} s)^{2}$ & $(t_{5} s)^{2}$ & $(t_{6} s)^{2}$ & $(t_{7} s)^{2}$ \\
+                    $n$ & $t_{1} s$ & $t_{2} s$ & $t_{3} s$ & $t_{4} s$ & $t_{5} s$ & $t_{6} s$ & $t_{7} s$ \\
+                    $n \log_{2} n$ & $\euler^{W(t_{1} s \ln 2)}$ & $\euler^{W(t_{2} s \ln 2)}$ & $\euler^{W(t_{3} s \ln 2)}$ & $\euler^{W(t_{4} s \ln 2)}$ & $\euler^{W(t_{5} s \ln 2)}$ & $\euler^{W(t_{6} s \ln 2)}$ & $\euler^{W(t_{7} s \ln 2)}$ \\
+                    $n^{2}$ & $\sqrt{t_{1} s}$ & $\sqrt{t_{2} s}$ & $\sqrt{t_{3} s}$ & $\sqrt{t_{4} s}$ & $\sqrt{t_{5} s}$ & $\sqrt{t_{6} s}$ & $\sqrt{t_{7} s}$ \\
+                    $n^{3}$ & $\sqrt[3]{t_{1} s}$ & $\sqrt[3]{t_{2} s}$ & $\sqrt[3]{t_{3} s}$ & $\sqrt[3]{t_{4} s}$ & $\sqrt[3]{t_{5} s}$ & $\sqrt[3]{t_{6} s}$ & $\sqrt[3]{t_{7} s}$ \\
+                    $2^{n}$ & $\log_{2}(t_{1} s)$ & $\log_{2}(t_{2} s)$ & $\log_{2}(t_{3} s)$ & $\log_{2}(t_{4} s)$ & $\log_{2}(t_{5} s)$ & $\log_{2}(t_{6} s)$ & $\log_{2}(t_{7} s)$ \\
+                    $n!$ & $\iota(t_{1} s)$ & $\iota(t_{2} s)$ & $\iota(t_{3} s)$ & $\iota(t_{4} s)$ & $\iota(t_{5} s)$ & $\iota(t_{6} s)$ & $\iota(t_{7} s)$ \\
+                \bottomrule
+            \end{tabular}
+        \label{tab:1}
+\end{table}
         \item The ``find-min'' operation is fastest on the binary and Fibonacci heaps, since it is constant. The ``delete-min'' operation should be fastest on the Fibonacci heap, since an $\mathcal{O}(\log n)$ time complexity represents an amortised asymptotic upper bound, whereas the other heaps' $\Theta(\log n)$ is tight. Indeed, given a worst case scenario, both operations take exactly the same time to complete, but otherwise the Fibonacci heap does not take $\log n$ steps to finish the operation in average. The ``insert'' operation is fastest on the binomial and Fibonacci heaps. Thus, the Fibonacci heap is overall the fastest data structure when compared to binary and binomial heaps.
     \end{enumerate}
 \end{enumerate}
