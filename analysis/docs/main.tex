@@ -51,7 +51,10 @@ Let $t_{1}, \dots, t_{7}$ be the number of seconds in each period of the header 
     \ln n &= W(c \ln 2) \\
     n &= \euler^{W(c \ln 2)}.
 \end{align*}
-Moreover, to invert the factorial function some definitions from~\cite{Cantrell:200110:misc} are used to construct a strict inverse, if the input is an integer. Consider $\psi($
+Moreover, to invert the factorial function some definitions from~\cite{Cantrell:200110:misc} are used to construct a strict inverse, if the input is an integer. Consider the single positive zero of the digamma function $\psi_{0} \approx 1.46163214496836$. Then, the inverse factorial function $i(n)$ is equal to
+\begin{align*}
+    n = \left[\frac{\ln\frac{x + c}{\sqrt{2 \pi}} - 1}{W(\frac{1}{e}\ln\frac{x + c}{\sqrt{2 \pi}} - 1)} + \frac{1}{2}\right] - 1, \qquad c = \frac{1}{e} \sqrt{2 \pi} - \Gamma(\psi_{0}).
+\end{align*}
 
 \begin{table}[htbp]
     \renewcommand{\arraystretch}{1.2}
