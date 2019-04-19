@@ -30,8 +30,8 @@
     \end{enumerate}
     \item
     \begin{enumerate}
-        \item Largest $n \in \mathbb{N}$ such that $t \leq \frac{f(n)}{10^{10}}$. Let $t_{1}, \dots, t_{7}$ be
-        the number of seconds in each period of the header row.
+        \item Let $t_{1}, \dots, t_{7}$ be
+        the number of seconds in each period of the header row and $s = 10^{10}$. The table below shows the largest $n \in \mathbb{N}$ such that $t \leq \frac{f(n)}{s}$.
         \begin{table}[htbp]
             \renewcommand{\arraystretch}{1.2}
             \setlength{\tabcolsep}{7pt}
@@ -39,10 +39,10 @@
             \begin{tabular}{l*{7}{r}}
                 \toprule
                     $f(n)$ / $t$ & 1 second & 1 minute & 1 hour & 1 day & 1 month & 1 year & 1 century \\
-                    $\log_{2} n$ & $2^{t_{1} \cdot 10^{10}}$ & $2^{t_{2} \cdot 10^{10}}$ & $2^{t_{3} \cdot 10^{10}}$ & $2^{t_{4} \cdot 10^{10}}$ & $2^{t_{5} \cdot 10^{10}}$ & $2^{t_{6} \cdot 10^{10}}$ & $2^{t_{7} \cdot 10^{10}}$ \\
-                    $\sqrt{n}$ & $(t_{1} 10^{10})^{2}$ & $(t_{2} 10^{10})^{2}$ & $(t_{3} 10^{10})^{2}$ & $(t_{4} 10^{10})^{2}$ & $(t_{5} 10^{10})^{2}$ & $(t_{6} 10^{10})^{2}$ & $(t_{7} 10^{10})^{2}$ \\
-                    $n$ & $t_{1} 10^{10}$ & $t_{2} 10^{10}$ & $t_{3} 10^{10}$ & $t_{4} 10^{10}$ & $t_{5} 10^{10}$ & $t_{6} 10^{10}$ & $t_{7} 10^{10}$ \\
-                    $n \log_{2} n$ & \\
+                    $\log_{2} n$ & $2^{t_{1} s}$ & $2^{t_{2} ss}$ & $2^{t_{3} s}$ & $2^{t_{4} s}$ & $2^{t_{5} s}$ & $2^{t_{6} s}$ & $2^{t_{7} s}$ \\
+                    $\sqrt{n}$ & $(t_{1} s)^{2}$ & $(t_{2} s)^{2}$ & $(t_{3} s)^{2}$ & $(t_{4} s)^{2}$ & $(t_{5} s)^{2}$ & $(t_{6} s)^{2}$ & $(t_{7} s)^{2}$ \\
+                    $n$ & $t_{1} s$ & $t_{2} s$ & $t_{3} s$ & $t_{4} s$ & $t_{5} s$ & $t_{6} s$ & $t_{7} s$ \\
+                    $n \log_{2} n$ & $\mathrm{e}^{W(s \log_2)} $ \\
                     $n^{2}$ & \\
                     $n^{3}$ & \\
                     $2^{n}$ & \\
