@@ -43,17 +43,15 @@
 
 \section{Rationale for Q2a}
 
-Let $t_{1}, \dots, t_{7}$ be the number of seconds in each period of the header row and $s = 10^{10}$. The table below solves the equation $t_{i} \leq \frac{f(n)}{s}$ for $n$, that is, it gives $n = f^{-1}(t_{i} s)$. Finding $f^{-1}$ is not trivial for some of the rows. In the case of $n \log_{2} n = c$ for some constant $c$, observe that
+Let $t_{1}, \dots, t_{7}$ be the number of seconds in each period of the header row and $s = 10^{10}$. The table below solves the equation $t_{i} \leq \frac{f(n)}{s}$ for $n$, that is, it gives $n = f^{-1}(t_{i} s)$. Finding $f^{-1}$ is not trivial for some of the rows. In the case of $n \log_{2} n = c$ for some constant $c$, the Lambert $W$-function is used:
 \begin{align*}
     n \log_{2} n &= c \\
     n \ln n &= c \ln 2 \\
     e^{\ln n} \ln n &= c \ln 2 \\
     \ln n &= W(c \ln 2) \\
-    n &= e^{W(c \ln 2)} \\
+    n &= e^{W(c \ln 2)}.
 \end{align*}
-
-
-% As per~\cite{Cantrell:200110:misc}, 
+Moreover, to invert the factorial function some definitions from~\cite{Cantrell:200110:misc} are used to construct a strict inverse if the input is a
 
 \begin{table}[htbp]
     \renewcommand{\arraystretch}{1.2}
