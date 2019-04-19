@@ -43,7 +43,10 @@
 
 \section{Rationale for Q2a}
 
-Let $t_{1}, \dots, t_{7}$ be the number of seconds in each period of the header row and $s = 10^{10}$. The table below solves the equation $t_{i} \leq \frac{f(n)}{s}$ for $n$.
+Let $t_{1}, \dots, t_{7}$ be the number of seconds in each period of the header row and $s = 10^{10}$. The table below solves the equation $t_{i} \leq \frac{f(n)}{s}$ for $n$, that is, it gives $n = f^{-1}(t_{i} s)$. Finding $f^{-1}$ is not trivial for some of the rows. In the case of $n \log_{2} n$,
+
+
+% As per~\cite{Cantrell:200110:misc}, 
 
 \begin{table}[htbp]
     \renewcommand{\arraystretch}{1.2}
@@ -64,5 +67,9 @@ Let $t_{1}, \dots, t_{7}$ be the number of seconds in each period of the header 
     \end{tabular}
     \label{tab:1}
 \end{table}
+
+\bibliographystyle{alpha}
+{\footnotesize
+\bibliography{ref}}
 
 \end{document}
