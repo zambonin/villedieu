@@ -43,7 +43,7 @@
 
 \section{Rationale for Q2a}
 
-Let $t_{1}, \dots, t_{7}$ be the number of seconds in each period of the header row and $s = 10^{10}$. The equation $t_{i} = \frac{f(n)}{s}$ for $n$ has to be solved in order to find out the maximum $n$ allowed to execute for a period of time using $f(n)$, \emph{i.e.} $n = f^{-1}(t_{i} s)$. Deducing $f^{-1}$ is not trivial for some of the rows. In the case of $n \log_{2} n = c$ for some constant $c$, the Lambert $W$-function is used:
+Let $t_{1}, \dots, t_{7}$ be the number of seconds in each period of the header row and $s = 10^{10}$. The equation $t_{i} = \frac{f(n)}{s}$, or its simpler form $n = f^{-1}(t_{i} s)$, has to be solved in order to find out the maximum $n$ allowed to execute for a period of time using $f(n)$. Deducing $f^{-1}$ is not trivial for some of the rows. In the case of $n \log_{2} n = c$ for some constant $c$, the Lambert $W$-function is used:
 \begin{align*}
     n \log_{2} n &= c \\
     n \ln n &= c \ln 2 \\
@@ -53,10 +53,10 @@ Let $t_{1}, \dots, t_{7}$ be the number of seconds in each period of the header 
 \end{align*}
 Moreover, to invert the factorial function some definitions from~\cite{Cantrell:200110:misc} are used to construct a strict inverse, if the input is an integer. Consider the single positive zero of the digamma function $\psi_{0} \approx 1.46163214496836$ and the gamma function $\Gamma(x)$. The inverse factorial function is equal to
 \begin{align*}
-    i(n) = \left[\frac{\ln\frac{n + c}{\sqrt{2 \pi}} - 1}{W(\frac{1}{e}\ln\frac{n + c}{\sqrt{2 \pi}} - 1)} + \frac{1}{2}\right] - 1, \qquad c = \frac{1}{e} \sqrt{2 \pi} - \Gamma(\psi_{0}).
+    \iota(n) = \left[\frac{\ln\frac{n + c}{\sqrt{2 \pi}} - 1}{W(\frac{1}{e}\ln\frac{n + c}{\sqrt{2 \pi}} - 1)} + \frac{1}{2}\right] - 1, \qquad c = \frac{1}{e} \sqrt{2 \pi} - \Gamma(\psi_{0}).
 \end{align*}
 
-The table below shows the exact values for $n = f^{-1}(t_{i} s)$.
+The table below shows the exact values for all $n = f^{-1}(t_{i} s)$.
 \begin{table}[htbp]
     \renewcommand{\arraystretch}{1.2}
     \setlength{\tabcolsep}{7pt}
@@ -64,14 +64,14 @@ The table below shows the exact values for $n = f^{-1}(t_{i} s)$.
     \begin{tabular}{l*{7}{r}}
         \toprule
             $f(n)$ / $t$ & 1 second & 1 minute & 1 hour & 1 day & 1 month & 1 year & 1 century \\ \midrule
-            $\log_{2} n$ & $2^{t_{1} s}$ & $2^{t_{2} ss}$ & $2^{t_{3} s}$ & $2^{t_{4} s}$ & $2^{t_{5} s}$ & $2^{t_{6} s}$ & $2^{t_{7} s}$ \\
+            $\log_{2} n$ & $2^{t_{1} s}$ & $2^{t_{2} s}$ & $2^{t_{3} s}$ & $2^{t_{4} s}$ & $2^{t_{5} s}$ & $2^{t_{6} s}$ & $2^{t_{7} s}$ \\
             $\sqrt{n}$ & $(t_{1} s)^{2}$ & $(t_{2} s)^{2}$ & $(t_{3} s)^{2}$ & $(t_{4} s)^{2}$ & $(t_{5} s)^{2}$ & $(t_{6} s)^{2}$ & $(t_{7} s)^{2}$ \\
             $n$ & $t_{1} s$ & $t_{2} s$ & $t_{3} s$ & $t_{4} s$ & $t_{5} s$ & $t_{6} s$ & $t_{7} s$ \\
             $n \log_{2} n$ & $\euler^{W(t_{1} s \ln 2)}$ & $\euler^{W(t_{2} s \ln 2)}$ & $\euler^{W(t_{3} s \ln 2)}$ & $\euler^{W(t_{4} s \ln 2)}$ & $\euler^{W(t_{5} s \ln 2)}$ & $\euler^{W(t_{6} s \ln 2)}$ & $\euler^{W(t_{7} s \ln 2)}$ \\
             $n^{2}$ & $\sqrt{t_{1} s}$ & $\sqrt{t_{2} s}$ & $\sqrt{t_{3} s}$ & $\sqrt{t_{4} s}$ & $\sqrt{t_{5} s}$ & $\sqrt{t_{6} s}$ & $\sqrt{t_{7} s}$ \\
             $n^{3}$ & $\sqrt[3]{t_{1} s}$ & $\sqrt[3]{t_{2} s}$ & $\sqrt[3]{t_{3} s}$ & $\sqrt[3]{t_{4} s}$ & $\sqrt[3]{t_{5} s}$ & $\sqrt[3]{t_{6} s}$ & $\sqrt[3]{t_{7} s}$ \\
             $2^{n}$ & $\log_{2}(t_{1} s)$ & $\log_{2}(t_{2} s)$ & $\log_{2}(t_{3} s)$ & $\log_{2}(t_{4} s)$ & $\log_{2}(t_{5} s)$ & $\log_{2}(t_{6} s)$ & $\log_{2}(t_{7} s)$ \\
-            $n!$ & \\
+            $n!$ & $\iota(t_{1} s)$ & $\iota(t_{2} s)$ & $\iota(t_{3} s)$ & $\iota(t_{4} s)$ & $\iota(t_{5} s)$ & $\iota(t_{6} s)$ & $\iota(t_{7} s)$ \\
         \bottomrule
     \end{tabular}
     \label{tab:1}
