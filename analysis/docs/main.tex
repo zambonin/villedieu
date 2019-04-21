@@ -75,7 +75,14 @@
             \frac{k (k + 1)}{2} + (k + 1) &\stackrel{?}{=} \\
             \frac{k (k + 1) + 2(k + 1)}{2} &\stackrel{?}{=} \\
             \frac{(k + 1)(k + 2)}{2} &\stackrel{?}{=} \\
-            \frac{(k + 1)((k + 1) + 1}{2} &= P(k + 1).
+            \frac{(k + 1)((k + 1) + 1)}{2} &= P(k + 1).
+        \end{align*}
+        \item Let $P(n) = \sum_{i = 0}^{n} i^{2} = \frac{n (n + 1) (2n + 1)}{6}$. $P(0)$ holds, since $\frac{0 (0 + 1) (2 \cdot 0 + 1)}{2} = 0$. The induction step is proved below, using the hypothesis that $P(k)$ is true.
+        \begin{align*}
+            P(k) + (k + 1) &\stackrel{?}{=} P(k + 1) \\
+            \frac{k (k + 1) (2k + 1)}{6} + (k + 1) &\stackrel{?}{=} \\
+            \frac{k (k + 1) (2k + 1) + 6(k + 1)}{6} &\stackrel{?}{=} \\
+            \frac{(k + 6)(k + 1)(2k + 1)}{6} &\stackrel{?}{=}
         \end{align*}
     \end{enumerate}
 \end{enumerate}
