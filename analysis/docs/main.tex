@@ -152,7 +152,8 @@
         To prove the final formula by weak induction, let $T(n) = 2^{n}(n - 1)$. $T(1)$ holds, since $2^{1}(1 - 1) = 0$. The inductive step is proved below, using the hypothesis that $T(n - 1)$ is true.
         \begin{align*}
             T(n - 1) + 2^{n} &\stackrel{?}{=} T(n) \\
-            2^{n - 1}((n - 1) - 1) + 2^{n} &\stackrel{?}{=} 
+            2^{n - 1}((n - 1) - 1) + 2^{n} &\stackrel{?}{=} \\
+            2^{n - 1}n &\stackrel{?}{=}
         \end{align*}
         \item Let \[
             T(n) = \begin{cases}
