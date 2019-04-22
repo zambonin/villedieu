@@ -142,7 +142,24 @@
             &= 2^{n}(n - 1) + T(1) \\
             T(n) &\in \Theta(2^{n}).
         \end{align*}
-        \item
+        \item Let \[
+            T(n) = \begin{cases}
+                k &\text{if } n = 0, \\
+                cT(n - 1) &\text{if } n > 0,
+            \end{cases}
+        \] for any constants $c, k$. By the iteration method,
+        \begin{align*}
+            T(n) &= cT(n - 1) \\
+            &= c(cT(n - 2)) \\
+            &= c(c(cT(n - 3))) \cdots \\
+            &= c^{i} T(n - i).
+        \end{align*}
+        Consider $T(n - i) \Leftrightarrow T(1)$. Thus, $n - i = k$ and $i = n - k$, which gives
+        \begin{align*}
+            T(n) &= c^{n - k} T(n - (n - k))  \\
+            &= c^{n - k} T(k) \\
+            T(n) &\in \Theta(c^{\mathcal{O}(n)}).
+        \end{align*}
         \item Let \[
             T(n) = \begin{cases}
                 1 &\text{if } n = 1, \\
