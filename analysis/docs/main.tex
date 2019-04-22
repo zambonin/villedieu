@@ -108,8 +108,8 @@
     \begin{enumerate}
         \item Let \[
             T(n) = \begin{cases}
-                0, &\text{if } n = 1, \\
-                T(n - 1) + c, &\text{if } n > 1
+                0 &\text{if } n = 1, \\
+                T(n - 1) + c &\text{if } n > 1
             \end{cases}
         \] for any constant $c$. By the iteration method,
         \begin{align*}
@@ -123,6 +123,24 @@
             T(n) &= (n - 1)c + T(n - (n - 1)) \\
             &= nc - c + T(1) \\
             T(n) &\in \Theta(n).
+        \end{align*}
+        \item Let \[
+            T(n) = \begin{cases}
+                0 &\text{if } n = 1, \\
+                T(n - 1) + 2^{n} &\text{if } n > 1.
+            \end{cases}
+        \] By the iteration method,
+        \begin{align*}
+            T(n) &= 2^{n} + T(n - 1) \\
+            &= 2^{n} + 2^{n} + T(n - 2) \\
+            &= 2^{n} + 2^{n} + 2^{n} + T(n - 3) \cdots \\
+            &= i2^{n} + T(n - i).
+        \end{align*}
+        Consider $T(n - i) \Leftrightarrow T(1)$. Thus, $n - i = 1$ and $i = n - 1$, which gives
+        \begin{align*}
+            T(n) &= (n - 1)2^{n} + T(n - (n - 1)) \\
+            &= 2^{n}(n - 1) + T(1) \\
+            T(n) &\in \Theta(2^{n}).
         \end{align*}
     \end{enumerate}
 \end{enumerate}
