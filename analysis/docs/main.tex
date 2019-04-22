@@ -150,9 +150,15 @@
             \end{cases}
         \] By the iteration method,
         \begin{align*}
-            T(n) &= n + 3T(\frac{n}{2}) \\
-            &= n + 3(n + 3T(\frac{n}{4})) \\
-            &= n + 3(n + 3(n + 3T(\frac{}{}
+            T(n) &= n + 3T(\tfrac{n}{2}) \\
+            &= n + 3(n + 3T(\tfrac{n}{4})) \\
+            &= n + 3(n + 3(n + 3T(\tfrac{n}{8}))) \cdots \\
+            &= 3^{i} T(\tfrac{n}{2^{i}}).
+        \end{align*}
+        Consider $T(\frac{n}{2^{i}}) \Leftrightarrow T(1)$. Thus, $\frac{n}{2^{i}} = 1$ and $i = \log_{2} n$, which gives
+        \begin{align*}
+            T(n) &= 3^{\log_{2} n} T(\tfrac{n}{2^{\log_{2} n}} \\
+            &= 3^{\log_{2} n} T(1) \\
         \end{align*}
     \end{enumerate}
 \end{enumerate}
