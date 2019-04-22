@@ -23,25 +23,22 @@
     \item 
     \begin{enumerate}
         \item Let the functions that represent the time complexities of algorithms $A$ and $B$ be $f(n) = n^{3}$ and $g(n) = 128n^{2}$, respectively, with $n \in \mathbb{N}$. Further, consider $t(n) = \frac{f(n)}{g(n)} \Rightarrow \frac{n}{128}$. By the ratio $t(n)$, algorithm $B$ is faster than $A$ when $n > 128$.
-        %\item Let the old and new computers be named $N_{1}$ and $N_{2}$, respectively, and $f(n) = 2^{n}$. The equation $t = \frac{2^{N_{1}}}{s}$ gives the time spent to solve an instance of $f(n)$ such that $N_{1}$ executes $s$ instructions per second. Analogously, let $t = \frac{2^{N_{2}}}{20s}$ represent the previous equation for the new computer. Solving for $N_{2}$ in terms of $N_{1}$:
-        
-        %\begin{align*}
-            %\frac{2^{N_{1}}}{s} = \frac{2^{N_{2}}}{20s} \\
-            %2^{N_{2}} = 20 \cdot 2^{N_{1}} \\
-            %N_{2} = N_{1} + \log_{2} 20 \\
-            %N_{2} \approx N_{1} + 4.32.
-        %\end{align*}
-        %Ergo, one cannot execute $f(2n)$ and expect comparable results on $N_{2}$, since $N_{2} \ll 2 N_{1}$.
-        
-        \item Let $t_1 = \frac{2^n}{s}$ be the running time for the old computer and $t_2 = \frac{2^n}{20s}$ for the new one, with $s$ being the number of instructions that the old computer executes per minute. Let's compare the running times with the new computer solving an instance of the problem twice as large as the one being executed by the old one.
-        
+        \item Let the old and new computers be named $N_{1}$ and $N_{2}$, respectively, and $f(n) = 2^{n}$. The equation $t = \frac{2^{N_{1}}}{s}$ gives the time spent to solve an instance of $f(n)$ such that $N_{1}$ executes $s$ instructions per second. Analogously, let $t = \frac{2^{N_{2}}}{20s}$ represent the previous equation for the new computer. Solving for $N_{2}$ in terms of $N_{1}$:
         \begin{align*}
-            r &= \frac{t_1}{t_2} \\
-            &= \frac{2^n}{s}\frac{20s}{2^{2n}} \\
-            &= \frac{20}{2^n}
+            \frac{2^{N_{1}}}{s} = \frac{2^{N_{2}}}{20s} \\
+            2^{N_{2}} = 20 \cdot 2^{N_{1}} \\
+            N_{2} = N_{1} + \log_{2} 20 \\
+            N_{2} \approx N_{1} + 4.32.
         \end{align*}
+        Ergo, one cannot execute $f(2n)$ and expect comparable results on $N_{2}$, since $N_{2} \ll 2 N_{1}$.
         
-        $r$ actually represents the speed up of the new computer, with a larger instance of the problem. The new computer will run slower with $n > 4$. This is due to the fact that the complexity of the problem grows exponential while the 
+        % \item Let $t_1 = \frac{2^n}{s}$ be the running time for the old computer and $t_2 = \frac{2^{2n}}{20s}$ for the new one, with $s$ being the number of instructions that the old computer executes per minute. Let's compare the running times with the new computer solving an instance of the problem twice as large as the one being executed by the old one.
+        % \begin{align*}
+        %     r &= \frac{t_1}{t_2} \\
+        %     &= \frac{2^n}{s}\frac{20s}{2^{2n}} \\
+        %     &= \frac{20}{2^n}
+        % \end{align*}
+        % $r$ actually represents the speed up of the new computer, with a larger instance of the problem. The new computer will run slower with $n > 4$. This is due to the fact that the complexity of the problem grows exponentially while the computational power grew linearly.
         
     \end{enumerate}
     \item 
@@ -200,7 +197,11 @@
             &= n^{\log_{2} 3 - 1} \\
             T(n) &\in \Theta(\text{poly}(n)).
         \end{align*}
-        To prove the final formula by weak induction, let $T(n) = n^{\log_{2} 3 - 1}$.
+        To prove the final formula by weak induction, let $T(n) = n^{\log_{2} 3 - 1}$. $P(1)$ holds, since $1^{\log_{2} 3 - 1} = 1$. The inductive step is proved below, using the hypothesis that $T(\frac{n}{2})$ is true.
+        \begin{align*}
+            3T(\tfrac{n}{2}) + n &\stackrel{?}{=} T(n) \\
+            3(\tfrac{n^{\log_{2} 3 - 1}}{2}) + n &\stackrel{?}{=}
+        \end{align*}
     \end{enumerate}
 \end{enumerate}
 
