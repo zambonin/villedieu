@@ -90,12 +90,11 @@
         \item Let $P(n) = \sum_{i = 1}^{n} (2i - 1) = n^{2}$. $P(1)$ holds, since $2 \cdot 1 - 1 = 1^{2}$. The induction step is proved below, using the hypothesis that $P(k)$ is true.
         \begin{align*}
             P(k) + 2(k + 1) - 1 &\stackrel{?}{=} P(k + 1) \\
-            2k - 1 + 2(k + 1) - 1 &\stackrel{?}{=} \\
-            2k - 1 + 2k + 2 - 1 &\stackrel{?}{=} \\
-            4k &\stackrel{?}{=} P(k + 1) \\
-            4k &\stackrel{?}{=} 2(k + 1) - 1 \\
-            &\stackrel{?}{=} 2k + 1
+            k^{2} + 2(k + 1) - 1 &\stackrel{?}{=} \\
+            k^{2} + 2k + 1 &\stackrel{?}{=} \\
+            (k + 1)^{2} &= P(k + 1).
         \end{align*}
+        \item Let $P(n) = \sum_{i = 0}^{n} i^{3} = \frac{n^{2} (n + 1)^{2}}{4}$. $P(0)$ holds, since $\frac{1^{2} \cdot (1 + 1)^{2}}{4} = 1$.
     \end{enumerate}
 \end{enumerate}
 
