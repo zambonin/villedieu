@@ -115,8 +115,14 @@
         \begin{align*}
             T(n) &= c + T(n - 1) \\
             &= c + c + T(n - 2) \\
-            &= c + c + c + T(n - 3) \\
-            &= 
+            &= c + c + c + T(n - 3) \cdots \\
+            &= ic + T(n - i).
+        \end{align*}
+        Consider $T(n - i) \Leftrightarrow T(1)$. Thus, $n - i = 1$ and $i = n - 1$, which gives
+        \begin{align*}
+            T(n) &= (n - 1)c + T(n - (n - 1)) \\
+            &= nc - c + T(1) \\
+            T(n) &\in \Theta(n).
         \end{align*}
     \end{enumerate}
 \end{enumerate}
