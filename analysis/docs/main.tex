@@ -69,7 +69,7 @@
     \end{enumerate}
     \item
     \begin{enumerate}
-        \item Let $P(n) = \sum_{i = 1}^{n} \frac{n (n + 1)}{2}$. $P(1)$ holds, since $\frac{1 (1 + 1)}{2} = 1$. The induction step is proved below, using the hypothesis that $P(k)$ is true.
+        \item Let $P(n) = \sum_{i = 1}^{n} i = \frac{n (n + 1)}{2}$. $P(1)$ holds, since $\frac{1 (1 + 1)}{2} = 1$. The induction step is proved below, using the hypothesis that $P(k)$ is true.
         \begin{align*}
             P(k) + (k + 1) &\stackrel{?}{=} P(k + 1) \\
             \frac{k (k + 1)}{2} + (k + 1) &\stackrel{?}{=} \\
@@ -87,7 +87,11 @@
             &\stackrel{?}{=} \frac{(k + 1)((k + 1) + 1)(2(k + 1) + 1)}{6} \\
             \frac{(k + 1)(2k^2 + 7k + 6)}{6} &= \frac{(k + 1)(k + 2)(2k + 3)}{6}.
         \end{align*}
-        \item Let $P(n) = \sum_{i = 1}^{n} (2i - 1) = n^{2}$. $P(1)$ holds, since $$
+        \item Let $P(n) = \sum_{i = 1}^{n} (2i - 1) = n^{2}$. $P(1)$ holds, since $2 \cdot 1 - 1 = 1^{2}$. The induction step is proved below, using the hypothesis that $P(k)$ is true.
+        \begin{align*}
+            P(k) + 2(k + 1) - 1 &\stackrel{?}{=} P(k + 1)
+            
+        \end{align*}
     \end{enumerate}
 \end{enumerate}
 
