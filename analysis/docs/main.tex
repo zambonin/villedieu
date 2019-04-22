@@ -126,7 +126,10 @@
         \end{align*}
         To prove the final formula by weak induction, let $T(n) = c(n - 1)$. $T(1)$ holds, since $c(1 - 1) = 0$. The inductive step is proved below, using the hypothesis that $T(n - 1)$ is true.
         \begin{align*}
-            T(n - 1) = c(n - 2) \\
+            T(n - 1) + c &\stackrel{?}{=} T(n) \\
+            c((n - 1) - 1) + c &\stackrel{?}{=} \\
+            c(n - 2) + c(1) &\stackrel{?}{=} \\
+            c(n - 1) &= T(n).
         \end{align*}
         \item Let \[
             T(n) = \begin{cases}
@@ -146,6 +149,7 @@
             &= 2^{n}(n - 1) + T(1) \\
             T(n) &\in \Theta(2^{n}).
         \end{align*}
+        To prove the final formula by weak induction, let $T(n) = 2^{n}(n - 1)$
         \item Let \[
             T(n) = \begin{cases}
                 k &\text{if } n = 0, \\
