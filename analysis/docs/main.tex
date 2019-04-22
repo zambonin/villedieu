@@ -145,10 +145,10 @@
         \end{align*}
         Consider $T(n - i) \Leftrightarrow T(1)$. Thus, $n - i = 1$ and $i = n - 1$, which gives
         \begin{align*}
-            T(n) &= (n - 1)2^{n - 1} \\
-            T(n) &\in \Theta(2^{n}).
+            T(n) &= n2^{n - 1} \\
+            T(n) &\in \Theta(n2^{n}).
         \end{align*}
-        To prove the final formula by weak induction, let $T(n) = (n - 1)2^{n - 1}$. $T(1)$ holds, since $(1 - 1)2^{1} = 0$. The inductive step is proved below, using the hypothesis that $T(n - 1)$ is true.
+        To prove the final formula by weak induction, let $T(n) = n2^{n - 1}$. $T(1)$ holds, since $(1 - 1)2^{1} = 0$. The inductive step is proved below, using the hypothesis that $T(n - 1)$ is true.
         \begin{align*}
             T(n - 1) + 2^{n} &\stackrel{?}{=} T(n) \\
             2^{n - 1}((n - 1) - 1) + 2^{n} &\stackrel{?}{=} \\
