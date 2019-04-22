@@ -157,8 +157,10 @@
         \end{align*}
         Consider $T(\frac{n}{2^{i}}) \Leftrightarrow T(1)$. Thus, $\frac{n}{2^{i}} = 1$ and $i = \log_{2} n$, which gives
         \begin{align*}
-            T(n) &= 3^{\log_{2} n} T(\tfrac{n}{2^{\log_{2} n}} \\
+            T(n) &= 3^{\log_{2} n} T(\tfrac{n}{2^{\log_{2} n}}) \\
             &= 3^{\log_{2} n} T(1) \\
+            &= n^{\log_{2} 3} \\
+            T(n) &\in \Theta(n^{c}).
         \end{align*}
     \end{enumerate}
 \end{enumerate}
