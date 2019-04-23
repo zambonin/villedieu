@@ -204,13 +204,13 @@
         %     &= n^{\log_{2} 3} \\
         %     T(n) &\in \Theta(\text{poly}(n)).
         % \end{align*}
-        To prove the final formula by weak induction, let $T(n) = 3n^{\log_{2} 3} - 2n$. $P(1)$ holds, since $3 \cdot 1^{\log_{2} 3} - 2 \cdot 1 = 1$. The inductive step is proved below, using the hypothesis that $T(\frac{n}{2})$ is true.
+        To prove the final formula by weak induction, let $T(n) = 4n^{\log_{2} 3} - 2n$. $P(1)$ holds, since $3 \cdot 1^{\log_{2} 3} - 2 \cdot 1 = 1$. The inductive step is proved below, using the hypothesis that $T(\frac{n}{2})$ is true.
         \begin{align*}
             3T(\tfrac{n}{2}) + n &\stackrel{?}{=} T(n) \\
-            3(3\tfrac{n}{2}^{\log_{2} 3} - \tfrac{2n}{2}) + n &\stackrel{?}{=} \\
-            9\tfrac{n}{2}^{\log_{2} 3} - 2n &\stackrel{?}{=} \\
-            9 \cdot 2^{-\log_2 3} \cdot n^{\log_2 3} - 2n &\stackrel{?}{=} \\
-            3n^{\log_{2} 3} - 2n &= T(n).
+            3(4\tfrac{n}{2}^{\log_{2} 3} - \tfrac{2n}{2}) + n &\stackrel{?}{=} \\
+            12\tfrac{n}{2}^{\log_{2} 3} - 2n &\stackrel{?}{=} \\
+            12 \cdot 2^{-\log_2 3} \cdot n^{\log_2 3} - 2n &\stackrel{?}{=} \\
+            4n^{\log_{2} 3} - 2n &= T(n).
         \end{align*}
     \end{enumerate}
 \end{enumerate}
