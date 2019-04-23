@@ -186,23 +186,24 @@
             T(n) &= n + 3T(\tfrac{n}{2}) \\
             &= n + 3(\tfrac{n}{2} + 3T(\tfrac{n}{4})) \\
             &= n + 3(\tfrac{n}{2} + 3(\tfrac{n}{4} + 3T(\tfrac{n}{8}))) \cdots \\
-            &= n(\tfrac{3}{2})^{i} T(\tfrac{n}{2^{i}}).
+            % &= n(\tfrac{3}{2})^{i} T(\tfrac{n}{2^{i}}).
         \end{align*}
-        Consider $T(\frac{n}{2^{i}}) \Leftrightarrow T(1)$. Thus, $\frac{n}{2^{i}} = 1$ and $i = \log_{2} n$, which gives
-        \begin{align*}
-            T(n) &= n(\tfrac{3}{2})^{\log_{2} n} T(\tfrac{n}{2^{\log_{2} n}}) \\
-            &= n(\tfrac{3}{2})^{\log_{2} n} T(1) \\
-            &= nn^{\log_{2} \tfrac{3}{2}} \\
-            &= nn^{\log_{2} 3 - 1} \\
-            &= n^{\log_{2} 3 - 1 + 1} \\
-            &= n^{\log_{2} 3} \\
-            T(n) &\in \Theta(\text{poly}(n)).
-        \end{align*}
-        To prove the final formula by weak induction, let $T(n) = n^{\log_{2} 3}$. $P(1)$ holds, since $1^{\log_{2} 3} = 1$. The inductive step is proved below, using the hypothesis that $T(\frac{n}{2})$ is true.
+        % Consider $T(\frac{n}{2^{i}}) \Leftrightarrow T(1)$. Thus, $\frac{n}{2^{i}} = 1$ and $i = \log_{2} n$, which gives
+        % \begin{align*}
+        %     T(n) &= n(\tfrac{3}{2})^{\log_{2} n} T(\tfrac{n}{2^{\log_{2} n}}) \\
+        %     &= n(\tfrac{3}{2})^{\log_{2} n} T(1) \\
+        %     &= nn^{\log_{2} \tfrac{3}{2}} \\
+        %     &= nn^{\log_{2} 3 - 1} \\
+        %     &= n^{\log_{2} 3 - 1 + 1} \\
+        %     &= n^{\log_{2} 3} \\
+        %     T(n) &\in \Theta(\text{poly}(n)).
+        % \end{align*}
+        To prove the final formula by weak induction, let $T(n) = 3n^{\log_{2} 3} - 2n$. $P(1)$ holds, since $3 \cdot 1^{\log_{2} 3} - 2 \cdot 1 = 1$. The inductive step is proved below, using the hypothesis that $T(\frac{n}{2})$ is true.
         \begin{align*}
             3T(\tfrac{n}{2}) + n &\stackrel{?}{=} T(n) \\
-            3(\tfrac{n}{2})^{\log_{2} 3} + n &\stackrel{?}{=} \\
-            3 \cdot 2^{-\log_2 3} \cdot n^{\log_2 3} + n &\stackrel{?}{=}
+            3(3(\tfrac{n}{2}^{\log_{2} 3} - 2\tfrac{n}{2})) + n &\stackrel{?}{=} \\
+            % 3(\tfrac{n}{2})^{\log_{2} 3} + n &\stackrel{?}{=} \\
+            % 3 \cdot 2^{-\log_2 3} \cdot n^{\log_2 3} + n &\stackrel{?}{=}
         \end{align*}
     \end{enumerate}
 \end{enumerate}
