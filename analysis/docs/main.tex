@@ -173,9 +173,10 @@
         Consider $T(n - i) \Leftrightarrow T(0)$. Thus, $n - i = 0$ and $i = n$, which gives
         \begin{align*}
             T(n) &= c^{n} T(n - n)  \\
-            &= c^{n} T(0) \\
-            T(n) &\in \Theta(c^n).
+            &= c^{n} k \\
+            T(n) &\in \Theta(c^{n}).
         \end{align*}
+        To prove the final formula by weak induction, let $T(n) = c^{n} k$. $P(0)$
         \item Let \[
             T(n) = \begin{cases}
                 1 &\text{if } n = 1, \\
@@ -201,9 +202,10 @@
         To prove the final formula by weak induction, let $T(n) = 3n^{\log_{2} 3} - 2n$. $P(1)$ holds, since $3 \cdot 1^{\log_{2} 3} - 2 \cdot 1 = 1$. The inductive step is proved below, using the hypothesis that $T(\frac{n}{2})$ is true.
         \begin{align*}
             3T(\tfrac{n}{2}) + n &\stackrel{?}{=} T(n) \\
-            3(3(\tfrac{n}{2}^{\log_{2} 3} - 2\tfrac{n}{2})) + n &\stackrel{?}{=} \\
-            % 3(\tfrac{n}{2})^{\log_{2} 3} + n &\stackrel{?}{=} \\
-            % 3 \cdot 2^{-\log_2 3} \cdot n^{\log_2 3} + n &\stackrel{?}{=}
+            3(3\tfrac{n}{2}^{\log_{2} 3} - \tfrac{2n}{2}) + n &\stackrel{?}{=} \\
+            9\tfrac{n}{2}^{\log_{2} 3} - 2n &\stackrel{?}{=} \\
+            9 \cdot 2^{-\log_2 3} \cdot n^{\log_2 3} - 2n &\stackrel{?}{=} \\
+            3n^{\log_{2} 3} - 2n &= T(n).
         \end{align*}
     \end{enumerate}
 \end{enumerate}
