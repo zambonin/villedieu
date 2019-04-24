@@ -4,7 +4,9 @@
 \usepackage[a4paper, margin=1.5cm]{geometry}
 \usepackage[colorlinks, urlcolor=blue, citecolor=red]{hyperref}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amsfonts, booktabs, enumitem, parskip, siunitx}
+\usepackage{amsmath, amsfonts, booktabs, enumitem, parskip, siunitx, tikz-qtree}
+
+\usetikzlibrary{decorations.pathreplacing}
 
 \newcommand{\euler}{\mathrm{e}}
 
@@ -221,6 +223,61 @@
         \item Let $T(n) = T(\frac{9n}{10}) + n$, with $a = 1, b = \frac{10}{9}$ and $f(n) = n$. We have that $n^{\log_{\frac{9}{10}} 1} = 1$, $f(n) \in \Omega(n^{\log_{\frac{10}{9}} 1 + \epsilon})$ and $\frac{9n}{10} \leq cn$ with \emph{e.g.} $\epsilon < 1$ and $c = \frac{10}{11}$. Thus, the third case may be applied, giving $T(n) \in \Theta(n)$.
         \item Let $T(n) = 16T(\frac{n}{4}) + n^{2}$, with $a = 16, b = 4$ and $f(n) = n^{2}$. Since $n^{\log_{4} 16} = n^{2}$ and $f(n) \in \Theta(n^{2})$, the second case may be applied. Thus, $T(n) \in \Theta(n^{2} \log_{2} n)$.
         \item Let $T(n) = 7T(\frac{n}{3}) + n^{2}$, with $a = 7, b = 3$ and $f(n) = n^{2}$. We have that $n^{\log_{3} 7} \approx n^{1.77}$, $f(n) \in \Omega(n^{1.77 + \epsilon})$ and $\frac{7n^{2}}{9} \leq cn^{2}$ with \emph{e.g.} $\epsilon < 2 - \log_3 7$ and $c = \frac{8}{9}$. Thus, the third case may be applied, giving $T(n) \in \Theta(n^{2})$.
+    \end{enumerate}
+    \item
+    \begin{enumerate}
+        \item 
+        \begin{figure}
+          \centering
+          \begin{tikzpicture}
+            \begin{scope}[xshift=-4.15cm]
+              \draw [decorate,decoration={brace,amplitude=5pt}]
+                (0,-3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\log_{2} n$};
+            \end{scope}
+            \begin{scope}
+            \Tree
+              [.\node(n0){$n$};
+                [.\node{$\frac{n}{2}$};
+                  [.{$\frac{n}{4}$}
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                  ]
+                  [.{$\frac{n}{4}$}
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                  ]
+                ]
+                [.\node(n1){$\frac{n}{2}$};
+                  [.{$\frac{n}{4}$}
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                  ]
+                  [.\node(n2){$\frac{n}{4}$};
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; \node(n3){$T(1)$};
+                  ]
+                ]
+              ]
+            \end{scope}
+              \begin{scope}[xshift=5cm]
+            \tikzset{edge from parent/.append style={draw=none}}
+            \Tree
+              [.\node(c0){$n$};
+                [.\node(c1){$n$};
+                  [.\node(c2){$n$};
+                    \node(c3){$n$};
+                  ]
+                ]
+              ]
+          \end{scope}
+          \begin{scope}[->, dashed]
+            \draw (n0) -- (c0);
+            \draw (n1) -- (c1);
+            \draw (n2) -- (c2);
+            \draw (n3) -- (c3);
+          \end{scope}
+          \end{tikzpicture}
+        \end{figure}
     \end{enumerate}
 \end{enumerate}
 
