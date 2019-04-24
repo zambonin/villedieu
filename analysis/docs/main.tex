@@ -217,8 +217,10 @@
     \end{enumerate}
     \item
     \begin{enumerate}
-        \item Let $T(n) = T(\frac{n}{2}) + \Theta(1)$, with $a = 1, b = 2$ and $f(n) \in \Theta(1)$. Since $n^{\log_{1} 2} = 1$ and $f(n) \in \Theta(n)$, the second case may be applied. Thus, $T(n) \in \Theta(\log_{2} n)$.
-        \item Let $T(n) = T(\frac{9n}{10}) + n$, with $a = 1, b = \frac{10}{9}$ and $f(n) = n$. We have that $n^{\log_{1} \frac{10}{9}} = 1$, $f(n) \in \Omega(n^{\log_{1} \frac{10}{9} + \epsilon})$ and $\frac{n}{2} \leq cn$ with \emph{e.g.} $\epsilon = c = \frac{3}{4}$. Thus, the third case may be applied, giving $T(n) \in \Theta(n)$.
+        % \item Let $T(n) = T(\frac{n}{2}) + \Theta(1)$, with $a = 1, b = 2$ and $f(n) \in \Theta(1)$. Since $n^{\log_{1} 2} = 1$ and $f(n) \in \Theta(n)$, the second case may be applied. Thus, $T(n) \in \Theta(\log_{2} n)$.
+        \item Let $T(n) = T(\frac{n}{2}) + \Theta(1)$, with $a = 1, b = 2$ and $f(n) \in \Theta(1)$. Since $n^{\log_{2} 1} = 1$ and $f(n) \in \Theta(1)$, the second case may be applied. Thus, $T(n) \in \Theta(\log_{2} n)$.
+        %\item Let $T(n) = T(\frac{9n}{10}) + n$, with $a = 1, b = \frac{10}{9}$ and $f(n) = n$. We have that $n^{\log_{1} \frac{10}{9}} = 1$, $f(n) \in \Omega(n^{\log_{1} \frac{10}{9} + \epsilon})$ and $\frac{n}{2} \leq cn$ with \emph{e.g.} $\epsilon = c = \frac{3}{4}$. Thus, the third case may be applied, giving $T(n) \in \Theta(n)$.
+        \item Let $T(n) = T(\frac{9n}{10}) + n$, with $a = 1, b = \frac{10}{9}$ and $f(n) = n$. We have that $n^{\log_{\frac{9}{10}} 1} = 1$, $f(n) \in \Omega(n^{\log_{1} \frac{10}{9} + \epsilon})$ and $\frac{n}{2} \leq cn$ with \emph{e.g.} $\epsilon = c = \frac{3}{4}$. Thus, the third case may be applied, giving $T(n) \in \Theta(n)$.
         \item Let $T(n) = 16T(\frac{n}{4}) + n^{2}$, with $a = 16, b = 4$ and $f(n) = n^{2}$. Since $n^{\log_{4} 16} = n^{2}$ and $f(n) \in \Theta(n^{2})$, the second case may be applied. Thus, $T(n) \in \Theta(n^{2} \log_{2} n)$.
         \item Let $T(n) = 7T(\frac{n}{3}) + n^{2}$, with $a = 7, b = 3$ and $f(n) = n^{2}$. We have that $n^{\log_{3} 7} \approx n^{1.77}$, $f(n) \in \Omega(n^{1.77 + \epsilon})$ and $\frac{7n^{2}}{9} \leq cn^{2}$ with \emph{e.g.} $\epsilon = c = \frac{8}{9}$. Thus, the third case may be applied, giving $T(n) \in \Theta(n^{2})$.
     \end{enumerate}
