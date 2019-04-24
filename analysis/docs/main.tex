@@ -23,14 +23,14 @@
     \item 
     \begin{enumerate}
         \item Let the functions that represent the time complexities of algorithms $A$ and $B$ be $f(n) = n^{3}$ and $g(n) = 128n^{2}$, respectively, with $n \in \mathbb{N}$. Further, consider $t(n) = \frac{f(n)}{g(n)} \Rightarrow \frac{n}{128}$. By the ratio $t(n)$, algorithm $B$ is faster than $A$ when $n > 128$.
-        \item Let the old and new computers be named $N_{1}$ and $N_{2}$, respectively, and $f(n) = 2^{n}$. The equations $t_{1} = \frac{2^{n_{1}}}{s}, t_{2} = \frac{2^{n_{1}}}{20s}$ give the time spent to solve an instance of $f(n)$ on $N_{1}$ and $N_{2}$ with $s$ instructions. By setting $t_{1} = t_{2}$, it is possible to figure out that the twenty-fold increase in the number of instructions does not help too much 
+        \item Let the old and new computers be named $N_{1}$ and $N_{2}$, respectively, and $f(n) = 2^{n}$. The equations $t_{1} = \frac{2^{n_{1}}}{s}, t_{2} = \frac{2^{n_{1}}}{20s}$ give the time spent to solve an instance of $f(n)$ on $N_{1}$ and $N_{2}$ with $s$ instructions.
         \begin{align*}
             \frac{2^{n_{1}}}{s} = \frac{2^{n_{2}}}{20s} \\
             2^{n_{2}} = 20 \cdot 2^{N_{1}} \\
             n_{2} = n_{1} + \log_{2} 20 \\
             n_{2} \approx n_{1} + 4.32.
         \end{align*}
-        Ergo, one cannot execute $f(2n)$ and expect comparable results on $N_{2}$, since $N_{2} \ll 2 N_{1}$.
+        By setting $t_{1} = t_{2}$, it is possible to figure out that the twenty-fold increase in the number of instructions does not help too much in solving $f(n)$. Indeed, the new computer will run slower if $n > 4$. This is due to the fact that the complexity of the problem grows exponentially while the computational power grew linearly. Ergo, one cannot execute $f(2n)$ and expect comparable results on $N_{2}$, since $n_{2} \ll 2 n_{1}$.
         
         % \item Let $t_1 = \frac{2^n}{s}$ be the running time for the old computer and $t_2 = \frac{2^{2n}}{20s}$ for the new one, with $s$ being the number of instructions that the old computer executes per minute. Let's compare the running times with the new computer solving an instance of the problem twice as large as the one being executed by the old one.
         % \begin{align*}
