@@ -198,7 +198,10 @@
         The closed formula is derived as follows.
         \begin{align*}
             T(n) &= 2n(\tfrac{3}{2}^{\log_{2} n + 1} - 1) + 3^{\log_{2} n} \\
-            &= 2n(3^{\log_{2} n + 1} \cdot )
+            &= 2n(\tfrac{3}{2}^{\log_{2} n} \cdot \tfrac{3}{2} - 1) + 3^{\log_{2} n} \\
+            &= 2n(n^{\log_{2} \tfrac{3}{2}} \cdot \tfrac{3}{2} - 1) + n^{\log_{2} 3} \\
+            &= 2nn^{\log_{2} 3 - 1} \cdot \tfrac{6n}{2} - 2n + n^{\log_{2} 3} \\
+            &= 2n^{\log_{2} 3} \cdot - 2n + n^{\log_{2} 3} \\
         %     T(n) &\in \Theta(\text{poly}(n)).
         \end{align*}
         To prove the final formula by weak induction, let $T(n) = 4n^{\log_{2} 3} - 2n$. $P(1)$ holds, since $3 \cdot 1^{\log_{2} 3} - 2 \cdot 1 = 1$. The inductive step is proved below, using the hypothesis that $T(\frac{n}{2})$ is true.
