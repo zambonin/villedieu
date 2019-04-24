@@ -216,7 +216,8 @@
     \end{enumerate}
     \item
     \begin{enumerate}
-        \item Let $T(n) = T(\frac{n}{2}) + \Theta(1)$, with $a = 1, b = 2$, giving $\log_{1} 2 = 0$. Since $n^{\log_{1} 2} \in \Theta(1)$
+        \item Let $T(n) = T(\frac{n}{2}) + \Theta(1)$, with $a = 1, b = 2$ and $f(n) \in \Theta(1)$. Since $n^{\log_{1} 2} = 1$ and $f(n) \in \Theta(n^{\log_{1} 2})$, the second case may be applied. Thus, $T(n) \in \Theta(\log_{2} n)$.
+        \item Let $T(n) = T(\frac{9n}{10}) + n$, with $a = 1, b = \frac{10}{9}$ and $f(n) \in \Theta(n)$. Since $n^{\log_{1} \frac{10}{9}}$ and $f(n)$
     \end{enumerate}
 \end{enumerate}
 
