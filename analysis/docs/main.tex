@@ -23,12 +23,12 @@
     \item 
     \begin{enumerate}
         \item Let the functions that represent the time complexities of algorithms $A$ and $B$ be $f(n) = n^{3}$ and $g(n) = 128n^{2}$, respectively, with $n \in \mathbb{N}$. Further, consider $t(n) = \frac{f(n)}{g(n)} \Rightarrow \frac{n}{128}$. By the ratio $t(n)$, algorithm $B$ is faster than $A$ when $n > 128$.
-        \item Let the old and new computers be named $N_{1}$ and $N_{2}$, respectively, and $f(n) = 2^{n}$. The equations $t_{1} = \frac{2^{n_{1}}}{s}, t_{2} = \frac{2^{n_{1}}}{20s}$ give the time spent to solve an instance of $f(n)$ on $N_{1}$ and $N_{2}$. Solving for $n_{2}$ in terms of $n_{1}$ by setting $t_{1} = t_{2}$ gives the computational power gain by increasing the number of instructions $s$ executed twenty-fold.
+        \item Let the old and new computers be named $N_{1}$ and $N_{2}$, respectively, and $f(n) = 2^{n}$. The equations $t_{1} = \frac{2^{n_{1}}}{s}, t_{2} = \frac{2^{n_{1}}}{20s}$ give the time spent to solve an instance of $f(n)$ on $N_{1}$ and $N_{2}$. Solving for $n_{2}$ in terms of $n_{1}$, by setting $t_{1} = t_{2}$, presents the input size when increasing the number of instructions $s$ twenty-fold.
         \begin{align*}
-            \frac{2^{N_{1}}}{s} = \frac{2^{N_{2}}}{20s} \\
-            2^{N_{2}} = 20 \cdot 2^{N_{1}} \\
-            N_{2} = N_{1} + \log_{2} 20 \\
-            N_{2} \approx N_{1} + 4.32.
+            \frac{2^{n_{1}}}{s} = \frac{2^{n_{2}}}{20s} \\
+            2^{n_{2}} = 20 \cdot 2^{N_{1}} \\
+            n_{2} = n_{1} + \log_{2} 20 \\
+            n_{2} \approx n_{1} + 4.32.
         \end{align*}
         Ergo, one cannot execute $f(2n)$ and expect comparable results on $N_{2}$, since $N_{2} \ll 2 N_{1}$.
         
