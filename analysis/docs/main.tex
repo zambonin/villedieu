@@ -194,7 +194,7 @@
             &= n + 3(\tfrac{n}{2} + 3(\tfrac{n}{4} + 3T(\tfrac{n}{8}))) \cdots \\
             &= 3^{\log_{2} n} + n\sum_{i = 0}^{\log_{2} n} (\tfrac{3}{2})^{i}.
         \end{align*}
-        
+        Recall that the last term is obtained as one reaches the very end of the iteration. Furthermore, the sum of this geometric series is exactly \[\left(\frac{\frac{3}{2}^{\log_{2} n + 1} - 1}{\frac{3}{2} - 1}\right) = 2(\tfrac{3}{2}^{\log_{2} n + 1} - 1)\].
         % Consider $T(\frac{n}{2^{i}}) \Leftrightarrow T(1)$. Thus, $\frac{n}{2^{i}} = 1$ and $i = \log_{2} n$, which gives
         % \begin{align*}
         %     T(n) &= n(\tfrac{3}{2})^{\log_{2} n} T(\tfrac{n}{2^{\log_{2} n}}) \\
