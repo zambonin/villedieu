@@ -30,7 +30,7 @@
             n_{2} = n_{1} + \log_{2} 20 \\
             n_{2} \approx n_{1} + 4.32.
         \end{align*}
-        It is evident that the new input size had only a modest growth. Indeed, the new computer will run slower if $n > 4$. This is due to the fact that the complexity of $f(n)$ grows exponentially, while in this case, the computational power grew linearly. Ergo, one cannot execute $f(2n)$ and expect comparable results on $N_{2}$, since $n_{2} \ll 2 n_{1}$.
+        It is evident that the new input size had a modest growth. Indeed, the new computer will run slower if $n > 4$. This is due to the fact that the complexity of $f(n)$ grows exponentially, while in this case, the computational power grew linearly. Ergo, one cannot execute $f(2n)$ and expect comparable results on $N_{2}$, since $n_{2} \ll 2 n_{1}$.
         
         % \item Let $t_1 = \frac{2^n}{s}$ be the running time for the old computer and $t_2 = \frac{2^{2n}}{20s}$ for the new one, with $s$ being the number of instructions that the old computer executes per minute. Let's compare the running times with the new computer solving an instance of the problem twice as large as the one being executed by the old one.
         % \begin{align*}
@@ -190,10 +190,11 @@
         \] By the iteration method,
         \begin{align*}
             T(n) &= n + 3T(\tfrac{n}{2}) \\
-            &= n + 3(\tfrac{n}{2} + 3T(\tfrac{n}{4})) \\
+            &= n + 3(\tfrac{n}{2} + 3T(\tfrac{n}{4})) \\ 
             &= n + 3(\tfrac{n}{2} + 3(\tfrac{n}{4} + 3T(\tfrac{n}{8}))) \cdots \\
-            % &= n(\tfrac{3}{2})^{i} T(\tfrac{n}{2^{i}}).
+            &= 3^{\log_{2} n} + n\sum_{i = 0}^{\log_{2} n} (\tfrac{3}{2})^{i}.
         \end{align*}
+        
         % Consider $T(\frac{n}{2^{i}}) \Leftrightarrow T(1)$. Thus, $\frac{n}{2^{i}} = 1$ and $i = \log_{2} n$, which gives
         % \begin{align*}
         %     T(n) &= n(\tfrac{3}{2})^{\log_{2} n} T(\tfrac{n}{2^{\log_{2} n}}) \\
