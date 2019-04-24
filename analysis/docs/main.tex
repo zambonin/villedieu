@@ -226,11 +226,11 @@
     \end{enumerate}
     \item
     \begin{enumerate}
-        \item 
-        \begin{figure}
-          \centering
+        \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n)$. By the recursion-tree method, we have that the total cost for $T(n)$ is the height of the tree times the cost of each level, or $T(n) \in \Theta(n \log_2 n)$.
+        \begin{figure}[htbp]
+            \centering
           \begin{tikzpicture}
-            \begin{scope}[xshift=-4.15cm]
+            \begin{scope}[xshift=-4.75cm]
               \draw [decorate,decoration={brace,amplitude=5pt}]
                 (0,-3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\log_{2} n$};
             \end{scope}
@@ -259,7 +259,7 @@
                 ]
               ]
             \end{scope}
-              \begin{scope}[xshift=5cm]
+              \begin{scope}[xshift=5.5cm]
             \tikzset{edge from parent/.append style={draw=none}}
             \Tree
               [.\node(c0){$n$};
