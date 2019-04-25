@@ -161,7 +161,7 @@
             2^{(n - 1) + 1} - 4 + 2^{n} &\stackrel{?}{=} \\
             2^{n + 1} - 4 &= T(n).
         \end{align*}
-        \item Let \[
+        \item\label{ex:4c} Let \[
             T(n) = \begin{cases}
                 k &\text{if } n = 0, \\
                 cT(n - 1) &\text{if } n > 0,
@@ -435,7 +435,7 @@
         &= -3n (\tfrac{2}{3} \cdot n^{\log_{3} 2 - 1} - 1) + n^{\log_{3} 2} \\
         &= -2n^{\log_{3} 2} + 3n + n^{\log_{3} 2} \\
         &= -n^{\log_{3} 2} + 3n \\
-        T(n) &\in \Theta(\text{poly}(n)).
+        T(n) &\in \Theta(n).
     \end{align*}
         \begin{figure}[htbp]
           \centering
@@ -492,8 +492,8 @@
     \item 
     \begin{enumerate}
         \item Let $T(n) = 5T(\frac{n}{2}) + \mathcal{O}(n)$. By the master method, $a = 5, b = 2$ and $f(n) \in \mathcal{O}(n)$. We have that $n^{\log_{2} 5} \approx n^{2.32}$, $f(n) \in \mathcal{O}(n^{2.32 - \epsilon})$ with \emph{e.g.} $\epsilon > \log_{2} 5 - 1$. Thus, the first case may be applied, giving $T(n) \in \Theta(n^{\log_{2} 5})$.
-        \item Let $T(n) = 2T(n - 1) + \mathcal{O}(1)$.
-        \item Let $T(n) = 9T(\frac{n}{3}) + \mathcal{O}(n^{2})$.
+        \item Let $T(n) = 2T(n - 1) + \mathcal{O}(1)$. The recurrence is a special case of Exercise~\ref{ex:4c}, thus giving $T(n) \in \Theta(2^{n})$.
+        \item Let $T(n) = 9T(\frac{n}{3}) + \mathcal{O}(n^{2})$. By the master method, $a = 9, b = 3$ and $f(n) \in \mathcal{O}(n^{2})$. We have that $n^{\log_{3} 9} = n^{2}$, $f(n)$
     \end{enumerate}
 \end{enumerate}
 
