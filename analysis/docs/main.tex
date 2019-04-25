@@ -232,7 +232,7 @@
           \begin{tikzpicture}
             \begin{scope}[xshift=-4.75cm]
               \draw [decorate,decoration={brace,amplitude=5pt}]
-                (0,-3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\log_{2} n$};
+                (0, -3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\log_{2} n$};
             \end{scope}
             \begin{scope}
             \Tree
@@ -281,36 +281,16 @@
     \item Let $T(n) = 3T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. The floor function is disregarded for simplicity.
         \begin{figure}[htbp]
           \centering
-          \begin{tikzpicture}[
-                every tree node/.style={align=center, anchor=north}, level distance=45pt,
-                sibling distance=1pt
-            ]
-            \begin{scope}[xshift=-4.75cm]
+          \begin{tikzpicture}
+            \begin{scope}[xshift=-3.5cm]
               \draw [decorate,decoration={brace,amplitude=5pt}]
-                (0,-3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\log_{2} n$};
+                (0, -3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\log_{2} n$};
             \end{scope}
             \begin{scope}
             \Tree
               [.\node(n0){$n$};
-                [.\edge[dotted] node {}; $T(1)$
-                ]
-                [.\node{$\frac{n}{2}$};
-                  [.{$\frac{n}{4}$}
-                    \edge[dotted] node {}; $T(1)$
-                    \edge[dotted] node {}; $T(1)$
-                    \edge[dotted] node {}; $T(1)$
-                  ]
-                  [.{$\frac{n}{4}$}
-                    \edge[dotted] node {}; $T(1)$
-                    \edge[dotted] node {}; $T(1)$
-                    \edge[dotted] node {}; $T(1)$
-                  ]
-                  [.{$\frac{n}{4}$}
-                    \edge[dotted] node {}; $T(1)$
-                    \edge[dotted] node {}; $T(1)$
-                    \edge[dotted] node {}; $T(1)$
-                  ]
-                ]
+                \edge[dotted] node {}; $\vdots$
+                \edge[dotted] node {}; $\vdots$
                 [.\node(n1){$\frac{n}{2}$};
                   [.{$\frac{n}{4}$}
                     \edge[dotted] node {}; $T(1)$
@@ -330,7 +310,7 @@
                 ]
               ]
             \end{scope}
-              \begin{scope}[xshift=5.5cm]
+            \begin{scope}[xshift=9cm]
             \tikzset{edge from parent/.append style={draw=none}}
             \Tree
               [.\node(c0){$n$};
