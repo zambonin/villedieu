@@ -434,9 +434,9 @@
         &= -3n (\tfrac{2}{3} \cdot n^{\log_{3} \tfrac{2}{3}} - 1) + n^{\log_{3} 2} \\
         &= -3n (\tfrac{2}{3} \cdot n^{\log_{3} 2 - 1} - 1) + n^{\log_{3} 2} \\
         &= -2n^{\log_{3} 2} + 3n + n^{\log_{3} 2} \\
-        &= -n^{\log_{3} 2} + 3n
+        &= -n^{\log_{3} 2} + 3n \\
+        T(n) &\in \Theta(\text{poly}(n)).
     \end{align*}
-    % $$, which gives $3n - 2^{\log_{3} n + 1} + n^{\log_3 2}$
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
@@ -489,9 +489,14 @@
           \end{tikzpicture}
         \end{figure}
     \end{enumerate}
+    \item 
+    \begin{enumerate}
+        \item Let $T(n) = 5T(\frac{n}{2}) + \mathcal{O}(n)$. By the master method, $a = 5, b = 2$ and $f(n) \in \mathcal{O}(n)$. Since $n^{\logP$
+        \item Let $T(n) = 2T(n - 1) + \mathcal{O}(1)$.
+        \item Let $T(n) = 9T(\frac{n}{3}) + \mathcal{O}(n^{2})$.
+    \end{enumerate}
 \end{enumerate}
 
-\newpage
 \appendix
 
 \section{Rationale for Q2a}
