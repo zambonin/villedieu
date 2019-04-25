@@ -427,7 +427,7 @@
           \end{scope}
           \end{tikzpicture}
         \end{figure}
-    \item Let $T(n) = 2T(\frac{n}{3}) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\log_{3} n} (\frac{2}{3})^{i} + 2^{\log_{3} n}$.
+    \item Let $T(n) = 2T(\frac{n}{3}) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\log_{3} n} (\frac{2}{3})^{i} + 2^{\log_{3} n}$. Using the sum of geometric series, $T(n) = n \frac{\frac{2}{3}^{\log_{3} n + 1} - 1}{\frac{2}{3} - 1} + 2^{\log_{3} n}$
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
