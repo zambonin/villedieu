@@ -179,11 +179,11 @@
             &= c^{n} k \\
             T(n) &\in \Theta(c^{n}).
         \end{align*}
-        To prove the final formula by weak induction, let $T(n) = c^{n} k$. $T(0)$ holds, since $c^{0} k = k$. The inductive step is proved below, using the hypothesis that $T(n - 1)$.
+        To prove the final formula by weak induction, let $T(n) = c^{n} k$. $T(0)$ holds, since $c^{0} k = k$. The inductive step is proved below, using the hypothesis that $T(n - 1)$ is true.
         \begin{align*}
             cT(n - 1) &\stackrel{?}{=} T(n) \\
             c c^{n - 1} k &\stackrel{?}{=} \\
-            c^{n} k &= T(n - 1). 
+            c^{n} k &= T(n). 
         \end{align*}
         \item\label{ex:4d} Let \[
             T(n) = \begin{cases}
@@ -491,7 +491,7 @@
     \end{enumerate}
     \item 
     \begin{enumerate}
-        \item Let $T(n) = 5T(\frac{n}{2}) + \mathcal{O}(n)$. By the master method, $a = 5, b = 2$ and $f(n) \in \mathcal{O}(n)$. We have that $n^{\log_{2} 5} \approx n^{2.32}$, $f(n) \in \Omega(n^{2.32} + \epsilon)$ and $\frac{5n}{2} \leq cn$ with \emph{e.g.} $\epsilon < $
+        \item Let $T(n) = 5T(\frac{n}{2}) + \mathcal{O}(n)$. By the master method, $a = 5, b = 2$ and $f(n) \in \mathcal{O}(n)$. We have that $n^{\log_{2} 5} \approx n^{2.32}$, $f(n) \in \mathcal{O}(n^{2.32 - \epsilon})$ with \emph{e.g.} $\epsilon > \log_{2} 5 - 1$. Thus, the first case may be applied, giving $T(n) \in \Theta(n^{\log_{2} 5})$.
         \item Let $T(n) = 2T(n - 1) + \mathcal{O}(1)$.
         \item Let $T(n) = 9T(\frac{n}{3}) + \mathcal{O}(n^{2})$.
     \end{enumerate}
