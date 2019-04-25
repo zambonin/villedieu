@@ -412,8 +412,8 @@
             \tikzset{edge from parent/.append style={draw=none}}
             \Tree
               [.\node(c0){$n^{2}$};
-                [.\node(c1){$\frac{n^{2}}{2}$};
-                  [.\node(c2){$\frac{n^{2}}{4}$};
+                [.\node(c1){$\frac{1}{2}n^{2}$};
+                  [.\node(c2){$\frac{1}{4}n^{2}$};
                     \node(c3){$n$};
                   ]
                 ]
@@ -427,13 +427,13 @@
           \end{scope}
           \end{tikzpicture}
         \end{figure}
-    \item Let $T(n) = 2T(\frac{n}{3}) + \Theta(n)$.
+    \item Let $T(n) = 2T(\frac{n}{3}) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\log_{3} n} (\frac{2}{3})^{i} + 2^{\log_{3} n}$.
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
             \begin{scope}[xshift=-4.75cm]
               \draw [decorate,decoration={brace,amplitude=5pt}]
-                (0, -3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\log_{2} n$};
+                (0, -3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\log_{3} n$};
             \end{scope}
             \begin{scope}
             \Tree
@@ -464,9 +464,9 @@
             \tikzset{edge from parent/.append style={draw=none}}
             \Tree
               [.\node(c0){$n$};
-                [.\node(c1){$\n$};
-                  [.\node(c2){$n$};
-                    \node(c3){$n$};
+                [.\node(c1){$\frac{2}{3}n$};
+                  [.\node(c2){$\frac{4}{9}n$};
+                    \node(c3){$2^{\log_{3} n}$};
                   ]
                 ]
               ]
@@ -482,6 +482,7 @@
     \end{enumerate}
 \end{enumerate}
 
+\newpage
 \appendix
 
 \section{Rationale for Q2a}
