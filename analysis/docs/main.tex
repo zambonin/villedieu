@@ -310,19 +310,19 @@
                 ]
               ]
             \end{scope}
-            \begin{scope}[xshift=9cm]
+            \begin{scope}[xshift=10cm]
             \tikzset{edge from parent/.append style={draw=none}}
             \Tree
               [.\node(c0){$n$};
-                [.\node(c1){$n$};
-                  [.\node(c2){$n$};
-                    \node(c3){$n$};
+                [.\node(c1){$\frac{3}{2}n$};
+                  [.\node(c2){$\frac{9}{4}n$};
+                    \node(c3){$n^{\log_{2} 3}$};
                   ]
                 ]
               ]
           \end{scope}
           \begin{scope}[->, dashed]
-            \draw (n0) -- (c0);
+            \draw (n0) edge node[fill=white] {1} (c0);
             \draw (n1) -- (c1);
             \draw (n2) -- (c2);
             \draw (n3) -- (c3);
