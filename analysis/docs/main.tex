@@ -278,7 +278,7 @@
           \end{scope}
           \end{tikzpicture}
         \end{figure}
-    \item Let $T(n) = 3T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\log_{2} n} (\tfrac{3}{2})^{i} + n^{\log_{2} 3}$. As per Exercise~\ref{ex:4d}, $T(n) \in \Theta(\text{poly}(n))$.
+    \item Let $T(n) = 3T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\log_{2} n} (\tfrac{3}{2})^{i} + n^{\log_{2} 3} + \Theta(n)$. As per Exercise~\ref{ex:4d}, $T(n) \in \Theta(\text{poly}(n))$.
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
@@ -329,7 +329,7 @@
           \end{scope}
           \end{tikzpicture}
         \end{figure}
-    \item Let $T(n) = 4T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\log_{2} n} 2i$
+    \item Let $T(n) = 4T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n^{2} + n\sum_{i = 0}^{\log_{2} n} 2^{i + 1} - 2^{i}$.
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
