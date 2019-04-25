@@ -329,11 +329,11 @@
           \end{scope}
           \end{tikzpicture}
         \end{figure}
-    \item Let $T(n) = 4T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$.
+    \item Let $T(n) = 4T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = $
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
-            \begin{scope}[xshift=-3.5cm]
+            \begin{scope}[xshift=-2cm]
               \draw [decorate,decoration={brace,amplitude=5pt}]
                 (0, -3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\log_{2} n$};
             \end{scope}
@@ -356,13 +356,13 @@
                 ]
               ]
             \end{scope}
-            \begin{scope}[xshift=10cm]
+            \begin{scope}[xshift=7cm]
             \tikzset{edge from parent/.append style={draw=none}}
             \Tree
               [.\node(c0){$n$};
-                [.\node(c1){$\frac{3}{2}n$};
-                  [.\node(c2){$\frac{9}{4}n$};
-                    \node(c3){$n^{\log_{2} 3}$};
+                [.\node(c1){$2n$};
+                  [.\node(c2){$4n$};
+                    \node(c3){$n^2$};
                   ]
                 ]
               ]
