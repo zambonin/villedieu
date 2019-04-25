@@ -226,7 +226,7 @@
     \end{enumerate}
     \item Dashed arrows represent the total cost of each level in the tree. Dotted edges mean the natural expansion of the subtrees. When applicable, the floor function is disregarded for simplicity.
     \begin{enumerate}
-        \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n)$. By the recursion-tree method, $T(n) = n \log_{2} n + \Theta(n)$. Thus, $T(n) \in \Theta(n \log_2 n)$.
+        \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n)$. By the recursion-tree method, $T(n) = n \log_{2} n + n$. Thus, $T(n) \in \Theta(n \log_2 n)$.
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
@@ -278,7 +278,7 @@
           \end{scope}
           \end{tikzpicture}
         \end{figure}
-    \item Let $T(n) = 3T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\log_{2} n} (\tfrac{3}{2})^{i} + n^{\log_{2} 3} + \Theta(n)$. As per Exercise~\ref{ex:4d}, $T(n) \in \Theta(\text{poly}(n))$.
+    \item Let $T(n) = 3T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\log_{2} n} (\tfrac{3}{2})^{i} + n^{\log_{2} 3}$. As per Exercise~\ref{ex:4d}, $T(n) \in \Theta(\text{poly}(n))$.
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
