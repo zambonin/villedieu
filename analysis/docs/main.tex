@@ -329,13 +329,7 @@
           \end{scope}
           \end{tikzpicture}
         \end{figure}
-    \item Let $T(n) = 4T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method and using the sum of geometric series, 
-    \begin{align*}
-        T(n) &= n^{2} + n\sum_{i = 0}^{\log_{2} n} (2^{i + 1} - 2^{i}) \\
-        &= n^{2} + n\sum_{i = 0}^{\log_{2} n} (2^{i + 1} - 2^{i}) \\
-        &= n^{2} + n(\sum_{i = 0}^{\log_{2} n} 2^{i + 1} - \sum_{i = 0}^{\log_{2} n} 2^{i}) \\
-        &= n^{2} + 
-    \end{align*}
+    \item Let $T(n) = 4T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n^{2} + n\sum_{i = 0}^{\log_{2} n} 2^{i}$. Using the sum of geometric series, $T(n) = n^{2} + n\frac{2^{\log_{2} n + 1} - 1}{2 - 1}$, and thus $T(n) \in \Theta(n^{2})$.
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
