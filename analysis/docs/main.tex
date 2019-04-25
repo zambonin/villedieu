@@ -329,7 +329,7 @@
           \end{scope}
           \end{tikzpicture}
         \end{figure}
-    \item Let $T(n) = 4T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\log_{2} n} 2^{i} + n^{2} $. Using the sum of geometric series, $T(n) = n\frac{2^{\log_{2} n + 1} - 1}{2 - 1} + n^{2}$, and thus $T(n) \in \Theta(n^{2})$.
+    \item Let $T(n) = 4T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\log_{2} n} 2^{i} + n^{2} $. Using the sum of geometric series, $T(n) = n\frac{2^{\log_{2} n + 1} - 1}{2 - 1} + n^{2}$, which gives $n(2n - 1) + n^{2}$, and thus $T(n) \in \Theta(n^{2})$.
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
@@ -375,7 +375,7 @@
           \end{scope}
           \end{tikzpicture}
         \end{figure}
-    \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n^{2})$. By the recursion-tree method, $T(n) = n^{2} \sum_{i = 0}^{\log_{2} n} 2^{-i} + n$. Using the sum of geometric series, $T(n) = n^{2} \frac{2^{-(\log_{2} n + 1)} - 1}{\frac{1}{2} - 1} + n$.
+    \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n^{2})$. By the recursion-tree method, $T(n) = n^{2} \sum_{i = 0}^{\log_{2} n} 2^{-i} + n$. Using the sum of geometric series, $T(n) = n^{2} \frac{2^{-(\log_{2} n + 1)} - 1}{\frac{1}{2} - 1} + n$, which gives $n^{2}(2 - \frac{1}{n}) + n$, and thus $T(n) \in \Theta(n^{2})$.
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
@@ -428,6 +428,57 @@
           \end{tikzpicture}
         \end{figure}
     \item Let $T(n) = 2T(\frac{n}{3}) + \Theta(n)$.
+        \begin{figure}[htbp]
+          \centering
+          \begin{tikzpicture}
+            \begin{scope}[xshift=-4.75cm]
+              \draw [decorate,decoration={brace,amplitude=5pt}]
+                (0, -3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\log_{2} n$};
+            \end{scope}
+            \begin{scope}
+            \Tree
+              [.\node(n0){$n$};
+                [.\node{$\frac{n}{3}$};
+                  [.{$\frac{n}{9}$}
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                  ]
+                  [.{$\frac{n}{9}$}
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                  ]
+                ]
+                [.\node(n1){$\frac{n}{3}$};
+                  [.{$\frac{n}{9}$}
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                  ]
+                  [.\node(n2){$\frac{n}{9}$};
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; \node(n3){$T(1)$};
+                  ]
+                ]
+              ]
+            \end{scope}
+              \begin{scope}[xshift=5.5cm]
+            \tikzset{edge from parent/.append style={draw=none}}
+            \Tree
+              [.\node(c0){$n$};
+                [.\node(c1){$\n$};
+                  [.\node(c2){$n$};
+                    \node(c3){$n$};
+                  ]
+                ]
+              ]
+          \end{scope}
+          \begin{scope}[->, dashed]
+            \draw (n0) -- (c0);
+            \draw (n1) -- (c1);
+            \draw (n2) -- (c2);
+            \draw (n3) -- (c3);
+          \end{scope}
+          \end{tikzpicture}
+        \end{figure}
     \end{enumerate}
 \end{enumerate}
 
