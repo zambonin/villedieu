@@ -25,9 +25,9 @@
     \item 
     \begin{enumerate}
         \item Let the functions that represent the time complexities of algorithms $A$ and $B$ be $f(n) = n^{3}$ and $g(n) = 128n^{2}$, respectively, with $n \in \mathbb{N}$. Further, consider $t(n) = \frac{f(n)}{g(n)} \Rightarrow \frac{n}{128}$. By the ratio $t(n)$, algorithm $B$ is faster than $A$ when $n > 128$.
-        \item Let the old and new computers be named $N_{1}$ and $N_{2}$, respectively, and $f(n) = 2^{n}$. The equations $t_{1} = \frac{2^{n_{1}}}{s}, t_{2} = \frac{2^{n_{1}}}{20s}$ give the time spent to solve an instance of $f(n)$ on $N_{1}$ and $N_{2}$ with $s$ instructions, with input sizes of $n_{1}$ and $n_{2}$. By setting $t_{1} = t_{2}$, it is possible to figure out that the twenty-fold increase in the number of instructions does not help too much in solving $f(n)$.
+        \item Let the old and new computers be named $N_{1}$ and $N_{2}$, respectively, and $f(n) = 2^{n}$. The equations $t_{1} = \frac{2^{n_{1}}}{s}, t_{2} = \frac{2^{n_{2}}}{20s}$ give the time spent to solve an instance of $f(n)$ on $N_{1}$ and $N_{2}$ with $s$ instructions, with input sizes of $n_{1}$ and $n_{2}$. By setting $t_{1} = t_{2}$, it is possible to figure out that the twenty-fold increase in the number of instructions does not help too much in solving $f(n)$.
         \begin{align*}
-            \frac{2^{n_{1}}}{s} = \frac{2^{n_{2}}}{20s} \\
+            \tfrac{2^{n_{1}}}{s} = \tfrac{2^{n_{2}}}{20s} \\
             2^{n_{2}} = 20 \cdot 2^{N_{1}} \\
             n_{2} = n_{1} + \log_{2} 20 \\
             n_{2} \approx n_{1} + 4.32.
@@ -182,7 +182,7 @@
         To prove the final formula by weak induction, let $T(n) = c^{n} k$. $T(0)$ holds, since $c^{0} k = k$. The inductive step is proved below, using the hypothesis that $T(n - 1)$.
         \begin{align*}
             cT(n - 1) &\stackrel{?}{=} T(n) \\
-            c (c^{n - 1} k) &\stackrel{?}{=} \\
+            c c^{n - 1} k &\stackrel{?}{=} \\
             c^{n} k &= T(n - 1). 
         \end{align*}
         \item\label{ex:4d} Let \[
