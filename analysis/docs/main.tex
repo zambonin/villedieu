@@ -375,7 +375,58 @@
           \end{scope}
           \end{tikzpicture}
         \end{figure}
-    \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n^{2})$. 
+    \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n^{2})$. By the recursion-tree method, $T(n) = cn^{2} \sum_{i = 0}^{\log_{2} n} 2^{-i} + n$.
+        \begin{figure}[htbp]
+          \centering
+          \begin{tikzpicture}
+            \begin{scope}[xshift=-4.75cm]
+              \draw [decorate,decoration={brace,amplitude=5pt}]
+                (0, -3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\log_{2} n$};
+            \end{scope}
+            \begin{scope}
+            \Tree
+              [.\node(n0){$cn^{2}$};
+                [.\node{$c(\frac{n}{2})^{2}$};
+                  [.{$c(\frac{n}{4})^{2}$}
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                  ]
+                  [.{$c(\frac{n}{4})^{2}$}
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                  ]
+                ]
+                [.\node(n1){$c(\frac{n}{2})^{2}$};
+                  [.{$c(\frac{n}{4})^{2}$}
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                  ]
+                  [.\node(n2){$c(\frac{n}{4})^{2}$};
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; \node(n3){$T(1)$};
+                  ]
+                ]
+              ]
+            \end{scope}
+              \begin{scope}[xshift=5.5cm]
+            \tikzset{edge from parent/.append style={draw=none}}
+            \Tree
+              [.\node(c0){$cn^{2}$};
+                [.\node(c1){$\frac{cn^{2}}{2}$};
+                  [.\node(c2){$\frac{cn^{2}}{4}$};
+                    \node(c3){$n$};
+                  ]
+                ]
+              ]
+          \end{scope}
+          \begin{scope}[->, dashed]
+            \draw (n0) -- (c0);
+            \draw (n1) -- (c1);
+            \draw (n2) -- (c2);
+            \draw (n3) -- (c3);
+          \end{scope}
+          \end{tikzpicture}
+        \end{figure}
     \item Let $T(n) = 2T(\frac{n}{3}) + \Theta(n)$.
     \end{enumerate}
 \end{enumerate}
