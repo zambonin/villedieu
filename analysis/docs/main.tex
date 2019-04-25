@@ -228,7 +228,7 @@
     \begin{enumerate}
         \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n)$. By the recursion-tree method, we have that the total cost for $T(n)$ is the height of the tree times the cost of each level, or $T(n) \in \Theta(n \log_2 n)$.
         \begin{figure}[htbp]
-            \centering
+          \centering
           \begin{tikzpicture}
             \begin{scope}[xshift=-4.75cm]
               \draw [decorate,decoration={brace,amplitude=5pt}]
@@ -278,8 +278,78 @@
           \end{scope}
           \end{tikzpicture}
         \end{figure}
-    \item Let $T(n) = 3T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$.
-    \item Let $T(n) = 4T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$.
+    \item Let $T(n) = 3T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. The floor function is disregarded for simplicity.
+        \begin{figure}[htbp]
+          \centering
+          \begin{tikzpicture}[
+                every tree node/.style={align=center, anchor=north}, level distance=45pt,
+                sibling distance=1pt
+            ]
+            \begin{scope}[xshift=-4.75cm]
+              \draw [decorate,decoration={brace,amplitude=5pt}]
+                (0,-3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\log_{2} n$};
+            \end{scope}
+            \begin{scope}
+            \Tree
+              [.\node(n0){$n$};
+                [.\edge[dotted] node {}; $T(1)$
+                ]
+                [.\node{$\frac{n}{2}$};
+                  [.{$\frac{n}{4}$}
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                  ]
+                  [.{$\frac{n}{4}$}
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                  ]
+                  [.{$\frac{n}{4}$}
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                  ]
+                ]
+                [.\node(n1){$\frac{n}{2}$};
+                  [.{$\frac{n}{4}$}
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                  ]
+                  [.{$\frac{n}{4}$}
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                  ]
+                  [.\node(n2){$\frac{n}{4}$};
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; $T(1)$
+                    \edge[dotted] node {}; \node(n3){$T(1)$};
+                  ]
+                ]
+              ]
+            \end{scope}
+              \begin{scope}[xshift=5.5cm]
+            \tikzset{edge from parent/.append style={draw=none}}
+            \Tree
+              [.\node(c0){$n$};
+                [.\node(c1){$n$};
+                  [.\node(c2){$n$};
+                    \node(c3){$n$};
+                  ]
+                ]
+              ]
+          \end{scope}
+          \begin{scope}[->, dashed]
+            \draw (n0) -- (c0);
+            \draw (n1) -- (c1);
+            \draw (n2) -- (c2);
+            \draw (n3) -- (c3);
+          \end{scope}
+          \end{tikzpicture}
+        \end{figure}
+    \item Let $T(n) = 4T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. The floor function is disregarded for simplicity.
     \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n^{2})$.
     \item Let $T(n) = 2T(\frac{n}{3}) + \Theta(n)$.
     \end{enumerate}
