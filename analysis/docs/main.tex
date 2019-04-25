@@ -491,7 +491,7 @@
     \end{enumerate}
     \item 
     \begin{enumerate}
-        \item Let $T(n) = 5T(\frac{n}{2}) + \mathcal{O}(n)$. By the master method, $a = 5, b = 2$ and $f(n) \in \mathcal{O}(n)$. Since $n^{\logP$
+        \item Let $T(n) = 5T(\frac{n}{2}) + \mathcal{O}(n)$. By the master method, $a = 5, b = 2$ and $f(n) \in \mathcal{O}(n)$. We have that $n^{\log_{2} 5} \approx n^{2.32}$, $f(n) \in \Omega(n^{2.32} + \epsilon)$ and $\frac{5n}{2} \leq cn$ with \emph{e.g.} $\epsilon < $
         \item Let $T(n) = 2T(n - 1) + \mathcal{O}(1)$.
         \item Let $T(n) = 9T(\frac{n}{3}) + \mathcal{O}(n^{2})$.
     \end{enumerate}
