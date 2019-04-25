@@ -224,9 +224,9 @@
         \item Let $T(n) = 16T(\frac{n}{4}) + n^{2}$, with $a = 16, b = 4$ and $f(n) = n^{2}$. Since $n^{\log_{4} 16} = n^{2}$ and $f(n) \in \Theta(n^{2})$, the second case may be applied. Thus, $T(n) \in \Theta(n^{2} \log_{2} n)$.
         \item Let $T(n) = 7T(\frac{n}{3}) + n^{2}$, with $a = 7, b = 3$ and $f(n) = n^{2}$. We have that $n^{\log_{3} 7} \approx n^{1.77}$, $f(n) \in \Omega(n^{1.77 + \epsilon})$ and $\frac{7n^{2}}{9} \leq cn^{2}$ with \emph{e.g.} $\epsilon < 2 - \log_3 7$ and $c = \frac{8}{9}$. Thus, the third case may be applied, giving $T(n) \in \Theta(n^{2})$.
     \end{enumerate}
-    \item
+    \item Dashed arrows represent the total cost of each level in the tree. Dotted edges mean the natural expansion of the subtrees. When applicable, the floor function is disregarded for simplicity.
     \begin{enumerate}
-        \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n)$. By the recursion-tree method, we have that the total cost for $T(n)$ is the height of the tree times the cost of each level, or $T(n) \in \Theta(n \log_2 n)$.
+        \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n)$. By the recursion-tree method, the total cost for $T(n)$ is the height of the tree times the cost of each level, or $T(n) \in \Theta(n \log_2 n)$.
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
@@ -278,7 +278,7 @@
           \end{scope}
           \end{tikzpicture}
         \end{figure}
-    \item Let $T(n) = 3T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. The floor function is disregarded for simplicity.
+    \item Let $T(n) = 3T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, 
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
@@ -322,14 +322,14 @@
               ]
           \end{scope}
           \begin{scope}[->, dashed]
-            \draw (n0) edge node[fill=white] {1} (c0);
+            \draw (n0) -- (c0);
             \draw (n1) -- (c1);
             \draw (n2) -- (c2);
             \draw (n3) -- (c3);
           \end{scope}
           \end{tikzpicture}
         \end{figure}
-    \item Let $T(n) = 4T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. The floor function is disregarded for simplicity.
+    \item Let $T(n) = 4T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$.
     \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n^{2})$.
     \item Let $T(n) = 2T(\frac{n}{3}) + \Theta(n)$.
     \end{enumerate}
