@@ -489,11 +489,11 @@
           \end{tikzpicture}
         \end{figure}
     \end{enumerate}
-    \item 
+    \item As per the analysis presented below, the most efficient algorithm is~\ref{ex:7c}, with a quasilinear time complexity.
     \begin{enumerate}
         \item Let $T(n) = 5T(\frac{n}{2}) + \mathcal{O}(n)$. By the master method, $a = 5, b = 2$ and $f(n) \in \mathcal{O}(n)$. We have that $n^{\log_{2} 5} \approx n^{2.32}$, $f(n) \in \mathcal{O}(n^{2.32 - \epsilon})$ with \emph{e.g.} $\epsilon > \log_{2} 5 - 1$. Thus, the first case may be applied, giving $T(n) \in \Theta(n^{\log_{2} 5})$.
         \item Let $T(n) = 2T(n - 1) + \mathcal{O}(1)$. The recurrence is a special case of Exercise~\ref{ex:4c}, thus giving $T(n) \in \Theta(2^{n})$.
-        \item Let $T(n) = 9T(\frac{n}{3}) + \mathcal{O}(n^{2})$. By the master method, $a = 9, b = 3$ and $f(n) \in \mathcal{O}(n^{2})$. We have that $n^{\log_{3} 9} = n^{2}$, $f(n)$
+        \item\label{ex:7c} Let $T(n) = 9T(\frac{n}{3}) + \mathcal{O}(n^{2})$. By the master method, $a = 9, b = 3$ and $f(n) \in \mathcal{O}(n^{2})$. Since $n^{\log_{3} 9} = n^{2}$ and $f(n) \in \Theta(n^{2})$, the second case may be applied. Thus, $T(n) \in \Theta(n^{2} \log_{2} n)$.
     \end{enumerate}
 \end{enumerate}
 
