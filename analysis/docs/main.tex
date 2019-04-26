@@ -65,10 +65,11 @@
                 \bottomrule
             \end{tabular}
         \end{table}
-        % TODO
+        % TODO ask about fibonacci
         \item The ``find-min'' operation is fastest on the binary and Fibonacci heaps, since it is constant. The ``delete-min'' operation should be fastest on the Fibonacci heap, since an $\mathcal{O}(\log n)$ time complexity represents an amortised asymptotic upper bound, whereas the other heaps' $\Theta(\log n)$ is tight. Indeed, given a worst case scenario, both operations take exactly the same time to complete, but otherwise the Fibonacci heap does not take $\log n$ steps to finish the operation in average. The ``insert'' operation is fastest on the binomial and Fibonacci heaps. Thus, the Fibonacci heap is overall the fastest data structure when compared to binary and binomial heaps.
         \item
         \begin{enumerate}
+            % TODO apply formal definition
             \item $(\log n)^{\log n} \in \Omega(\frac{n}{\log n})$, for $n_{0} > 1$ and $c = 1$.
             \item $n^{2} \in \Omega(n^{\frac{1}{2}})$, for $n_{0} > 1$ and $c = 1$.
             \item $n! \in \Omega(n^{n - 47})$, for $n_{0} > 1$ and $c = 1$.
