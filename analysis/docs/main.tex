@@ -527,25 +527,34 @@
                 ]
               ]
             \end{scope}
-            \begin{scope}[xshift=6cm]
-            \tikzset{edge from parent/.append style={draw=none}}
-            \Tree
-              [.\node(c0){$n$};
-                [.\node(c1){$4n$};
-                  [.\node(c2){$16n$};
-                    \node(c3){$64n$};
-                  ]
-                ]
-              ]
-          \end{scope}
-          \begin{scope}[->, dashed]
-            \draw (n0) -- (c0);
-            \draw (n1) -- (c1);
-            \draw (n2) -- (c2);
-            \draw (n3) -- (c3);
-          \end{scope}
+        %     \begin{scope}[xshift=6cm]
+        %     \tikzset{edge from parent/.append style={draw=none}}
+        %     \Tree
+        %       [.\node(c0){$n$};
+        %         [.\node(c1){$4n$};
+        %           [.\node(c2){$16n$};
+        %             \node(c3){$64n$};
+        %           ]
+        %         ]
+        %       ]
+        %   \end{scope}
+        %   \begin{scope}[->, dashed]
+        %     \draw (n0) -- (c0);
+        %     \draw (n1) -- (c1);
+        %     \draw (n2) -- (c2);
+        %     \draw (n3) -- (c3);
+        %   \end{scope}
           \end{tikzpicture}
         \end{figure}
+        The costs are given numerically below.
+        \begin{align*}
+            T(1) &= 0 \\
+            T(2) &= 2 + (2 * 0) &\Rightarrow 2 + (2 * T(1)) \\
+            T(4) &= 4 + (4 * (2 + (2 * 0))) &\Rightarrow 4 + (4 * T(2)) \\
+            T(8) &= 8 + (8 * (4 + (4 * (2 + (2 * 0))))) &\Rightarrow 8 + (8 * T(4)) \\
+            &\vdots \\
+            T(n) &= n + (n * T(\tfrac{n}{2})) &\Rightarrow n * (1 + T(\tfrac{n}{2}))
+        \end{align*}
     \end{enumerate}
 \end{enumerate}
 
