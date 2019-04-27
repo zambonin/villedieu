@@ -29,7 +29,7 @@
         \begin{align*}
             \tfrac{2^{n_{1}}}{s} = \tfrac{2^{n_{2}}}{20s} \\
             2^{n_{2}} = 20 \cdot 2^{N_{1}} \\
-            n_{2} = n_{1} + \log_{2} 20 \\
+            n_{2} = n_{1} + \lg 20 \\
             n_{2} \approx n_{1} + 4.32.
         \end{align*}
         It is evident that the new input size had a modest growth. Indeed, the new computer will run slower if $n > 4$. This is due to the fact that the complexity of $f(n)$ grows exponentially, while in this case, the computational power grew linearly. Ergo, one cannot execute $f(2n)$ and expect comparable results on $N_{2}$, since $n_{2} \ll 2 n_{1}$.
@@ -50,14 +50,14 @@
             \renewcommand{\arraystretch}{1.2}
             \setlength{\tabcolsep}{7pt}
             \centering
-            \tiny
+            \footnotesize
             \begin{tabular}{l*{7}{r}}
                 \toprule
                 $f(n)$ / $t$ & 1 second & 1 minute & 1 hour & 1 day & 1 month & 1 year & 1 century \\ \midrule
-                $\log_{2} n$ & $2^{\num{1.E+10}}$ & $2^{\num{6.E+11}}$ & $2^{\num{3.6E+13}}$ & $2^{\num{8.64E+14}}$ & $2^{\num{2.592E+16}}$ & $2^{\num{3.11E+17}}$ & $2^{\num{3.11E+19}}$ \\
+                $\lg n$ & $2^{\num{1.E+10}}$ & $2^{\num{6.E+11}}$ & $2^{\num{3.6E+13}}$ & $2^{\num{8.64E+14}}$ & $2^{\num{2.592E+16}}$ & $2^{\num{3.11E+17}}$ & $2^{\num{3.11E+19}}$ \\
                 $\sqrt{n}$ & $\num{1.E+20}$ & $\num{3.6E+23}$ & $\num{1.296E+27}$ & $\num{7.465E+29}$ & $\num{6.718E+32}$ & $\num{9.675E+34}$ & $\num{9.675E+38}$ \\
                 $n$ & $\num{1.E+10}$ & $\num{6.E+11}$ & $\num{3.6E+13}$ & $\num{8.64E+14}$ & $\num{2.592E+16}$ & $\num{3.11E+17}$ & $\num{3.11E+19}$ \\
-                $n \log_{2} n$ & $\num{3.522E+08}$ & $\num{1.763E+10}$ & $\num{9.063E+11}$ & $\num{1.957E+13}$ & $\num{5.299E+14}$ & $\num{5.936E+15}$ & $\num{5.283E+17}$ \\
+                $n \lg n$ & $\num{3.522E+08}$ & $\num{1.763E+10}$ & $\num{9.063E+11}$ & $\num{1.957E+13}$ & $\num{5.299E+14}$ & $\num{5.936E+15}$ & $\num{5.283E+17}$ \\
                 $n^{2}$ & $\num{1.E+05}$ & $\num{7.746E+05}$ & $\num{6.E+06}$ & $\num{2.939E+07}$ & $\num{1.61E+08}$ & $\num{5.577E+08}$ & $\num{5.577E+09}$ \\
                 $n^{3}$ & $\num{2.154E+03}$ & $\num{8.434E+03}$ & $\num{3.302E+04}$ & $\num{9.524E+04}$ & $\num{2.959E+05}$ & $\num{6.775E+05}$ & $\num{3.145E+06}$ \\
                 $2^{n}$ & $\num{3.322E+01}$ & $\num{3.913E+01}$ & $\num{4.503E+01}$ & $\num{4.962E+01}$ & $\num{5.452E+01}$ & $\num{5.811E+01}$ & $\num{6.475E+01}$ \\
@@ -72,9 +72,9 @@
             \item $(\log n)^{\log n} \in \Omega(\frac{n}{\log n})$, for $n_{0} > 1$ and $c = 1$.
             \item $n^{2} \in \Omega(n^{\frac{1}{2}})$, for $n_{0} > 1$ and $c = 1$.
             \item $n! \in \Omega(n^{n - 47})$, for $n_{0} > 1$ and $c = 1$.
-            \item $2^{{(\log_{2} n)}^{2}} \in \Omega((\log n)^{\log n})$, for $n_{0} > 1$ and $c = 1$.
+            \item $2^{{(\lg n)}^{2}} \in \Omega((\log n)^{\log n})$, for $n_{0} > 1$ and $c = 1$.
             \item $n^{2} \in \Theta(n + n^{2})$, for $n_{0} > 1, c_{1} = \frac{1}{2}$ and $c_{2} = 1$.
-            \item $n + (\log n)^{2} \in \Theta(10n + \log_{2} n)$, for $n_{0} > 1, c_{1} = 1$ and $c_{2} = \frac{1}{11}$.
+            \item $n + (\log n)^{2} \in \Theta(10n + \lg n)$, for $n_{0} > 1, c_{1} = 1$ and $c_{2} = \frac{1}{11}$.
             \item $\log 2n \in \Theta(\log 3n)$, for $n_{0} > 1, c_{1} = \frac{1}{2}$ and $c_{2} = 1$.
             \item $n (\log n)^{2} \in \mathcal{O}(\frac{n^{2}}{\log n})$, for $n_{0} > 2$ and $c = 1$.
         \end{enumerate}
@@ -195,44 +195,44 @@
             T(n) &= n + 3T(\tfrac{n}{2}) \\
             &= n + 3(\tfrac{n}{2} + 3T(\tfrac{n}{4})) \\ 
             &= n + 3(\tfrac{n}{2} + 3(\tfrac{n}{4} + 3T(\tfrac{n}{8}))) \cdots \\
-            &= n\sum_{i = 0}^{\log_{2} n} (\tfrac{3}{2})^{i} + 3^{\log_{2} n}.
+            &= n\sum_{i = 0}^{\lg n} (\tfrac{3}{2})^{i} + 3^{\lg n}.
         \end{align*}
-        Recall that the last term is obtained as one reaches the very end of the iteration. Furthermore, the sum of this geometric series is exactly \[\left(\frac{\frac{3}{2}^{\log_{2} n + 1} - 1}{\frac{3}{2} - 1}\right) = 2(\tfrac{3}{2}^{\log_{2} n + 1} - 1).\]
+        Recall that the last term is obtained as one reaches the very end of the iteration. Furthermore, the sum of this geometric series is exactly \[\left(\frac{\frac{3}{2}^{\lg n + 1} - 1}{\frac{3}{2} - 1}\right) = 2(\tfrac{3}{2}^{\lg n + 1} - 1).\]
         The closed formula is derived as follows.
         \begin{align*}
-            T(n) &= 2n(\tfrac{3}{2}^{\log_{2} n + 1} - 1) + 3^{\log_{2} n} \\
-            &= 2n(\tfrac{3}{2}^{\log_{2} n} \cdot \tfrac{3}{2} - 1) + n^{\log_{2} 3} \\
-            &= \tfrac{6n}{2}\tfrac{3}{2}^{\log_{2} n} - 2n + n^{\log_{2} 3} \\
-            &= 3nn^{\log_{2} \tfrac{3}{2}} - 2n + n^{\log_{2} 3} \\
-            &= 3n^{\log_{2} 3 - 1 + 1} + n^{\log_{2} 3} - 2n \\
-            &= 4n^{\log_{2} 3} - 2n \\
+            T(n) &= 2n(\tfrac{3}{2}^{\lg n + 1} - 1) + 3^{\lg n} \\
+            &= 2n(\tfrac{3}{2}^{\lg n} \cdot \tfrac{3}{2} - 1) + n^{\lg 3} \\
+            &= \tfrac{6n}{2}\tfrac{3}{2}^{\lg n} - 2n + n^{\lg 3} \\
+            &= 3nn^{\lg \tfrac{3}{2}} - 2n + n^{\lg 3} \\
+            &= 3n^{\lg 3 - 1 + 1} + n^{\lg 3} - 2n \\
+            &= 4n^{\lg 3} - 2n \\
             T(n) &\in \Theta(\text{poly}(n)).
         \end{align*}
-        To prove the final formula by weak induction, let $T(n) = 4n^{\log_{2} 3} - 2n$. $P(1)$ holds, since $3 \cdot 1^{\log_{2} 3} - 2 \cdot 1 = 1$. The inductive step is proved below, using the hypothesis that $T(\frac{n}{2})$ is true.
+        To prove the final formula by weak induction, let $T(n) = 4n^{\lg 3} - 2n$. $P(1)$ holds, since $3 \cdot 1^{\lg 3} - 2 \cdot 1 = 1$. The inductive step is proved below, using the hypothesis that $T(\frac{n}{2})$ is true.
         \begin{align*}
             3T(\tfrac{n}{2}) + n &\stackrel{?}{=} T(n) \\
-            3(4\tfrac{n}{2}^{\log_{2} 3} - \tfrac{2n}{2}) + n &\stackrel{?}{=} \\
-            12\tfrac{n}{2}^{\log_{2} 3} - 2n &\stackrel{?}{=} \\
-            12 \cdot 2^{-\log_2 3} \cdot n^{\log_2 3} - 2n &\stackrel{?}{=} \\
-            4n^{\log_{2} 3} - 2n &= T(n).
+            3(4\tfrac{n}{2}^{\lg 3} - \tfrac{2n}{2}) + n &\stackrel{?}{=} \\
+            12\tfrac{n}{2}^{\lg 3} - 2n &\stackrel{?}{=} \\
+            12 \cdot 2^{-\lg 3} \cdot n^{\lg 3} - 2n &\stackrel{?}{=} \\
+            4n^{\lg 3} - 2n &= T(n).
         \end{align*}
     \end{enumerate}
     \item
     \begin{enumerate}
-        \item Let $T(n) = T(\frac{n}{2}) + \Theta(1)$, with $a = 1, b = 2$ and $f(n) \in \Theta(1)$. Since $n^{\log_{2} 1} = 1$ and $f(n) \in \Theta(1)$, the second case may be applied. Thus, $T(n) \in \Theta(\log_{2} n)$.
+        \item Let $T(n) = T(\frac{n}{2}) + \Theta(1)$, with $a = 1, b = 2$ and $f(n) \in \Theta(1)$. Since $n^{\lg 1} = 1$ and $f(n) \in \Theta(1)$, the second case may be applied. Thus, $T(n) \in \Theta(\lg n)$.
         \item Let $T(n) = T(\frac{9n}{10}) + n$, with $a = 1, b = \frac{10}{9}$ and $f(n) = n$. It occurs that $n^{\log_{\frac{9}{10}} 1} = 1$, $f(n) \in \Omega(n^{\log_{\frac{10}{9}} 1 + \epsilon})$ and $\frac{9n}{10} \leq cn$ with \emph{e.g.} $\epsilon < 1$ and $c = \frac{10}{11}$. Thus, the third case may be applied, giving $T(n) \in \Theta(n)$.
-        \item Let $T(n) = 16T(\frac{n}{4}) + n^{2}$, with $a = 16, b = 4$ and $f(n) = n^{2}$. Since $n^{\log_{4} 16} = n^{2}$ and $f(n) \in \Theta(n^{2})$, the second case may be applied. Thus, $T(n) \in \Theta(n^{2} \log_{2} n)$.
+        \item Let $T(n) = 16T(\frac{n}{4}) + n^{2}$, with $a = 16, b = 4$ and $f(n) = n^{2}$. Since $n^{\log_{4} 16} = n^{2}$ and $f(n) \in \Theta(n^{2})$, the second case may be applied. Thus, $T(n) \in \Theta(n^{2} \lg n)$.
         \item Let $T(n) = 7T(\frac{n}{3}) + n^{2}$, with $a = 7, b = 3$ and $f(n) = n^{2}$. It occurs that $n^{\log_{3} 7} \approx n^{1.77}$, $f(n) \in \Omega(n^{1.77 + \epsilon})$ and $\frac{7n^{2}}{9} \leq cn^{2}$ with \emph{e.g.} $\epsilon < 2 - \log_3 7$ and $c = \frac{8}{9}$. Thus, the third case may be applied, giving $T(n) \in \Theta(n^{2})$.
     \end{enumerate}
     \item Dashed arrows represent the total cost of each level in the tree. Dotted edges mean the natural expansion of the subtrees. When applicable, the floor function is disregarded for simplicity.
     \begin{enumerate}
-        \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n)$. By the recursion-tree method, $T(n) = n \sum_{i = 0}^{\log_{2} n} n$. Thus, $T(n) \in \Theta(n \log_2 n)$.
+        \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n)$. By the recursion-tree method, $T(n) = \sum_{i = 0}^{\lg n - 1} n + n$. Thus, $T(n) \in \Theta(n \lg n)$.
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
             \begin{scope}[xshift=-4.75cm]
               \draw [decorate,decoration={brace,amplitude=5pt}]
-                (0, -3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\log_{2} n$};
+                (0, -3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\lg n$};
             \end{scope}
             \begin{scope}
             \Tree
@@ -278,13 +278,13 @@
           \end{scope}
           \end{tikzpicture}
         \end{figure}
-    \item Let $T(n) = 3T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\log_{2} n} (\tfrac{3}{2})^{i} + n^{\log_{2} 3}$. As per Exercise~\ref{ex:4d}, $T(n) \in \Theta(\text{poly}(n))$.
+    \item Let $T(n) = 3T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\lg n - 1} (\tfrac{3}{2})^{i} + n^{\lg 3}$. As per Exercise~\ref{ex:4d}, $T(n) \in \Theta(\text{poly}(n))$.
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
             \begin{scope}[xshift=-3.5cm]
               \draw [decorate,decoration={brace,amplitude=5pt}]
-                (0, -3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\log_{2} n$};
+                (0, -3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\lg n$};
             \end{scope}
             \begin{scope}
             \Tree
@@ -316,7 +316,7 @@
               [.\node(c0){$n$};
                 [.\node(c1){$\frac{3}{2}n$};
                   [.\node(c2){$\frac{9}{4}n$};
-                    \node(c3){$n^{\log_{2} 3}$};
+                    \node(c3){$n^{\lg 3}$};
                   ]
                 ]
               ]
@@ -329,13 +329,13 @@
           \end{scope}
           \end{tikzpicture}
         \end{figure}
-    \item Let $T(n) = 4T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\log_{2} n} 2^{i} + n^{2} $. Using the sum of geometric series, $T(n) = n\frac{2^{\log_{2} n + 1} - 1}{2 - 1} + n^{2}$, which gives $n(2n - 1) + n^{2}$, and thus $T(n) \in \Theta(n^{2})$.
+    \item Let $T(n) = 4T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\lg n - 1} 2^{i} + n^{2} $. Using the sum of geometric series, $T(n) = n\frac{2^{\lg n + 1} - 1}{2 - 1} + n^{2}$, which gives $n(2n - 1) + n^{2}$, and thus $T(n) \in \Theta(n^{2})$.
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
             \begin{scope}[xshift=-2cm]
               \draw [decorate,decoration={brace,amplitude=5pt}]
-                (0, -3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\log_{2} n$};
+                (0, -3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\lg n$};
             \end{scope}
             \begin{scope}
             \Tree
@@ -375,13 +375,13 @@
           \end{scope}
           \end{tikzpicture}
         \end{figure}
-    \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n^{2})$. By the recursion-tree method, $T(n) = n^{2} \sum_{i = 0}^{\log_{2} n} 2^{-i} + n$. Using the sum of geometric series, $T(n) = n^{2} \frac{2^{-(\log_{2} n + 1)} - 1}{\frac{1}{2} - 1} + n$, which gives $n^{2}(2 - \frac{1}{n}) + n$, and thus $T(n) \in \Theta(n^{2})$.
+    \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n^{2})$. By the recursion-tree method, $T(n) = n^{2} \sum_{i = 0}^{\lg n - 1} 2^{-i} + n$. Using the sum of geometric series, $T(n) = n^{2} \frac{2^{-(\lg n + 1)} - 1}{\frac{1}{2} - 1} + n$, which gives $n^{2}(2 - \frac{1}{n}) + n$, and thus $T(n) \in \Theta(n^{2})$.
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
             \begin{scope}[xshift=-4.75cm]
               \draw [decorate,decoration={brace,amplitude=5pt}]
-                (0, -3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\log_{2} n$};
+                (0, -3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\lg n$};
             \end{scope}
             \begin{scope}
             \Tree
@@ -427,7 +427,7 @@
           \end{scope}
           \end{tikzpicture}
         \end{figure}
-    \item Let $T(n) = 2T(\frac{n}{3}) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\log_{3} n} (\frac{2}{3})^{i} + 2^{\log_{3} n}$. Using the sum of geometric series, 
+    \item Let $T(n) = 2T(\frac{n}{3}) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\log_{3} n - 1} (\frac{2}{3})^{i} + 2^{\log_{3} n}$. Using the sum of geometric series, 
     \begin{align*}
         T(n) &= n \tfrac{\frac{2}{3}^{\log_{3} n + 1} - 1}{\frac{2}{3} - 1} + 2^{\log_{3} n} \\
         &= -3n (\tfrac{2}{3} \cdot \tfrac{2}{3}^{\log_{3} n} - 1) + 2^{\log_{3} n} \\
@@ -491,20 +491,20 @@
     \end{enumerate}
     \item As per the analysis presented below, the most efficient algorithm is~\ref{ex:7c}, with a quasilinear time complexity.
     \begin{enumerate}
-        \item Let $T(n) = 5T(\frac{n}{2}) + \mathcal{O}(n)$. By the master method, $a = 5, b = 2$ and $f(n) \in \mathcal{O}(n)$. It occurs that $n^{\log_{2} 5} \approx n^{2.32}$, $f(n) \in \mathcal{O}(n^{2.32 - \epsilon})$ with \emph{e.g.} $\epsilon > \log_{2} 5 - 1$. Thus, the first case may be applied, giving $T(n) \in \Theta(n^{\log_{2} 5})$.
+        \item Let $T(n) = 5T(\frac{n}{2}) + \mathcal{O}(n)$. By the master method, $a = 5, b = 2$ and $f(n) \in \mathcal{O}(n)$. It occurs that $n^{\lg 5} \approx n^{2.32}$, $f(n) \in \mathcal{O}(n^{2.32 - \epsilon})$ with \emph{e.g.} $\epsilon > \lg 5 - 1$. Thus, the first case may be applied, giving $T(n) \in \Theta(n^{\lg 5})$.
         \item Let $T(n) = 2T(n - 1) + \mathcal{O}(1)$. The recurrence is a special case of Exercise~\ref{ex:4c}, thus giving $T(n) \in \Theta(2^{n})$.
-        \item\label{ex:7c} Let $T(n) = 9T(\frac{n}{3}) + \mathcal{O}(n^{2})$. By the master method, $a = 9, b = 3$ and $f(n) \in \mathcal{O}(n^{2})$. Since $n^{\log_{3} 9} = n^{2}$ and $f(n) \in \Theta(n^{2})$, the second case may be applied. Thus, $T(n) \in \Theta(n^{2} \log_{2} n)$.
+        \item\label{ex:7c} Let $T(n) = 9T(\frac{n}{3}) + \mathcal{O}(n^{2})$. By the master method, $a = 9, b = 3$ and $f(n) \in \mathcal{O}(n^{2})$. Since $n^{\log_{3} 9} = n^{2}$ and $f(n) \in \Theta(n^{2})$, the second case may be applied. Thus, $T(n) \in \Theta(n^{2} \lg n)$.
     \end{enumerate}
     \item
     \begin{enumerate}
         \item 
-        \item Due to its recursive nature, it is useful to observe the tree generated by some instance of $f(n)$, where $n = 2^{k}, k \in \mathbb{N}$. It is a perfect tree with height of $\log_{2} n$, since the recursive line halves the number of children, stopping when $n = 2$. For instance, if $n = 8$, the following tree is created.
+        \item Due to its recursive nature, it is useful to observe the tree generated by some instance of $f(n)$, where $n = 2^{k}, k \in \mathbb{N}$. It is a perfect tree with height of $\lg n$, since the recursive line halves the number of children, stopping when $n = 2$. For instance, if $n = 8$, the following tree is created.
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
             \begin{scope}[xshift=-2.5cm]
               \draw [decorate,decoration={brace,amplitude=5pt}]
-                (0, -3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\log_{2} n$};
+                (0, -3) -- (0, 0) node [black,midway,xshift=-0.75cm] {$\lg n$};
             \end{scope}
             \begin{scope}
             \Tree
@@ -557,8 +557,8 @@
             &= n + n \cdot (\tfrac{n}{2} + \tfrac{n}{2} \cdot T(\tfrac{n}{4})) \\
             &= n + n \cdot (\tfrac{n}{2} + \tfrac{n}{2} \cdot (\tfrac{n}{4} + \tfrac{n}{4} \cdot T(\tfrac{n}{8}))) \cdots \\
             &= n + \tfrac{n^{2}}{2} + \tfrac{n^{3}}{8} + \cdots \\
-            &= \sum_{i = 1}^{\log_{2} n} \frac{n^{i}}{2^{\sum_{j = 1}^{i} j}} \\
-            &= \sum_{i = 1}^{\log_{2} n} \frac{n^{i}}{2^{\frac{1}{2}i (i - 1)}} \\
+            &= \sum_{i = 1}^{\lg n} \frac{n^{i}}{2^{\sum_{j = 1}^{i} j}} \\
+            &= \sum_{i = 1}^{\lg n} \frac{n^{i}}{2^{\frac{1}{2}i (i - 1)}} \\
         \end{align*}
     \end{enumerate}
 \end{enumerate}
@@ -567,9 +567,9 @@
 
 \section{Rationale for Q2a}
 
-Define $t_{1}, \dots, t_{7}$ and $s = 10^{10}$ as above. The equation $t_{i} = \frac{f(n)}{s}$, or its simpler form $n = f^{-1}(t_{i} s)$, has to be solved in order to find out the maximum $n$ allowed to execute for a period of time using $f(n)$. Deducing $f^{-1}$ is not trivial for some of the rows. In the case of $n \log_{2} n = c$ for some constant $c$, the Lambert $W$-function is used:
+Define $t_{1}, \dots, t_{7}$ and $s = 10^{10}$ as above. The equation $t_{i} = \frac{f(n)}{s}$, or its simpler form $n = f^{-1}(t_{i} s)$, has to be solved in order to find out the maximum $n$ allowed to execute for a period of time using $f(n)$. Deducing $f^{-1}$ is not trivial for some of the rows. In the case of $n \lg n = c$ for some constant $c$, the Lambert $W$-function is used:
 \begin{align*}
-    n \log_{2} n &= c \\
+    n \lg n &= c \\
     n \ln n &= c \ln 2 \\
     \euler^{\ln n} \ln n &= c \ln 2 \\
     \ln n &= W(c \ln 2) \\
@@ -587,13 +587,13 @@ The table below shows the exact values for all $n = f^{-1}(t_{i} s)$.
     \begin{tabular}{l*{7}{r}}
         \toprule
             $f(n)$ / $t$ & 1 second & 1 minute & 1 hour & 1 day & 1 month & 1 year & 1 century \\ \midrule
-            $\log_{2} n$ & $2^{t_{1} s}$ & $2^{t_{2} s}$ & $2^{t_{3} s}$ & $2^{t_{4} s}$ & $2^{t_{5} s}$ & $2^{t_{6} s}$ & $2^{t_{7} s}$ \\
+            $\lg n$ & $2^{t_{1} s}$ & $2^{t_{2} s}$ & $2^{t_{3} s}$ & $2^{t_{4} s}$ & $2^{t_{5} s}$ & $2^{t_{6} s}$ & $2^{t_{7} s}$ \\
             $\sqrt{n}$ & $(t_{1} s)^{2}$ & $(t_{2} s)^{2}$ & $(t_{3} s)^{2}$ & $(t_{4} s)^{2}$ & $(t_{5} s)^{2}$ & $(t_{6} s)^{2}$ & $(t_{7} s)^{2}$ \\
             $n$ & $t_{1} s$ & $t_{2} s$ & $t_{3} s$ & $t_{4} s$ & $t_{5} s$ & $t_{6} s$ & $t_{7} s$ \\
-            $n \log_{2} n$ & $\euler^{W(t_{1} s \ln 2)}$ & $\euler^{W(t_{2} s \ln 2)}$ & $\euler^{W(t_{3} s \ln 2)}$ & $\euler^{W(t_{4} s \ln 2)}$ & $\euler^{W(t_{5} s \ln 2)}$ & $\euler^{W(t_{6} s \ln 2)}$ & $\euler^{W(t_{7} s \ln 2)}$ \\
+            $n \lg n$ & $\euler^{W(t_{1} s \ln 2)}$ & $\euler^{W(t_{2} s \ln 2)}$ & $\euler^{W(t_{3} s \ln 2)}$ & $\euler^{W(t_{4} s \ln 2)}$ & $\euler^{W(t_{5} s \ln 2)}$ & $\euler^{W(t_{6} s \ln 2)}$ & $\euler^{W(t_{7} s \ln 2)}$ \\
             $n^{2}$ & $\sqrt{t_{1} s}$ & $\sqrt{t_{2} s}$ & $\sqrt{t_{3} s}$ & $\sqrt{t_{4} s}$ & $\sqrt{t_{5} s}$ & $\sqrt{t_{6} s}$ & $\sqrt{t_{7} s}$ \\
             $n^{3}$ & $\sqrt[3]{t_{1} s}$ & $\sqrt[3]{t_{2} s}$ & $\sqrt[3]{t_{3} s}$ & $\sqrt[3]{t_{4} s}$ & $\sqrt[3]{t_{5} s}$ & $\sqrt[3]{t_{6} s}$ & $\sqrt[3]{t_{7} s}$ \\
-            $2^{n}$ & $\log_{2}(t_{1} s)$ & $\log_{2}(t_{2} s)$ & $\log_{2}(t_{3} s)$ & $\log_{2}(t_{4} s)$ & $\log_{2}(t_{5} s)$ & $\log_{2}(t_{6} s)$ & $\log_{2}(t_{7} s)$ \\
+            $2^{n}$ & $\lg(t_{1} s)$ & $\lg(t_{2} s)$ & $\lg(t_{3} s)$ & $\lg(t_{4} s)$ & $\lg(t_{5} s)$ & $\lg(t_{6} s)$ & $\lg(t_{7} s)$ \\
             $n!$ & $\iota(t_{1} s)$ & $\iota(t_{2} s)$ & $\iota(t_{3} s)$ & $\iota(t_{4} s)$ & $\iota(t_{5} s)$ & $\iota(t_{6} s)$ & $\iota(t_{7} s)$ \\
         \bottomrule
     \end{tabular}
