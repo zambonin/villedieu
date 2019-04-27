@@ -54,7 +54,14 @@
             \begin{tabular}{l*{7}{r}}
                 \toprule
                 $f(n)$ / $t$ & 1 second & 1 minute & 1 hour & 1 day & 1 month & 1 year & 1 century \\ \midrule
-
+                $\log_{2} n$ & $2^{\num{1.00E+10}}$ & $2^{\num{6.00E+11}}$ & $2^{\num{3.60E+13}}$ & $2^{\num{8.64E+14}}$ & $2^{\num{2.59E+16}}$ & $2^{\num{3.11E+17}}$ & $2^{\num{3.11E+19}}$ \\
+                $\sqrt{n}$ & $\num{1.00E+20}$ & $\num{3.60E+23}$ & $\num{1.30E+27}$ & $\num{7.46E+29}$ & $\num{6.72E+32}$ & $\num{9.67E+34}$ & $\num{9.67E+38}$ \\
+                $n$ & $\num{1.00E+10}$ & $\num{6.00E+11}$ & $\num{3.60E+13}$ & $\num{8.64E+14}$ & $\num{2.59E+16}$ & $\num{3.11E+17}$ & $\num{3.11E+19}$ \\
+                $n \log_{2} n$ & $\num{3.52E+08}$ & $\num{1.76E+10}$ & $\num{9.06E+11}$ & $\num{1.96E+13}$ & $\num{5.30E+14}$ & $\num{5.94E+15}$ & $\num{5.28E+17}$ \\
+                $n^{2}$ & $\num{1.00E+05}$ & $\num{7.75E+05}$ & $\num{6.00E+06}$ & $\num{2.94E+07}$ & $\num{1.61E+08}$ & $\num{5.58E+08}$ & $\num{5.58E+09}$ \\
+                $n^{3}$ & $\num{2.15E+03}$ & $\num{8.43E+03}$ & $\num{3.30E+04}$ & $\num{9.52E+04}$ & $\num{2.96E+05}$ & $\num{6.78E+05}$ & $\num{3.14E+06}$ \\
+                $2^{n}$ & $\num{3.32E+01}$ & $\num{3.91E+01}$ & $\num{4.50E+01}$ & $\num{4.96E+01}$ & $\num{5.45E+01}$ & $\num{5.81E+01}$ & $\num{6.48E+01}$ \\
+                $n!$ & $\num{1.30E+01}$ & $\num{1.50E+01}$ & $\num{1.60E+01}$ & $\num{1.70E+01}$ & $\num{1.80E+01}$ & $\num{1.90E+01}$ & $\num{2.10E+01}$ \\
                 \bottomrule
             \end{tabular}
         \end{table}
@@ -514,29 +521,29 @@
                   \edge[dotted] node {}; $\vdots$
                   \edge[dotted] node {}; $\vdots$
                   [.\node(n2){$\frac{n}{4}$};
-                    \edge[dotted] node {}; $\frac{n}{8}$
-                    \edge[dotted] node {}; \node(n3){$\frac{n}{8}$};
+                    $\frac{n}{8}$
+                    \node(n3){$\frac{n}{8}$};
                   ]
                 ]
               ]
             \end{scope}
-        %     \begin{scope}[xshift=6cm]
-        %     \tikzset{edge from parent/.append style={draw=none}}
-        %     \Tree
-        %       [.\node(c0){$n$};
-        %         [.\node(c1){$4n$};
-        %           [.\node(c2){$16n$};
-        %             \node(c3){$64n$};
-        %           ]
-        %         ]
-        %       ]
-        %   \end{scope}
-        %   \begin{scope}[->, dashed]
-        %     \draw (n0) -- (c0);
-        %     \draw (n1) -- (c1);
-        %     \draw (n2) -- (c2);
-        %     \draw (n3) -- (c3);
-        %   \end{scope}
+            \begin{scope}[xshift=6cm]
+             \tikzset{edge from parent/.append style={draw=none}}
+             \Tree
+               [.\node(c0){$n$};
+                 [.\node(c1){$4n$};
+                   [.\node(c2){$16n$};
+                     \node(c3){$64n$};
+                   ]
+                 ]
+               ]
+           \end{scope}
+           \begin{scope}[->, dashed]
+             \draw (n0) -- (c0);
+             \draw (n1) -- (c1);
+             \draw (n2) -- (c2);
+             \draw (n3) -- (c3);
+           \end{scope}
           \end{tikzpicture}
         \end{figure}
         The costs are given shortly after. The recurrence is solved by the iteration method.
