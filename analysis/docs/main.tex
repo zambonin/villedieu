@@ -549,12 +549,13 @@
         The costs are given shortly after. The recurrence is solved by the iteration method.
         \begin{align*}
             T(1) &= 0 \\
-            T(2) &= 2 + (2 \cdot 0) &\Rightarrow 2 + (2T(1)) &= 2 \\
-            T(4) &= 4 + (4 \cdot (2 + (2 \cdot 0))) &\Rightarrow 4 + (4T(2)) &= 12 \\
-            T(8) &= 8 + (8 \cdot (4 + (4 \cdot (2 + (2 \cdot 0))))) &\Rightarrow 8 + (8T(4)) &= 108 \\
+            T(2) &= 2 + 2 \cdot 0 &\Rightarrow 2 + 2T(1) &= 2 \\
+            T(4) &= 4 + 4 \cdot (2 + 2 \cdot 0) &\Rightarrow 4 + 4T(2) &= 12 \\
+            T(8) &= 8 + 8 \cdot (4 + 4 \cdot (2 + 2 \cdot 0)) &\Rightarrow 8 + 8T(4) &= 108 \\
             &\vdots \\
             T(n) &= nT(\tfrac{n}{2}) + n \\
-            &= n + (n \cdot (\tfrac{n}{2} + (\tfrac{n}{2}T(\tfrac{n}{4}))))
+            &= n + n \cdot (\tfrac{n}{2} + \tfrac{n}{2} \cdot T(\tfrac{n}{4})) \\
+            &= n + n \cdot (\tfrac{n}{2} + \tfrac{n}{2} \cdot (\tfrac{n}{4} + \tfrac{n}{4} \cdot T(\tfrac{n}{8}))) \cdots \\
         \end{align*}
     \end{enumerate}
 \end{enumerate}
