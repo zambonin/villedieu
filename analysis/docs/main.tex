@@ -558,7 +558,8 @@
             &= n + n \cdot (\tfrac{n}{2} + \tfrac{n}{2} \cdot (\tfrac{n}{4} + \tfrac{n}{4} \cdot T(\tfrac{n}{8}))) \cdots \\
             &= n + \tfrac{n^{2}}{2} + \tfrac{n^{3}}{8} + \cdots \\
             &= \sum_{i = 1}^{\log_{2} n} \frac{n^{i}}{2^{\sum_{j = 1}^{i} j}} \\
-            &= \sum_{i = 1}^{\log_{2} n} \frac{n^{i}}{2^{\frac{1}{2}i (i - 1)}}
+            &= \sum_{i = 1}^{\log_{2} n} \frac{n^{i}}{2^{\frac{1}{2}i (i - 1)}} \\
+            &= \frac{n^{\log_{2} n + 1} - 1}{\log_{2} n - 1} - 1)
         \end{align*}
     \end{enumerate}
 \end{enumerate}
