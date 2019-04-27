@@ -559,7 +559,7 @@
             &= n + \tfrac{n^{2}}{2} + \tfrac{n^{3}}{8} + \cdots \\
             &= \sum_{i = 1}^{\log_{2} n} \frac{n^{i}}{2^{\sum_{j = 1}^{i} j}} \\
             &= \sum_{i = 1}^{\log_{2} n} \frac{n^{i}}{2^{\frac{1}{2}i (i - 1)}} \\
-            &= \frac{n^{\log_{2} n + 1} - 1}{\log_{2} n - 1} - 1)
+            &= (\tfrac{n^{\log_{2} n + 1} - 1}{n - 1} - n^{0})\sum_{i = 1}^{\log_{2} n} 2^{-\frac{1}{2}i (i - 1)}
         \end{align*}
     \end{enumerate}
 \end{enumerate}
