@@ -527,23 +527,23 @@
                 ]
               ]
             \end{scope}
-            \begin{scope}[xshift=6cm]
-             \tikzset{edge from parent/.append style={draw=none}}
-             \Tree
-               [.\node(c0){$n$};
-                 [.\node(c1){$4n$};
-                   [.\node(c2){$16n$};
-                     \node(c3){$64n$};
-                   ]
-                 ]
-               ]
-           \end{scope}
-           \begin{scope}[->, dashed]
-             \draw (n0) -- (c0);
-             \draw (n1) -- (c1);
-             \draw (n2) -- (c2);
-             \draw (n3) -- (c3);
-           \end{scope}
+        %     \begin{scope}[xshift=6cm]
+        %      \tikzset{edge from parent/.append style={draw=none}}
+        %      \Tree
+        %       [.\node(c0){$n$};
+        %          [.\node(c1){$4n$};
+        %           [.\node(c2){$16n$};
+        %              \node(c3){$64n$};
+        %           ]
+        %          ]
+        %       ]
+        %   \end{scope}
+        %   \begin{scope}[->, dashed]
+        %      \draw (n0) -- (c0);
+        %      \draw (n1) -- (c1);
+        %      \draw (n2) -- (c2);
+        %      \draw (n3) -- (c3);
+        %   \end{scope}
           \end{tikzpicture}
         \end{figure}
         The costs are given shortly after. The recurrence is solved by the iteration method.
@@ -586,15 +586,15 @@ The table below shows the exact values for all $n = f^{-1}(t_{i} s)$.
     \centering
     \begin{tabular}{l*{7}{r}}
         \toprule
-            $f(n)$ / $t$ & 1 second & 1 minute & 1 hour & 1 day & 1 month & 1 year & 1 century \\ \midrule
-            $\lg n$ & $2^{t_{1} s}$ & $2^{t_{2} s}$ & $2^{t_{3} s}$ & $2^{t_{4} s}$ & $2^{t_{5} s}$ & $2^{t_{6} s}$ & $2^{t_{7} s}$ \\
-            $\sqrt{n}$ & $(t_{1} s)^{2}$ & $(t_{2} s)^{2}$ & $(t_{3} s)^{2}$ & $(t_{4} s)^{2}$ & $(t_{5} s)^{2}$ & $(t_{6} s)^{2}$ & $(t_{7} s)^{2}$ \\
-            $n$ & $t_{1} s$ & $t_{2} s$ & $t_{3} s$ & $t_{4} s$ & $t_{5} s$ & $t_{6} s$ & $t_{7} s$ \\
-            $n \lg n$ & $\euler^{W(t_{1} s \ln 2)}$ & $\euler^{W(t_{2} s \ln 2)}$ & $\euler^{W(t_{3} s \ln 2)}$ & $\euler^{W(t_{4} s \ln 2)}$ & $\euler^{W(t_{5} s \ln 2)}$ & $\euler^{W(t_{6} s \ln 2)}$ & $\euler^{W(t_{7} s \ln 2)}$ \\
-            $n^{2}$ & $\sqrt{t_{1} s}$ & $\sqrt{t_{2} s}$ & $\sqrt{t_{3} s}$ & $\sqrt{t_{4} s}$ & $\sqrt{t_{5} s}$ & $\sqrt{t_{6} s}$ & $\sqrt{t_{7} s}$ \\
-            $n^{3}$ & $\sqrt[3]{t_{1} s}$ & $\sqrt[3]{t_{2} s}$ & $\sqrt[3]{t_{3} s}$ & $\sqrt[3]{t_{4} s}$ & $\sqrt[3]{t_{5} s}$ & $\sqrt[3]{t_{6} s}$ & $\sqrt[3]{t_{7} s}$ \\
-            $2^{n}$ & $\lg(t_{1} s)$ & $\lg(t_{2} s)$ & $\lg(t_{3} s)$ & $\lg(t_{4} s)$ & $\lg(t_{5} s)$ & $\lg(t_{6} s)$ & $\lg(t_{7} s)$ \\
-            $n!$ & $\iota(t_{1} s)$ & $\iota(t_{2} s)$ & $\iota(t_{3} s)$ & $\iota(t_{4} s)$ & $\iota(t_{5} s)$ & $\iota(t_{6} s)$ & $\iota(t_{7} s)$ \\
+        $f(n)$ / $t$ & 1 second & 1 minute & 1 hour & 1 day & 1 month & 1 year & 1 century \\ \midrule
+        $\lg n$ & $2^{t_{1} s}$ & $2^{t_{2} s}$ & $2^{t_{3} s}$ & $2^{t_{4} s}$ & $2^{t_{5} s}$ & $2^{t_{6} s}$ & $2^{t_{7} s}$ \\
+        $\sqrt{n}$ & $(t_{1} s)^{2}$ & $(t_{2} s)^{2}$ & $(t_{3} s)^{2}$ & $(t_{4} s)^{2}$ & $(t_{5} s)^{2}$ & $(t_{6} s)^{2}$ & $(t_{7} s)^{2}$ \\
+        $n$ & $t_{1} s$ & $t_{2} s$ & $t_{3} s$ & $t_{4} s$ & $t_{5} s$ & $t_{6} s$ & $t_{7} s$ \\
+        $n \lg n$ & $\euler^{W(t_{1} s \ln 2)}$ & $\euler^{W(t_{2} s \ln 2)}$ & $\euler^{W(t_{3} s \ln 2)}$ & $\euler^{W(t_{4} s \ln 2)}$ & $\euler^{W(t_{5} s \ln 2)}$ & $\euler^{W(t_{6} s \ln 2)}$ & $\euler^{W(t_{7} s \ln 2)}$ \\
+        $n^{2}$ & $\sqrt{t_{1} s}$ & $\sqrt{t_{2} s}$ & $\sqrt{t_{3} s}$ & $\sqrt{t_{4} s}$ & $\sqrt{t_{5} s}$ & $\sqrt{t_{6} s}$ & $\sqrt{t_{7} s}$ \\
+        $n^{3}$ & $\sqrt[3]{t_{1} s}$ & $\sqrt[3]{t_{2} s}$ & $\sqrt[3]{t_{3} s}$ & $\sqrt[3]{t_{4} s}$ & $\sqrt[3]{t_{5} s}$ & $\sqrt[3]{t_{6} s}$ & $\sqrt[3]{t_{7} s}$ \\
+        $2^{n}$ & $\lg(t_{1} s)$ & $\lg(t_{2} s)$ & $\lg(t_{3} s)$ & $\lg(t_{4} s)$ & $\lg(t_{5} s)$ & $\lg(t_{6} s)$ & $\lg(t_{7} s)$ \\
+        $n!$ & $\iota(t_{1} s)$ & $\iota(t_{2} s)$ & $\iota(t_{3} s)$ & $\iota(t_{4} s)$ & $\iota(t_{5} s)$ & $\iota(t_{6} s)$ & $\iota(t_{7} s)$ \\
         \bottomrule
     \end{tabular}
 \end{table}
