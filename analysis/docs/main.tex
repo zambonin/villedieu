@@ -226,7 +226,7 @@
     \end{enumerate}
     \item Dashed arrows represent the total cost of each level in the tree. Dotted edges mean the natural expansion of the subtrees. When applicable, the floor function is disregarded for simplicity.
     \begin{enumerate}
-        \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n)$. By the recursion-tree method, $T(n) = n \log_{2} n + n$. Thus, $T(n) \in \Theta(n \log_2 n)$.
+        \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n)$. By the recursion-tree method, $T(n) = n \sum_{i = 0}^{\log_{2} n} n$. Thus, $T(n) \in \Theta(n \log_2 n)$.
         \begin{figure}[htbp]
           \centering
           \begin{tikzpicture}
@@ -434,7 +434,7 @@
         &= -3n (\tfrac{2}{3} \cdot n^{\log_{3} \tfrac{2}{3}} - 1) + n^{\log_{3} 2} \\
         &= -3n (\tfrac{2}{3} \cdot n^{\log_{3} 2 - 1} - 1) + n^{\log_{3} 2} \\
         &= -2n^{\log_{3} 2} + 3n + n^{\log_{3} 2} \\
-        &= -n^{\log_{3} 2} + 3n \\
+        &= 3n - n^{\log_{3} 2} \\
         T(n) &\in \Theta(n).
     \end{align*}
         \begin{figure}[htbp]
