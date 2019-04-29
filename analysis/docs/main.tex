@@ -524,23 +524,6 @@
                 ]
               ]
             \end{scope}
-        %     \begin{scope}[xshift=6cm]
-        %      \tikzset{edge from parent/.append style={draw=none}}
-        %      \Tree
-        %       [.\node(c0){$n$};
-        %          [.\node(c1){$4n$};
-        %           [.\node(c2){$16n$};
-        %              \node(c3){$64n$};
-        %           ]
-        %          ]
-        %       ]
-        %   \end{scope}
-        %   \begin{scope}[->, dashed]
-        %      \draw (n0) -- (c0);
-        %      \draw (n1) -- (c1);
-        %      \draw (n2) -- (c2);
-        %      \draw (n3) -- (c3);
-        %   \end{scope}
           \end{tikzpicture}
         \end{figure}
         The costs are given shortly after. The recurrence is solved by the iteration method.
@@ -554,8 +537,8 @@
             &= n + n \cdot (\tfrac{n}{2} + \tfrac{n}{2} \cdot T(\tfrac{n}{4})) \\
             &= n + n \cdot (\tfrac{n}{2} + \tfrac{n}{2} \cdot (\tfrac{n}{4} + \tfrac{n}{4} \cdot T(\tfrac{n}{8}))) \cdots \\
             &= n + \tfrac{n^{2}}{2} + \tfrac{n^{3}}{8} + \cdots \\
-            &= \sum_{i = 1}^{\lg n} \frac{n^{i}}{2^{\sum_{j = 1}^{i} j}} \\
-            &= \sum_{i = 1}^{\lg n} \frac{n^{i}}{2^{\frac{1}{2}i (i - 1)}} \\
+            &= \sum_{i = 0}^{\lg n - 1} \frac{n^{i}}{2^{\sum_{j = 1}^{i} j}} + folhas \\
+            &= \sum_{i = 0}^{\lg n - 1} \frac{n^{i}}{2^{\frac{1}{2}i (i - 1)}} + folhas \\
         \end{align*}
     \end{enumerate}
 \end{enumerate}
