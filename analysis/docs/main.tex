@@ -154,7 +154,7 @@
             &= 2^{n} + 2^{n - 1} + 2^{n - 2} + T(n - 3) \cdots \\
             &= \sum_{i = 2}^{n} 2^{i}.
         \end{align*}
-        The sum of this geometric series is exactly $\frac{2^{n + 1} - 1}{2 - 1} - 2^{0} - 2^{1} = 2^{n + 1} - 4$, since $i$ does not start at $0$. To prove the final formula by weak induction, let $T(n) = 2^{n + 1} - 4$. $T(1)$ holds, since $2^{1 + 1} - 4 = 0$. The inductive step is proved below, using the hypothesis that $T(n - 1)$ is true.
+        The sum of this geometric series is exactly $\frac{2^{n + 1} - 1}{2 - 1} - 2^{0} - 2^{1} = 2^{n + 1} - 4$, since $i$ does not start at $0$. Thus, $T(n) \in 2^{n + 1} - 4$. To prove the final formula by weak induction, let $T(n) = 2^{n + 1} - 4$. $T(1)$ holds, since $2^{1 + 1} - 4 = 0$. The inductive step is proved below, using the hypothesis that $T(n - 1)$ is true.
         \begin{align*}
             T(n - 1) + 2^{n} &\stackrel{?}{=} T(n) \\
             2^{(n - 1) + 1} - 4 + 2^{n} &\stackrel{?}{=} \\
@@ -486,11 +486,11 @@
           \end{tikzpicture}
         \end{figure}
     \end{enumerate}
-    \item As per the analysis presented below, the most efficient algorithm is~\ref{ex:7c}, with a quasilinear time complexity.
+    \item As per the analysis presented below, the most efficient algorithm is~\ref{ex:7a}, with a quasilinear time complexity.
     \begin{enumerate}
-        \item Let $T(n) = 5T(\frac{n}{2}) + \mathcal{O}(n)$. By the master method, $a = 5, b = 2$ and $f(n) \in \mathcal{O}(n)$. It occurs that $n^{\lg 5} \approx n^{2.32}$, $f(n) \in \mathcal{O}(n^{2.32 - \epsilon})$ with \emph{e.g.} $\epsilon > \lg 5 - 1$. Thus, the first case may be applied, giving $T(n) \in \Theta(n^{\lg 5})$.
+        \item\label{ex:7a} Let $T(n) = 5T(\frac{n}{2}) + \mathcal{O}(n)$. By the master method, $a = 5, b = 2$ and $f(n) \in \mathcal{O}(n)$. It occurs that $n^{\lg 5} \approx n^{2.32}$, $f(n) \in \mathcal{O}(n^{2.32 - \epsilon})$ with \emph{e.g.} $\epsilon > \lg 5 - 1$. Thus, the first case may be applied, giving $T(n) \in \Theta(n^{\lg 5})$.
         \item Let $T(n) = 2T(n - 1) + \mathcal{O}(1)$. The recurrence is a special case of Exercise~\ref{ex:4c}, thus giving $T(n) \in \Theta(2^{n})$.
-        \item\label{ex:7c} Let $T(n) = 9T(\frac{n}{3}) + \mathcal{O}(n^{2})$. By the master method, $a = 9, b = 3$ and $f(n) \in \mathcal{O}(n^{2})$. Since $n^{\log_{3} 9} = n^{2}$ and $f(n) \in \Theta(n^{2})$, the second case may be applied. Thus, $T(n) \in \Theta(n^{2} \lg n)$.
+        \item Let $T(n) = 9T(\frac{n}{3}) + \mathcal{O}(n^{2})$. By the master method, $a = 9, b = 3$ and $f(n) \in \mathcal{O}(n^{2})$. Since $n^{\log_{3} 9} = n^{2}$ and $f(n) \in \Theta(n^{2})$, the second case may be applied. Thus, $T(n) \in \Theta(n^{2} \lg n)$.
     \end{enumerate}
     \item
     \begin{enumerate}
