@@ -172,10 +172,10 @@
             &= c(c(cT(n - 3))) \cdots \\
             &= c^{i} T(n - i).
         \end{align*}
-        Consider $T(n - i) \Leftrightarrow T(0)$. Thus, $n - i = 0$ and $i = n$, which gives
+        Consider $T(n - i) \Leftrightarrow T(1)$. Thus, $n - i = 1$ and $i = n - 1$, which gives
         \begin{align*}
-            T(n) &= c^{n} T(n - n)  \\
-            &= c^{n} k \\
+            T(n) &= c^{n - 1} T(n - n)  \\
+            &= c^{n - 1} k \\
             T(n) &\in \Theta(c^{n}).
         \end{align*}
         To prove the final formula by weak induction, let $T(n) = c^{n} k$. $T(0)$ holds, since $c^{0} k = k$. The inductive step is proved below, using the hypothesis that $T(n - 1)$ is true.
