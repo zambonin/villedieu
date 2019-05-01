@@ -349,7 +349,15 @@
       \end{scope}
       \end{tikzpicture}
     \end{figure}
-  \item Let $T(n) = 4T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\lg n - 1} 2^{i} + n^{2} $. Using the sum of geometric series, $T(n) = n\frac{2^{\lg n - 1 + 1} - 1}{2 - 1} + n^{2}$, which gives $n(n - 1) + n^{2}$, and thus $T(n) \in \Theta(n^{2})$.
+  \item Let $T(n) = 4T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\lg n - 1} 2^{i} + n^{2} $. Using the sum of geometric series,
+  \begin{align*}
+    T(n) & = n\tfrac{2^{\lg n - 1 + 1} - 1}{2 - 1} + n^{2} \\
+         & = n(2^{\lg n} - 1) + n^{2} \\
+         & = n^{2} + nn^{\lg 2} + n
+         & = 2n^{2} + n
+    T(n) & \in \Theta(n^{2}).
+  \end{align*}
+  $T(n) = n\frac{2^{\lg n - 1 + 1} - 1}{2 - 1} + n^{2}$, which gives $n(n - 1) + n^{2}$, and thus $T(n) \in \Theta(n^{2})$.
     \begin{figure}[htbp]
       \centering
       \begin{tikzpicture}
@@ -395,7 +403,7 @@
       \end{scope}
       \end{tikzpicture}
     \end{figure}
-  \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n^{2})$. By the recursion-tree method, $T(n) = n^{2} \sum_{i = 0}^{\lg n - 1} 2^{-i} + n$. Using the sum of geometric series, $T(n) = n^{2} \frac{2^{-(\lg n - 1 + 1)} - 1}{\frac{1}{2} - 1} + n$, which gives $n^{2}(2 - \frac{1}{n}) + n$, and thus $T(n) \in \Theta(n^{2})$.
+  \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n^{2})$. By the recursion-tree method, $T(n) = n^{2} \sum_{i = 0}^{\lg n - 1} 2^{-i} + n$. Using the sum of geometric series, $T(n) = n^{2} \frac{2^{-(\lg n - 1 + 1)} - 1}{\frac{1}{2} - 1} + n$, which gives $2n^{2} - n$, and thus $T(n) \in \Theta(n^{2})$.
     \begin{figure}[htbp]
       \centering
       \begin{tikzpicture}
