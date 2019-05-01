@@ -108,6 +108,7 @@
     \item Let $P(n) = \sum_{i = 1}^{n} (2i - 1) = n^{2}$. $P(1)$ holds, since $2 \cdot 1 - 1 = 1^{2}$. The inductive step is proved below, using the hypothesis that $P(k)$ is true.
     \begin{align*}
       P(k + 1) & \posseq P(k) + 2(k + 1) - 1  \\
+               & \posseq k^{2} + 2(k + 1) - 1 \\
                & \posseq k^{2} + 2k + 1       \\
       P(k + 1) & = (k + 1)^{2}.
     \end{align*}
@@ -216,7 +217,7 @@
       &= 2nn^{\lg \tfrac{3}{2}} - 2n + n^{\lg 3} \\
       &= 2n^{\lg 3 - 1 + 1} + n^{\lg 3} - 2n \\
       &= 3n^{\lg 3} - 2n \\
-      T(n) &\in \Theta(\text{poly}(n)).
+      T(n) &\in \Theta(n^{\lg 3}).
     \end{align*}
     To prove the final formula by weak induction, let $T(n) = 3n^{\lg 3} - 2n$. $P(1)$ holds, since $3 \cdot 1^{\lg 3} - 2 \cdot 1 = 1$. The inductive step is proved below, using the hypothesis that $T(\frac{n}{2})$ is true.
     \begin{align*}
@@ -231,10 +232,14 @@
   \item
   \begin{enumerate}
     \item Let $T(n) = T(\frac{n}{2}) + \Theta(1)$, with $a = 1, b = 2$ and $f(n) \in \Theta(1)$. Since $n^{\lg 1} = 1$ and $f(n) \in \Theta(1)$, the second case may be applied. Thus, $T(n) \in \Theta(\lg n)$.
+    
     \item Let $T(n) = T(\frac{9n}{10}) + n$, with $a = 1, b = \frac{10}{9}$ and $f(n) = n$. It occurs that $n^{\log_{\frac{9}{10}} 1} = 1$, $f(n) \in \Omega(n^{\log_{\frac{10}{9}} 1 + \epsilon})$ and $\frac{9n}{10} \leq cn$ with \emph{e.g.} $\epsilon < 1$ and $c = \frac{10}{11}$. Thus, the third case may be applied, giving $T(n) \in \Theta(n)$.
+    
     \item Let $T(n) = 16T(\frac{n}{4}) + n^{2}$, with $a = 16, b = 4$ and $f(n) = n^{2}$. Since $n^{\log_{4} 16} = n^{2}$ and $f(n) \in \Theta(n^{2})$, the second case may be applied. Thus, $T(n) \in \Theta(n^{2} \lg n)$.
+    
     \item Let $T(n) = 7T(\frac{n}{3}) + n^{2}$, with $a = 7, b = 3$ and $f(n) = n^{2}$. It occurs that $n^{\log_{3} 7} \approx n^{1.77}$, $f(n) \in \Omega(n^{1.77 + \epsilon})$ and $\frac{7n^{2}}{9} \leq cn^{2}$ with \emph{e.g.} $\epsilon < 2 - \log_3 7$ and $c = \frac{8}{9}$. Thus, the third case may be applied, giving $T(n) \in \Theta(n^{2})$.
   \end{enumerate}
+  
   \item Dashed arrows represent the total cost of each level in the tree. Dotted edges mean the natural expansion of the subtrees. When applicable, the floor function is disregarded for simplicity.
   \begin{enumerate}
     \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n)$. By the recursion-tree method, $T(n) = \sum_{i = 0}^{\lg n - 1} n + n$. Thus, $T(n) \in \Theta(n \lg n)$.
@@ -289,7 +294,7 @@
       \end{scope}
       \end{tikzpicture}
     \end{figure}
-  \item Let $T(n) = 3T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\lg n - 1} (\tfrac{3}{2})^{i} + n^{\lg 3}$. As per Exercise~\ref{ex:4d}, $T(n) \in \Theta(\text{poly}(n))$.
+  \item Let $T(n) = 3T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\lg n - 1} (\tfrac{3}{2})^{i} + n^{\lg 3}$. As per Exercise~\ref{ex:4d}, $T(n) \in \Theta(n^{\lg 3})$.
     \begin{figure}[htbp]
       \centering
       \begin{tikzpicture}
@@ -500,7 +505,7 @@
       \end{tikzpicture}
     \end{figure}
   \end{enumerate}
-  \item As per the analysis presented below, the most efficient algorithm is~\ref{ex:7a}, with a quasilinear time complexity.
+  \item As per the analysis presented below, the most efficient algorithm is~\ref{ex:7a}.
   \begin{enumerate}
     \item\label{ex:7a} Let $T(n) = 5T(\frac{n}{2}) + \mathcal{O}(n)$. By the master method, $a = 5, b = 2$ and $f(n) \in \mathcal{O}(n)$. It occurs that $n^{\lg 5} \approx n^{2.32}$, $f(n) \in \mathcal{O}(n^{2.32 - \epsilon})$ with \emph{e.g.} $\epsilon > \lg 5 - 1$. Thus, the first case may be applied, giving $T(n) \in \Theta(n^{\lg 5})$.
     \item Let $T(n) = 2T(n - 1) + \mathcal{O}(1)$. The recurrence is a special case of Exercise~\ref{ex:4c}, thus giving $T(n) \in \Theta(2^{n})$.
