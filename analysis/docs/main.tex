@@ -37,8 +37,8 @@
     It is evident that the new input size had a modest growth. Indeed, the new computer will run slower if $n > 4$ with $n \in \intwzero$. This is due to the fact that the complexity of $f(n)$ grows exponentially, while in this case, the computational power grew linearly. Ergo, one cannot execute $f(2n)$ and expect comparable results on $N_{2}$, since $n_{2} \ll 2 n_{1}$.
   \end{enumerate}
   \item 
-  \begin{enumerate}
-    \item Let $t_{1}, \dots, t_{7}$ be the number of seconds in each period of the header row and $s = 10^{10}$. The values in the table below represent approximately $n \leq f^{-1}(t_{i} s)$.
+  \begin{enumerate}\label{ex:2a}
+    \item Let $t_{1}, \dots, t_{7}$ be the number of seconds in each period of the header row and $s = 10^{10}$. The values in the table below represent approximately $n = f^{-1}(t_{i} s)$. The general idea for this exercise can be seen on Appendix~\ref{appendix:2a}.
     \begin{table}[htbp]
       \renewcommand{\arraystretch}{1.2}
       \setlength{\tabcolsep}{7pt}
@@ -561,7 +561,7 @@
 
 \appendix
 
-\section{Rationale for Q2a}
+\section{Rationale for Exercise~\ref{ex:2a}}\label{appendix:2a}
 
 Define $t_{1}, \dots, t_{7}$ and $s = 10^{10}$ as above. The equation $t_{i} = \frac{f(n)}{s}$, or its simpler form $n = f^{-1}(t_{i} s)$, has to be solved in order to find out the maximum $n$ allowed to execute for a period of time using $f(n)$. Deducing $f^{-1}$ is not trivial for some of the rows. In the case of $n \lg n = c$ for some constant $c$, the Lambert $W$-function is used:
 \begin{align*}
