@@ -163,40 +163,43 @@
     \] 
     By the iteration method,
     \begin{align*}
-      T(n) & = 2^{n} + T(n - 1) \\
-           & = 2^{n} + 2^{n - 1} + T(n - 2) \\
+      T(n) & = 2^{n} + T(n - 1)                                \\
+           & = 2^{n} + 2^{n - 1} + T(n - 2)                    \\
            & = 2^{n} + 2^{n - 1} + 2^{n - 2} + T(n - 3) \cdots \\
-           & = \sum_{i = 2}^{n} 2^{i} \\
-           & = \tfrac{2^{n + 1} - 1}{2 - 1} - 2^{0} - 2^{1} \\
-      T(n) \in \Theta(2^{n + 1}).
+           & = \sum_{i = 2}^{n} 2^{i}                          \\
+           & = \tfrac{2^{n + 1} - 1}{2 - 1} - 2^{0} - 2^{1}    \\
+      T(n) & \in \Theta(2^{n + 1}).
     \end{align*}
     To prove the final formula by weak induction, let $T(n) = 2^{n + 1} - 4$. $T(1)$ holds, since $2^{1 + 1} - 4 = 0$. The inductive step is proved below, using the hypothesis that $T(n - 1)$ is true.
     \begin{align*}
-      T(n - 1) + 2^{n} &\posseq T(n) \\
-      2^{(n - 1) + 1} - 4 + 2^{n} &\posseq \\
-      2^{n + 1} - 4 &= T(n).
+      T(n) & \posseq T(n - 1) + 2^{n}            \\
+           & \posseq 2^{(n - 1) + 1} - 4 + 2^{n} \\
+      T(n) & = 2^{n + 1} - 4.
     \end{align*}
     
     \item\label{ex:4c} Let \[
-      T(n) = \begin{cases}
-        k &\text{if } n = 0, \\
-        cT(n - 1) &\text{if } n > 0,
+      T(n) = 
+      \begin{cases}
+        k         & \text{if } n = 0, \\
+        cT(n - 1) & \text{if } n > 0,
       \end{cases}
-    \] for any constants $c, k$. By the iteration method,
+    \] 
+    for any constants $c, k$. By the iteration method,
     \begin{align*}
-      T(n) &= cT(n - 1) \\
-      &= ccT(n - 2) \\
-      &= cccT(n - 3) \cdots \\
-      &= c^{i} T(n - i).
+      T(n) & = cT(n - 1)          \\
+           & = ccT(n - 2)         \\
+           & = cccT(n - 3) \cdots \\
+           & = c^{i} T(n - i).
     \end{align*}
     Consider $T(n - i) \Leftrightarrow T(1)$. Thus, $n - i = 1$ and $i = n - 1$, which gives
     \begin{align*}
-      T(n) &= c^{n - 1} T(n - n)  \\
-      &= c^{n - 1} k \\
-      T(n) &\in \Theta(c^{n}).
+      T(n) & = c^{n - 1} T(n - n) \\
+           & = c^{n - 1} k        \\
+      T(n) & \in \Theta(c^{n}).
     \end{align*}
     To prove the final formula by weak induction, let $T(n) = c^{n - 1} k$. $T(1)$ holds, since $c^{1 - 1} k = k$. The inductive step is proved below, using the hypothesis that $T(n - 1)$ is true.
     \begin{align*}
+      T(n) & \posseq cT(n - 1) \\
       cT(n - 1) &\posseq T(n) \\
       c c^{n - 2} k &\posseq \\
       c^{n - 1} k &= T(n). 
