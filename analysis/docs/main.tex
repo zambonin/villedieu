@@ -199,32 +199,30 @@
     \end{align*}
     To prove the final formula by weak induction, let $T(n) = c^{n - 1} k$. $T(1)$ holds, since $c^{1 - 1} k = k$. The inductive step is proved below, using the hypothesis that $T(n - 1)$ is true.
     \begin{align*}
-      T(n) & \posseq cT(n - 1) \\
-      cT(n - 1) &\posseq T(n) \\
-      c c^{n - 2} k &\posseq \\
-      c^{n - 1} k &= T(n). 
+      T(n) & \posseq cT(n - 1)     \\
+           & \posseq c c^{n - 2} k \\
+      T(n) & = c^{n - 1} k.
     \end{align*}
     
     \item\label{ex:4d} Let \[
-      T(n) = \begin{cases}
-        1 &\text{if } n = 1, \\
-        3T(\frac{n}{2}) + n &\text{if } n > 1.
+      T(n) = 
+      \begin{cases}
+        1                   & \text{if } n = 1, \\
+        3T(\frac{n}{2}) + n & \text{if } n > 1.
       \end{cases}
-    \] By the iteration method,
+    \] 
+    By the iteration method,
     \begin{align*}
-      T(n) &= n + 3T(\tfrac{n}{2}) \\
-      &= n + 3(\tfrac{n}{2} + 3T(\tfrac{n}{4})) \\ 
-      &= n + 3(\tfrac{n}{2} + 3(\tfrac{n}{4} + 3T(\tfrac{n}{8}))) \cdots \\
-      &= n\sum_{i = 0}^{\lg n - 1} (\tfrac{3}{2})^{i} + 3^{\lg n}.
-    \end{align*}
-    Recall that the last term is obtained as one reaches the very end of the iteration. Furthermore, the sum of this geometric series is exactly \[\left(\frac{\frac{3}{2}^{\lg n - 1+ 1} - 1}{\frac{3}{2} - 1}\right) = 2(\tfrac{3}{2}^{\lg n} - 1).\]
-    The closed formula is derived as follows.
-    \begin{align*}
-      T(n) &= 2n(\tfrac{3}{2}^{\lg n} - 1) + 3^{\lg n} \\
-      &= 2nn^{\lg \tfrac{3}{2}} - 2n + n^{\lg 3} \\
-      &= 2n^{\lg 3 - 1 + 1} + n^{\lg 3} - 2n \\
-      &= 3n^{\lg 3} - 2n \\
-      T(n) &\in \Theta(n^{\lg 3}).
+      T(n) & = n + 3T(\tfrac{n}{2})                                                              \\
+           & = n + 3(\tfrac{n}{2} + 3T(\tfrac{n}{4}))                                            \\ 
+           & = n + 3(\tfrac{n}{2} + 3(\tfrac{n}{4} + 3T(\tfrac{n}{8}))) \cdots                   \\
+           & = n\sum_{i = 0}^{\lg n - 1} (\tfrac{3}{2})^{i} + 3^{\lg n}                          \\
+           & = n\left(\frac{\frac{3}{2}^{\lg n - 1 + 1} - 1}{\frac{3}{2} - 1}\right) + 3^{\lg n} \\
+           & = 2n(\tfrac{3}{2}^{\lg n} - 1) + 3^{\lg n}                                          \\
+           & = 2nn^{\lg \tfrac{3}{2}} - 2n + n^{\lg 3}                                           \\
+           & = 2n^{\lg 3 - 1 + 1} + n^{\lg 3} - 2n                                               \\
+           & = 3n^{\lg 3} - 2n                                                                   \\
+      T(n) & \in \Theta(n^{\lg 3}).
     \end{align*}
     To prove the final formula by weak induction, let $T(n) = 3n^{\lg 3} - 2n$. $P(1)$ holds, since $3 \cdot 1^{\lg 3} - 2 \cdot 1 = 1$. The inductive step is proved below, using the hypothesis that $T(\frac{n}{2})$ is true.
     \begin{align*}
