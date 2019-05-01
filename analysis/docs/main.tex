@@ -148,25 +148,29 @@
     \end{align*}
     To prove the final formula by weak induction, let $T(n) = c(n - 1)$. $T(1)$ holds, since $c(1 - 1) = 0$. The inductive step is proved below, using the hypothesis that $T(n - 1)$ is true.
     \begin{align*}
-      T(n - 1) + c &\posseq T(n) \\
-      c((n - 1) - 1) + c &\posseq \\
-      c(n - 2) + c(1) &\posseq \\
-      c(n - 1) &= T(n).
+      T(n) & \posseq T(n - 1) + c       \\
+           & \posseq c((n - 1) - 1) + c \\
+           & \posseq c(n - 2) + c       \\
+      T(n) & = c(n - 1).
     \end{align*}
     
     \item Let \[
-      T(n) = \begin{cases}
-        0 &\text{if } n = 1, \\
-        T(n - 1) + 2^{n} &\text{if } n > 1.
+      T(n) = 
+      \begin{cases}
+        0                & \text{if } n = 1, \\
+        T(n - 1) + 2^{n} & \text{if } n > 1.
       \end{cases}
-    \] By the iteration method,
+    \] 
+    By the iteration method,
     \begin{align*}
-      T(n) &= 2^{n} + T(n - 1) \\
-      &= 2^{n} + 2^{n - 1} + T(n - 2) \\
-      &= 2^{n} + 2^{n - 1} + 2^{n - 2} + T(n - 3) \cdots \\
-      &= \sum_{i = 2}^{n} 2^{i}.
+      T(n) & = 2^{n} + T(n - 1) \\
+           & = 2^{n} + 2^{n - 1} + T(n - 2) \\
+           & = 2^{n} + 2^{n - 1} + 2^{n - 2} + T(n - 3) \cdots \\
+           & = \sum_{i = 2}^{n} 2^{i} \\
+           & = \tfrac{2^{n + 1} - 1}{2 - 1} - 2^{0} - 2^{1} \\
+      T(n) \in \Theta(2^{n + 1}).
     \end{align*}
-    The sum of this geometric series is exactly $\frac{2^{n + 1} - 1}{2 - 1} - 2^{0} - 2^{1} = 2^{n + 1} - 4$, since $i$ does not start at $0$. Thus, $T(n) \in 2^{n + 1} - 4$. To prove the final formula by weak induction, let $T(n) = 2^{n + 1} - 4$. $T(1)$ holds, since $2^{1 + 1} - 4 = 0$. The inductive step is proved below, using the hypothesis that $T(n - 1)$ is true.
+    To prove the final formula by weak induction, let $T(n) = 2^{n + 1} - 4$. $T(1)$ holds, since $2^{1 + 1} - 4 = 0$. The inductive step is proved below, using the hypothesis that $T(n - 1)$ is true.
     \begin{align*}
       T(n - 1) + 2^{n} &\posseq T(n) \\
       2^{(n - 1) + 1} - 4 + 2^{n} &\posseq \\
