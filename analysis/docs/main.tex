@@ -246,7 +246,7 @@
   
   \item Dashed arrows represent the total cost of each level in the tree. Dotted edges mean the natural expansion of the sub-trees. When applicable, the floor function is disregarded for simplicity.
   \begin{enumerate}
-    \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n)$. By the recursion-tree method, $T(n) = \sum_{i = 0}^{\lg n - 1} n + n$. Thus, $T(n) \in \Theta(n \lg n)$.
+    \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n)$.
     \begin{figure}[htbp]
       \centering
       \begin{tikzpicture}
@@ -256,7 +256,7 @@
       \end{scope}
       \begin{scope}
       \Tree
-        [.\node(n0){$n$};
+      [.\node(n0){$n$};
         [.\node{$\frac{n}{2}$};
           [.{$\frac{n}{4}$}
           \edge[dotted] node {}; $T(1)$
@@ -277,7 +277,7 @@
           \edge[dotted] node {}; \node(n3){$T(1)$};
           ]
         ]
-        ]
+      ]
       \end{scope}
       \begin{scope}[xshift=5.5cm]
       \tikzset{edge from parent/.append style={draw=none}}
@@ -298,6 +298,8 @@
       \end{scope}
       \end{tikzpicture}
     \end{figure}
+  By the recursion-tree method, $T(n) = \sum_{i = 0}^{\lg n - 1} n + n$. Thus, $T(n) \in \Theta(n \lg n)$.
+  
   \item Let $T(n) = 3T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\lg n - 1} (\tfrac{3}{2})^{i} + n^{\lg 3}$. As per Exercise~\ref{ex:4d}, $T(n) \in \Theta(n^{\lg 3})$.
     \begin{figure}[htbp]
       \centering
@@ -472,8 +474,8 @@
          & = -3n (n^{\log_{3} \tfrac{2}{3}} - 1) + n^{\log_{3} 2} \\
          & = -3n (n^{\log_{3} 2 - 1} - 1) + n^{\log_{3} 2} \\
          & = -3n (n^{\log_{3} 2 - 1} - 1) + n^{\log_{3} 2} \\
-        %  & = -2n^{\log_{3} 2} + 3n + n^{\log_{3} 2} \\
-        %  & = 3n - n^{\log_{3} 2} \\
+         & = -3n^{\log_{3} 2} + 3n + n^{\log_{3} 2} \\
+         & = 3n - 2n^{\log_{3} 2} \\
     T(n) & \in \Theta(n).
   \end{align*}
     \begin{figure}[htbp]
