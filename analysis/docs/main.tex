@@ -246,17 +246,17 @@
   
   \item Dashed arrows represent the total cost of each level in the tree. Dotted edges mean the natural expansion of the sub-trees. When applicable, the floor function is disregarded for simplicity.
   \begin{enumerate}
-    \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n)$.
+    \item Let $T(n) = 2T(\frac{n}{2}) + \Theta(n)$. By the recursion-tree method, $T(n) = \sum_{i = 0}^{\lg n - 1} n + n$. Thus, $T(n) \in \Theta(n \lg n)$.
     \begin{figure}[htbp]
       \centering
-      \begin{tikzpicture}
+      \begin{tikzpicture}[scale=0.8]
       \begin{scope}[xshift=-4.75cm]
         \draw [decorate,decoration={brace,amplitude=5pt}]
         (0, -3) -- (0, 0) node [black,midway,xshift=-1cm] {$\lg n + 1$};
       \end{scope}
       \begin{scope}
       \Tree
-      [.\node(n0){$n$};
+        [.\node(n0){$n$};
         [.\node{$\frac{n}{2}$};
           [.{$\frac{n}{4}$}
           \edge[dotted] node {}; $T(1)$
@@ -277,7 +277,7 @@
           \edge[dotted] node {}; \node(n3){$T(1)$};
           ]
         ]
-      ]
+        ]
       \end{scope}
       \begin{scope}[xshift=5.5cm]
       \tikzset{edge from parent/.append style={draw=none}}
@@ -298,12 +298,10 @@
       \end{scope}
       \end{tikzpicture}
     \end{figure}
-  By the recursion-tree method, $T(n) = \sum_{i = 0}^{\lg n - 1} n + n$. Thus, $T(n) \in \Theta(n \lg n)$.
-  
   \item Let $T(n) = 3T(\lfloor\frac{n}{2}\rfloor) + \Theta(n)$. By the recursion-tree method, $T(n) = n\sum_{i = 0}^{\lg n - 1} (\tfrac{3}{2})^{i} + n^{\lg 3}$. As per Exercise~\ref{ex:4d}, $T(n) \in \Theta(n^{\lg 3})$.
     \begin{figure}[htbp]
       \centering
-      \begin{tikzpicture}
+      \begin{tikzpicture}[scale=0.8]
       \begin{scope}[xshift=-3.5cm]
         \draw [decorate,decoration={brace,amplitude=5pt}]
         (0, -3) -- (0, 0) node [black,midway,xshift=-1cm] {$\lg n + 1$};
@@ -362,7 +360,7 @@
   \end{align*}
     \begin{figure}[htbp]
       \centering
-      \begin{tikzpicture}
+      \begin{tikzpicture}[scale=0.8]
       \begin{scope}[xshift=-2cm]
         \draw [decorate,decoration={brace,amplitude=5pt}]
         (0, -3) -- (0, 0) node [black,midway,xshift=-1cm] {$\lg n + 1$};
@@ -417,7 +415,7 @@
   \end{align*}
     \begin{figure}[htbp]
       \centering
-      \begin{tikzpicture}
+      \begin{tikzpicture}[scale=0.8]
       \begin{scope}[xshift=-4.75cm]
         \draw [decorate,decoration={brace,amplitude=5pt}]
         (0, -3) -- (0, 0) node [black,midway,xshift=-1cm] {$\lg n + 1$};
@@ -480,7 +478,7 @@
   \end{align*}
     \begin{figure}[htbp]
       \centering
-      \begin{tikzpicture}
+      \begin{tikzpicture}[scale=0.8]
       \begin{scope}[xshift=-4.75cm]
         \draw [decorate,decoration={brace,amplitude=5pt}]
         (0, -3) -- (0, 0) node [black,midway,xshift=-1.15cm] {$\log_{3} n + 1$};
@@ -538,7 +536,7 @@
   \end{enumerate}
   \item
   \begin{enumerate}
-    \item Consider that $I$ is a set of $2$-uples $I_{j} : (s, e), j \in \{1, \dots, n\}$ such that $s, e \in \mathbb{Z}^{+}, s \leq e$. To order such a set, the condition $I_{j - 1}.e < I_{j}.s$ has to be met for all $j \in \{2, \dots, n\}$. To figure out the recurrence for this algorithm, the time complexities of lines 3 and 5 have to be set. Observe that the $\textbf{argmin}$ function cannot determine the minimum element in sub-linear time, since all intervals have to be compared without the aid of an external, pre-built data structure. Analogously, to remove all overlapping intervals in line 5, every element in the set needs to be compared with the $I_{j}$ target. Thus, lines 3 and 5 are linear in $n$. Finally, observe that the worst case scenario for this algorithm, in the form of an already ordered $I$. Line 5 will thus remove only $I_{j}$ at every recursive step, and the length of $n$ will be reduced by a single element. This means that $T(n) = T(n - 1) + 2n$. By the iteration method,
+    \item Consider that $I$ is a set of $2$-uples $I_{i} : (s, e), i \in \{1, \dots, n\}$ such that $s, e \in \mathbb{Z}^{+}, s \leq e$. To order such a set, the condition $I_{i - 1}.e < I_{i}.s$ has to be met for all $i \in \{2, \dots, n\}$. To figure out the recurrence for this algorithm, the time complexities of lines 3 and 5 have to be set. Observe that the \texttt{argmin} function cannot determine the minimum element in sub-linear time, since all intervals have to be compared without the aid of an external, pre-built data structure. Analogously, to remove all overlapping intervals in line 5, every element in the set needs to be compared with the $I_{j}$ target. Thus, lines 3 and 5 are linear in $n$. Finally, note the worst case scenario for this algorithm, in the form of an already ordered $I$. Line 5 thus remove only $I_{j}$ at every recursive step, and the length of $n$ will be reduced by a single element. This means that $T(n) = T(n - 1) + 2n$. By the iteration method,
     \begin{align*}
       T(n) &= T(n - 1) + 2n \\
       &= 2n + 2n + T(n - 2) \\
@@ -555,7 +553,7 @@
     \item Due to its recursive nature, it is useful to observe the tree generated by some instance of $f(n)$, where $n = 2^{k}, k \in \mathbb{N}$. It is a perfect tree with $\lg n$ levels, since the recursive line halves the number of children, stopping when $n = 2$. For instance, if $n = 8$, the following tree is created.
     \begin{figure}[htbp]
       \centering
-      \begin{tikzpicture}
+      \begin{tikzpicture}[scale=0.8]
       \begin{scope}[xshift=-2.5cm]
         \draw [decorate,decoration={brace,amplitude=5pt}]
         (0, -3) -- (0, 0) node [black,midway,xshift=-1cm] {$\lg n + 1$};
