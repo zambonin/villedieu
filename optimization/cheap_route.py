@@ -2,6 +2,13 @@
 # -*- coding: utf-8 -*-
 # pylint: disable=C0330, R0913
 
+"""cheap_route.py
+
+A Python script that applies the well-known Dijkstra's algorithm to a graph
+in order to output the cheapest route between two cities, taking into account
+toll roads and a static vehicle autonomy.
+"""
+
 from __future__ import absolute_import, division
 
 from heapq import heappop, heappush
@@ -12,14 +19,22 @@ from typing import List, Tuple
 def dijkstra(
     graph: List[List[float]], source: int
 ) -> Tuple[List[float], List[int]]:
+    """
+    Dijkstra's algorithm from CLRS (Introduction to Algorithms, Section 24.3),
+    slightly modified to start with a different min-priority queue and
+    actually return data.
 
-    dist = [float("inf")] * len(graph)
+    :param graph:   Adjacency matrix with values in the currency unit.
+    :param source:  Integer representing the source vertex.
+    :return:        Distances between the source and all vertices in the
+                    graph, and a list of hops that represent the shortest path.
+    """
+    dist = [float("inf")] * len(graph)  # initialize-single-source
     dist[source] = 0
-
     prev = [-1] * len(graph)
+
     vertices = []
     heappush(vertices, (dist[source], source))
-
     neighbors = [
         (index for index, edge in enumerate(row) if edge) for row in graph
     ]
@@ -28,7 +43,7 @@ def dijkstra(
         _, curr = heappop(vertices)
         for vert in neighbors[curr]:
             alt = dist[curr] + graph[curr][vert]
-            if alt < dist[vert]:
+            if dist[vert] > alt:  # relaxation
                 dist[vert] = alt
                 prev[vert] = curr
                 heappush(vertices, (alt, vert))
@@ -44,7 +59,25 @@ def cheapest_route(
     gas_price: float,
     autonomy: float,
 ) -> Tuple[List[int], float]:
+    """
+    Wrapper function that takes into account the parameters and transforms
+    the graph accordingly, converting from kilometers to currency and adding
+    the toll prices to all successors of a vertex. Furthermore, it constructs
+    the shortest path by reverse iteration of the hops given by Dijkstra's
+    algorithm.
 
+    :param graph:       Adjacency matrix representing a directed and weighted
+                        graph, with units in kilometers. The set of vertices
+                        is simply the non-negative integer numbers.
+    :param tolls:       Function between the set of vertices and the positive
+                        real numbers, represented as the mapping itself.
+    :param source:      Integer representing the source vertex.
+    :param dest:        Integer representing the destination vertex.
+    :param gas_price:   A real value representing the gas price.
+    :param autonomy:    A real value representing the kilometer per liter ratio.
+    :return:            The shortest path between `source` and `dest`,
+                        and its cost.
+    """
     assert len(graph) == len(graph[0]) == len(tolls)
     assert source <= len(graph) and dest <= len(graph)
 
@@ -66,7 +99,14 @@ def cheapest_route(
 
 
 def random_tests(order: int, limit: int = 128, tests: int = 1000):
+    """
+    Creates random sets of parameters to test the algorithms above.
 
+    :param order:   Integer representing the side of the adjacency matrix.
+    :param limit:   Integer representing the maximum value for all edges and
+                    other parameters.
+    :param tests:   Integer representing the number of tests to run.
+    """
     seed(1)
     for _ in range(tests):
         graph = [
@@ -82,31 +122,5 @@ def random_tests(order: int, limit: int = 128, tests: int = 1000):
         print(cheapest_route(graph, tolls, source, dest, gas_price, autonomy))
 
 
-def known_answer():
-    # http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1152/images/graph-dijkstra-figure-1.png
-    graph = [
-        [0, 4, 0, 2, 7, 0, 0, 0],
-        [0, 0, 0, 0, 2, 0, 0, 0],
-        [0, 0, 0, 0, 4, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 1, 4],
-        [0, 0, 0, 0, 0, 2, 0, 0],
-        [0, 0, 1, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 2],
-        [0, 0, 0, 0, 5, 1, 0, 0],
-    ]
-
-    tolls = [1, 2, 3, 4, 5, 6, 7, 8]
-    source = 0
-    dest = 5
-    gas_price = 2
-    autonomy = 5
-
-    assert cheapest_route(graph, tolls, source, dest, gas_price, autonomy) == (
-        [0, 4, 5],
-        9.6,
-    )
-
-
 if __name__ == "__main__":
-    known_answer()
     random_tests(128)
