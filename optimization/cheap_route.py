@@ -3,6 +3,8 @@
 # pylint: disable=C0330, R0913
 
 from __future__ import absolute_import, division
+
+from random import random, randrange, seed
 from typing import List, Tuple
 
 
@@ -20,7 +22,8 @@ def dijkstra(
         curr = min(vertices, key=lambda v: dist[v])
         vertices.remove(curr)
 
-        for vert in set(graph[curr].index(e) for e in graph[curr] if e):
+        neighbors = set(index for index, edge in enumerate(graph[curr]) if edge)
+        for vert in neighbors.intersection(vertices):
             alt = dist[curr] + graph[curr][vert]
             if alt < dist[vert]:
                 dist[vert] = alt
@@ -42,7 +45,7 @@ def cheapest_route(
     assert source <= len(graph) and dest <= len(graph)
 
     mod_graph = [
-        list(map(lambda x: (x * gas_price / autonomy) + toll if x else 0, row))
+        [(edge * gas_price / autonomy) + toll if edge else 0 for edge in row]
         for row, toll in zip(graph, tolls)
     ]
 
@@ -56,6 +59,23 @@ def cheapest_route(
     path.reverse()
 
     return path, dist[dest]
+
+
+def random_tests(order: int, limit: int = 128, tests: int = 1000):
+
+    seed(1)
+    for _ in range(tests):
+        graph = [
+            [limit * random() if i != j else 0 for i in range(order)]
+            for j in range(order)
+        ]
+        tolls = [limit * random() for _ in range(order)]
+        source, dest = randrange(order), randrange(order)
+        while source == dest:
+            dest = randrange(order)
+        gas_price, autonomy = limit * random(), limit * random()
+
+        print(cheapest_route(graph, tolls, source, dest, gas_price, autonomy))
 
 
 def known_answer():
@@ -85,3 +105,4 @@ def known_answer():
 
 if __name__ == "__main__":
     known_answer()
+    random_tests(128)
