@@ -4,6 +4,7 @@
 
 from __future__ import absolute_import, division
 
+from heapq import heappop, heappush
 from random import random, randrange, seed
 from typing import List, Tuple
 
@@ -16,18 +17,21 @@ def dijkstra(
     dist[source] = 0
 
     prev = [-1] * len(graph)
-    vertices = set(range(len(graph)))
+    vertices = []
+    heappush(vertices, (dist[source], source))
+
+    neighbors = [
+        (index for index, edge in enumerate(row) if edge) for row in graph
+    ]
 
     while vertices:
-        curr = min(vertices, key=lambda v: dist[v])
-        vertices.remove(curr)
-
-        neighbors = set(index for index, edge in enumerate(graph[curr]) if edge)
-        for vert in neighbors.intersection(vertices):
+        _, curr = heappop(vertices)
+        for vert in neighbors[curr]:
             alt = dist[curr] + graph[curr][vert]
             if alt < dist[vert]:
                 dist[vert] = alt
                 prev[vert] = curr
+                heappush(vertices, (alt, vert))
 
     return dist, prev
 
