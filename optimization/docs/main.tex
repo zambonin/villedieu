@@ -21,7 +21,7 @@
   \item
   \begin{enumerate}
     \item 
-    \item It is known that Dijkstra's algorithm returns the shortest path between two vertices in a graph $G = (V, E)$. The description of the edge-weigthed input graph $I = (V, E, w)$ considers the function $w : V \to \mathbb{R}^{+}$ to be in kilometers. By making use of the other parameters, namely a function $p : V \to \mathbb{R}_{*}^{+}$ that describes toll roads, the gas price $g \in \mathbb{R}_{*}^{+}$ and the vehicle autonomy $a \in \mathbb{R}_{*}^{+}$ in kilometers per litre, it is possible to create a function $w' : V \to \mathbb{R}^{+}$ with values in the currency unit.
+    \item It is known that Dijkstra's algorithm returns the shortest path between two vertices in a graph $G = (V, E)$. The description of the directed edge-weighted input graph $I = (V, E, w)$ considers the function $w : V \to \mathbb{R}^{+}$ to be in kilometres. By making use of the other parameters, namely a function $p : V \to \mathbb{R}_{*}^{+}$ that describes toll roads, the gas price $g \in \mathbb{R}_{*}^{+}$ and the vehicle autonomy $a \in \mathbb{R}_{*}^{+}$ in kilometres per litre, we create a function $w' : V \to \mathbb{R}^{+}$ with values in the currency unit. Applying Dijkstra on the source and destination nodes $s, t \in V$ and a graph $I' = (V, E, w')$, we obtain the lowest cost route 
   \end{enumerate}
   \item
   \begin{enumerate}
