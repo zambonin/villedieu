@@ -17,11 +17,13 @@
 
 \section{Answers}
 
+The source code to the programming exercises is available \href{https://github.com/zambonin/villedieu}{here}.
+
 \begin{enumerate}
   \item
   \begin{enumerate}
-    \item 
-    \item It is known that Dijkstra's algorithm returns the shortest path between two vertices in a graph. The description of the directed edge-weighted input graph $G = (V, A, w)$ considers the function $w : V \to \mathbb{R}^{+}$ to output values in kilometres. By making use of the other parameters, namely a function $p : V \to \mathbb{R}_{*}^{+}$ that describes toll roads, the gas price $g \in \mathbb{R}_{*}^{+}$ for one liter, and the vehicle autonomy $a \in \mathbb{R}_{*}^{+}$ in kilometres per litre, we create a function $w' : V \to \mathbb{R}^{+}$ with values in the currency unit:
+    \item We refer to the file \texttt{optimization/cheap\_route.py} in the repository above.
+    \item The description of the directed edge-weighted input graph $G = (V, A, w)$ considers the function $w : V \to \mathbb{R}^{+}$ to output values in kilometres. By making use of the other parameters, namely a function $p : V \to \mathbb{R}_{*}^{+}$ that describes toll roads, the gas price $g \in \mathbb{R}_{*}^{+}$ in currency per litre, and the vehicle autonomy $a \in \mathbb{R}_{*}^{+}$ in kilometres per litre, we create a function $w' : V \to \mathbb{R}^{+}$ with values in the currency unit:
     \begin{align*}
       \forall v \in V, \; w'(v) = 
       \begin{cases}
@@ -29,7 +31,7 @@
         0 & \text{ if } w(v) = 0.
       \end{cases}
     \end{align*}
-    Applying Dijkstra's algorithm on the source and destination nodes $s, t \in V$ and a graph $G' = (V, A, w')$, we obtain the lowest cost route from $s$ to $t$ on $G'$.
+    It is known that Dijkstra's algorithm returns the shortest path between two vertices in a graph. Applying this algorithm on the source and destination nodes $s, t \in V$ and a graph $G' = (V, A, w')$, we obtain the lowest cost route from $s$ to $t$ on $G'$.
   \end{enumerate}
   \item
   \begin{enumerate}
