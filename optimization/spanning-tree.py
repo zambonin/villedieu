@@ -11,6 +11,7 @@ cities.
 
 from __future__ import absolute_import, division
 
+from collections import defaultdict
 from heapq import heappop, heappush
 from random import random, randrange, seed
 from typing import List, Set, Tuple
@@ -35,9 +36,7 @@ class Graph:
 
 
 
-def kruskal(
-    graph: Graph
-) -> list():
+def kruskal(graph: Graph) -> Set[Tuple[int, int, float]]:
     """
     Kruskal's algorithm from CLRS (Introduction to Algorithms, Section 23.2),
     using the Timsort algorithm.
@@ -45,23 +44,21 @@ def kruskal(
     :param graph: Graph structure used to find the minimal spanning tree.
     :return: List of edges that form the minimum spanning tree.
     """
-    A = []
+    A = set()
     S = [set] * graph.v_size
     for x in range(0,graph.v_size):
         S[x] = {x}
     edges_sorted = sorted(graph.edges, key=lambda tup: tup[2]) # n log n
     for e in edges_sorted:
         if not(S[e[0]] == S[e[1]]):
-            A.append(e)
+            A.add(e)
 
             U = S[e[0]].union(S[e[1]])
             for w in U:
                 S[w] = U
     return A
 
-def mst_triple_degree(
-    graph: Graph
-) -> list():
+def mst_triple_degree(graph: Graph) -> Set[Tuple[int, int, float]]:
     """
     Wrapper function that applies the minimal spanning tree algorithm on a graph
     G and sweeps the edge list to locate the vertex with degree 3 or more. The
@@ -71,22 +68,19 @@ def mst_triple_degree(
     :return: The vertexes with 3 or more edges.
     """
     k_edges = kruskal(graph)
-    count_list = [0] * graph.v_size
+    count_list = defaultdict(int)
 
-    for e in range(0,len(k_edges)):
-        count_list[k_edges[e][0]] += 1
+    for e in k_edges:
+        count_list[e[0]] += 1
+        count_list[e[1]] += 1
 
-    for e in range(0,len(k_edges)):
-        count_list[k_edges[e][1]] += 1
-
-    triple_degree = []
-    for e in range(0,len(count_list)):
-        if count_list[e] >= 3:
-            triple_degree.append(e)
-
-    return triple_degree
+    return {e for e, c in count_list.items() if c >= 3}
 
 if __name__ == "__main__":
-    g = Graph([0,1,2,3,4,5,6], [(0,1,10), (1,2,15), (1,6,200), (1,3,200), (2,3,20), (2,4,10),
-                          (2,5,10)])
+    g = Graph(
+        [0,1,2,3,4,5,6],
+        [
+            (0,1,10), (1,2,15), (1,6,200), (1,3,200),
+            (2,3,20), (2,4,10), (2,5,10)
+        ])
     print(mst_triple_degree(g))
