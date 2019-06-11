@@ -23,9 +23,9 @@ class Graph:
     :param v: List of vertexes
     :param e: List of edges
     """
-    vertex = List[int]
+    vertex = Set[int]
     v_size = 0
-    edges = List[Tuple[int, int, float]]
+    edges = Set[Tuple[int, int, float]]
     e_size = 0
 
     def __init__(self, v, e):
@@ -33,7 +33,6 @@ class Graph:
         self.edges = e
         self.v_size = len(v)
         self.e_size = len(e)
-
 
 
 def kruskal(graph: Graph) -> Set[Tuple[int, int, float]]:
@@ -45,12 +44,10 @@ def kruskal(graph: Graph) -> Set[Tuple[int, int, float]]:
     :return: List of edges that form the minimum spanning tree.
     """
     A = set()
-    S = [set] * graph.v_size
-    for x in range(0,graph.v_size):
-        S[x] = {x}
+    S = [{x} for x in range(graph.v_size)]
     edges_sorted = sorted(graph.edges, key=lambda tup: tup[2]) # n log n
     for e in edges_sorted:
-        if not(S[e[0]] == S[e[1]]):
+        if S[e[0]] != S[e[1]]:
             A.add(e)
 
             U = S[e[0]].union(S[e[1]])
@@ -78,9 +75,9 @@ def mst_triple_degree(graph: Graph) -> Set[Tuple[int, int, float]]:
 
 if __name__ == "__main__":
     g = Graph(
-        [0,1,2,3,4,5,6],
-        [
+        {0,1,2,3,4,5,6},
+        {
             (0,1,10), (1,2,15), (1,6,200), (1,3,200),
             (2,3,20), (2,4,10), (2,5,10)
-        ])
+        })
     print(mst_triple_degree(g))
