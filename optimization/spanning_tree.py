@@ -10,6 +10,7 @@ cities.
 """
 
 from collections import defaultdict
+from random import randint, seed
 from typing import Set, Tuple
 
 
@@ -71,17 +72,30 @@ class Graph:
         return {edge for edge, count in count_list.items() if count >= 3}
 
 
+def random_tests(order: int, connections: int, limit: int = 128, tests: int = 1000):
+    """
+    Creates random sets of parameters to test the algorithms above.
+
+    :param order:         Integer representing the number of vertexes.
+    :param connections:   Integer representing the number of edges.
+    :param limit:         Integer representing the maximum value for all edges and
+                          other parameters.
+    :param tests:         Integer representing the number of tests to run.
+    """
+    seed(1)
+
+    for iteration in range(tests):
+        vertexes = {vertex for vertex in range(order)}
+        edges = {
+            (randint(0, order - 1), randint(0, order - 1), randint(0, limit))
+            for _ in range(connections)
+        }
+
+        print("------ Test ", iteration, " ------")
+        print("Vertexes with 3-degree or more: ")
+        print(Graph(vertexes, edges).mst_triple_degree())
+        print("-------------------")
+
+
 if __name__ == "__main__":
-    GRAPH = Graph(
-        {0, 1, 2, 3, 4, 5, 6},
-        {
-            (0, 1, 10),
-            (1, 2, 15),
-            (1, 6, 200),
-            (1, 3, 200),
-            (2, 3, 20),
-            (2, 4, 10),
-            (2, 5, 10),
-        },
-    )
-    print(GRAPH.mst_triple_degree())
+    random_tests(128, 128)
