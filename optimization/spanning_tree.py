@@ -9,8 +9,9 @@ takes into consideration that the cost is how much is spent to connect two
 cities.
 """
 
+import errno
 from collections import defaultdict
-from random import randint, seed
+from random import randint
 from typing import Set, Tuple
 
 
@@ -41,6 +42,12 @@ class Graph:
         :param graph: Graph structure used to find the minimal spanning tree.
         :return: List of edges that form the minimum spanning tree.
         """
+        if self.v_size == 0:
+            return errno.EINVAL
+
+        if self.e_size == 0:
+            return self.vertex
+
         minimal_edges_set = set()
         vertex_sets = [{x} for x in range(self.v_size)]
         edges_sorted = sorted(self.edges, key=lambda tup: tup[2])
@@ -63,6 +70,13 @@ class Graph:
         :return: The vertexes with 3 or more edges.
         """
         k_edges = self.kruskal()
+
+        if k_edges == errno.EINVAL:
+            return errno.EINVAL
+
+        if k_edges == self.vertex:
+            return self.vertex
+
         count_list = defaultdict(int)
 
         for edge in k_edges:
@@ -82,20 +96,69 @@ def random_tests(order: int, connections: int, limit: int = 128, tests: int = 10
                           other parameters.
     :param tests:         Integer representing the number of tests to run.
     """
-    seed(1)
-
-    for iteration in range(tests):
+    for _ in range(tests):
         vertexes = {vertex for vertex in range(order)}
         edges = {
             (randint(0, order - 1), randint(0, order - 1), randint(0, limit))
             for _ in range(connections)
         }
 
-        print("------ Test ", iteration, " ------")
-        print("Vertexes with 3-degree or more: ")
         print(Graph(vertexes, edges).mst_triple_degree())
-        print("-------------------")
+
+
+def known_tests():
+    """
+    Creates known graphs and tests the results from the implemented algorithms.
+    """
+    # Regular graph with known result.
+    graph = Graph(
+        {0, 1, 2, 3, 4, 5, 6},
+        {
+            (0, 1, 20),
+            (1, 2, 10),
+            (1, 3, 5),
+            (1, 4, 10),
+            (3, 5, 11),
+            (4, 5, 1),
+            (4, 6, 7),
+        },
+    )
+    assert graph.mst_triple_degree() == {1, 4}
+
+    # Graph with two components.
+    graph = Graph(
+        {0, 1, 2, 3, 4, 5, 6},
+        {(0, 1, 2), (1, 2, 10), (1, 3, 2), (3, 4, 5), (3, 5, 7), (3, 6, 8)},
+    )
+    assert graph.mst_triple_degree() == {1, 3}
+
+    # Graph with no vertex with degree greater than 3.
+    graph = Graph(
+        {0, 1, 2, 3, 4, 5, 6},
+        {(0, 1, 2), (1, 2, 10), (2, 3, 2), (3, 4, 5), (4, 5, 7), (5, 6, 8)},
+    )
+    assert graph.mst_triple_degree() == set()
+
+    # Graph with no vertexes.
+    graph = Graph(
+        {},
+        {
+            (0, 1, 20),
+            (1, 2, 10),
+            (1, 3, 5),
+            (1, 4, 10),
+            (3, 5, 11),
+            (4, 5, 1),
+            (4, 6, 7),
+        },
+    )
+    assert graph.mst_triple_degree() == errno.EINVAL
+
+    # Graph with no edges.
+    graph = Graph({1, 2, 3, 4, 5, 6}, {})
+    assert graph.mst_triple_degree() == {1, 2, 3, 4, 5, 6}
 
 
 if __name__ == "__main__":
     random_tests(128, 128)
+    known_tests()
