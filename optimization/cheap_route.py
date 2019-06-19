@@ -12,7 +12,7 @@ toll roads and a static vehicle autonomy.
 from __future__ import absolute_import, division
 
 from heapq import heappop, heappush
-from random import random, randrange, seed
+from random import random, randrange
 from typing import List, Tuple
 
 
@@ -78,7 +78,9 @@ def cheapest_route(
     :return:            The shortest path between `source` and `dest`,
                         and its cost.
     """
-    assert len(graph) != 0
+    if not graph or not sum(len(row) for row in graph):
+        return [], 0.0
+
     assert len(graph) == len(graph[0]) == len(tolls)
     assert source <= len(graph) and dest <= len(graph)
 
@@ -108,7 +110,6 @@ def random_tests(order: int, limit: int = 128, tests: int = 1000):
                     other parameters.
     :param tests:   Integer representing the number of tests to run.
     """
-    seed(1)
     for _ in range(tests):
         graph = [
             [limit * random() if i != j else 0 for i in range(order)]
@@ -120,121 +121,44 @@ def random_tests(order: int, limit: int = 128, tests: int = 1000):
             dest = randrange(order)
         gas_price, autonomy = limit * random(), limit * random()
 
-        print(cheapest_route(graph, tolls, source, dest, gas_price, autonomy))
+        cheapest_route(graph, tolls, source, dest, gas_price, autonomy)
 
 
 def known_tests():
     """
     Creates known graphs and tests the results from the implemented algorithms.
     """
-    # Regular graph with pure dijkstra.
+    # regular graph with pure Dijkstra
     graph = [
-        [0,4,0,0,0,0,0,8,0],
-        [4,0,8,0,0,0,0,11,0],
-        [0,8,0,7,0,4,0,0,2],
-        [0,0,7,0,9,14,0,0,0],
-        [0,0,0,9,0,10,0,0,0],
-        [0,0,4,14,10,0,2,0,0],
-        [0,0,0,0,0,2,0,1,6],
-        [8,11,0,0,0,0,1,0,7],
-        [0,0,2,0,0,0,6,7,0]
+        [0, 4, 0, 0, 0, 0, 0, 8, 0],
+        [4, 0, 8, 0, 0, 0, 0, 11, 0],
+        [0, 8, 0, 7, 0, 4, 0, 0, 2],
+        [0, 0, 7, 0, 9, 14, 0, 0, 0],
+        [0, 0, 0, 9, 0, 10, 0, 0, 0],
+        [0, 0, 4, 14, 10, 0, 2, 0, 0],
+        [0, 0, 0, 0, 0, 2, 0, 1, 6],
+        [8, 11, 0, 0, 0, 0, 1, 0, 7],
+        [0, 0, 2, 0, 0, 0, 6, 7, 0],
     ]
-    tolls = [0,0,0,0,0,0,0,0,0]
+    tolls = [0] * len(graph)
+    assert cheapest_route(graph, tolls, 0, 4, 1, 1) == ([0, 7, 6, 5, 4], 21)
 
-    assert cheapest_route(graph, tolls, 0, 4, 1, 1) == ([0,7,6,5,4], 21)
+    # regular graph with known result and no tolls
+    graph = [[0, 10, 5, 0], [10, 0, 0, 20], [5, 0, 0, 30], [0, 20, 30, 0]]
+    tolls = [0] * len(graph)
+    assert cheapest_route(graph, tolls, 0, 3, 5, 2) == ([0, 1, 3], 75)
 
-    # Regular graph with known result and no tolls.
-    graph = [
-        [0,10,5,0],
-        [10,0,0,20],
-        [5,0,0,30],
-        [0,20,30,0]
-    ]
-    tolls = [0,0,0,0]
+    # regular graph with known result and tolls
+    tolls = [10, 20, 5, 5]
+    assert cheapest_route(graph, tolls, 0, 3, 5, 2) == ([0, 2, 3], 102.5)
 
-    assert cheapest_route(graph, tolls, 0, 3, 5, 2) == ([0,1,3], 75)
+    # graph with no edges
+    cheapest_route([[], [], [], []], tolls, 0, 3, 5, 2)
 
-    # Regular graph with known result and tolls.
-    graph = [
-        [0,10,5,0],
-        [10,0,0,20],
-        [5,0,0,30],
-        [0,20,30,0]
-    ]
-    tolls = [10,20,5,5]
+    # graph with no vertexes and edges
+    cheapest_route([], tolls, 0, 3, 5, 2)
 
-    assert cheapest_route(graph, tolls, 0, 3, 5, 2) == ([0,2,3], 102.5)
-
-    # Graph with no edges.
-    graph = [
-        [],
-        [],
-        [],
-        []
-    ]
-
-    tolls = [10,20,5,5]
-
-    try:
-        cheapest_route(graph, tolls, 0, 3, 5, 2)
-    except AssertionError:
-        print("The parameters were not defined as expected!")
-
-    # Graph with no vertexes and edges.
-    graph = []
-
-    tolls = [10,20,5,5]
-
-    try:
-        cheapest_route(graph, tolls, 0, 3, 5, 2)
-    except AssertionError:
-        print("The parameters were not defined as expected!")
-
-    # Graph with no tolls.
-    graph = [
-        [0,10,5,0],
-        [10,0,0,20],
-        [5,0,0,30],
-        [0,20,30,0]
-    ]
-
-    tolls = []
-
-    try:
-        cheapest_route(graph, tolls, 0, 3, 5, 2)
-    except AssertionError:
-        print("The parameters were not defined as expected!")
-
-    # Graph with invalid source.
-    graph = [
-        [0,10,5,0],
-        [10,0,0,20],
-        [5,0,0,30],
-        [0,20,30,0]
-    ]
-
-    tolls = []
-
-    try:
-        cheapest_route(graph, tolls, 0, 3, 100, 2)
-    except AssertionError:
-        print("The parameters were not defined as expected!")
-
-    # Graph with invalid destination.
-    graph = [
-        [0,10,5,0],
-        [10,0,0,20],
-        [5,0,0,30],
-        [0,20,30,0]
-    ]
-
-    tolls = []
-
-    try:
-        cheapest_route(graph, tolls, 0, 3, 5, 100)
-    except AssertionError:
-        print("The parameters were not defined as expected!")
 
 if __name__ == "__main__":
-    # random_tests(128)
     known_tests()
+    random_tests(128)
