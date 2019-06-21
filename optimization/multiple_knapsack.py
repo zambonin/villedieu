@@ -256,5 +256,83 @@ def known_tests_single():
         print("{:>7.2%} of optimal profit".format(sol_values / profit))
 
 
+def known_tests_multiple():
+    """
+    Multiple 0-1 knapsack tests from [1].
+
+    [1] https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_multiple/
+    """
+    trucks = [
+        [70, 127],
+        [50, 81, 120],
+        [31, 37, 48, 152],
+        [165],
+        [65, 85],
+        [103, 156],
+    ]
+    items = [
+        [
+            Item(value, weight)
+            for value, weight in zip(
+                [92, 57, 49, 68, 60, 43, 67, 84, 87, 72],
+                [23, 31, 29, 44, 53, 38, 63, 85, 89, 82],
+            )
+        ],
+        [
+            Item(value, weight)
+            for value, weight in zip(
+                [92, 57, 49, 68, 60, 43, 67, 84, 87, 72],
+                [23, 31, 29, 44, 53, 38, 63, 85, 89, 82],
+            )
+        ],
+        [
+            Item(value, weight)
+            for value, weight in zip(
+                [92, 57, 49, 68, 60, 43, 67, 84, 87, 72],
+                [23, 31, 29, 44, 53, 38, 63, 85, 89, 82],
+            )
+        ],
+        [
+            Item(value, weight)
+            for value, weight in zip(
+                [92, 57, 49, 68, 60, 43, 67, 84, 87, 72],
+                [23, 31, 29, 44, 53, 38, 63, 85, 89, 82],
+            )
+        ],
+        [
+            Item(value, weight)
+            for value, weight in zip(
+                [110, 150, 70, 80, 30, 5], [40, 60, 30, 40, 20, 5]
+            )
+        ],
+        [
+            Item(value, weight)
+            for value, weight in zip(
+                [78, 35, 89, 36, 94, 75, 74, 79, 80, 16],
+                [18, 9, 23, 20, 59, 61, 70, 75, 76, 30],
+            )
+        ],
+    ]
+    optimal = [
+        ["1001000000", "0110001000"],
+        ["1000000000", "0101000000", "0010110000"],
+        ["1000000000", "0100000000", "0001000000", "0010101000"],
+        ["1111010000"],
+        ["010001", "100100"],
+        ["1010010000", "0001100010"],
+    ]
+
+    for truck, item, opt in zip(trucks, items, optimal):
+        profit = sum(
+            sum(i.value for i, j in zip(item, o) if int(j)) for o in opt
+        )
+        solution = mkp(item, truck)
+        sol_values = sum(
+            sum(item.value for item in _set) for _set in solution.values()
+        )
+        print("{:>7.2%} of optimal profit".format(sol_values / profit))
+
+
 if __name__ == "__main__":
     known_tests_single()
+    known_tests_multiple()
