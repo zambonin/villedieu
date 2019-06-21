@@ -91,3 +91,170 @@ def mkp(items: List[Item], trucks: List[int]) -> Dict[int, Set[Item]]:
             items.remove(used_item)
 
     return dict(solution)
+
+
+def known_tests_single():
+    """
+    Simple 0-1 knapsack tests from [1].
+
+    [1] https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/
+    """
+    trucks = [165, 26, 190, 50, 104, 170, 750, 6404180]
+    items = [
+        [
+            Item(value, weight)
+            for value, weight in zip(
+                [92, 57, 49, 68, 60, 43, 67, 84, 87, 72],
+                [23, 31, 29, 44, 53, 38, 63, 85, 89, 82],
+            )
+        ],
+        [
+            Item(value, weight)
+            for value, weight in zip([24, 13, 23, 15, 16], [12, 7, 11, 8, 9])
+        ],
+        [
+            Item(value, weight)
+            for value, weight in zip(
+                [50, 50, 64, 46, 50, 5], [56, 59, 80, 64, 75, 17]
+            )
+        ],
+        [
+            Item(value, weight)
+            for value, weight in zip(
+                [70, 20, 39, 37, 7, 5, 10], [31, 10, 20, 19, 4, 3, 6]
+            )
+        ],
+        [
+            Item(value, weight)
+            for value, weight in zip(
+                [350, 400, 450, 20, 70, 8, 5, 5], [25, 35, 45, 5, 25, 3, 2, 2]
+            )
+        ],
+        [
+            Item(value, weight)
+            for value, weight in zip(
+                [442, 525, 511, 593, 546, 564, 617],
+                [41, 50, 49, 59, 55, 57, 60],
+            )
+        ],
+        [
+            Item(value, weight)
+            for value, weight in zip(
+                [
+                    135,
+                    139,
+                    149,
+                    150,
+                    156,
+                    163,
+                    173,
+                    184,
+                    192,
+                    201,
+                    210,
+                    214,
+                    221,
+                    229,
+                    240,
+                ],
+                [
+                    70,
+                    73,
+                    77,
+                    80,
+                    82,
+                    87,
+                    90,
+                    94,
+                    98,
+                    106,
+                    110,
+                    113,
+                    115,
+                    118,
+                    120,
+                ],
+            )
+        ],
+        [
+            Item(value, weight)
+            for value, weight in zip(
+                [
+                    825594,
+                    1677009,
+                    1676628,
+                    1523970,
+                    943972,
+                    97426,
+                    69666,
+                    1296457,
+                    1679693,
+                    1902996,
+                    1844992,
+                    1049289,
+                    1252836,
+                    1319836,
+                    953277,
+                    2067538,
+                    675367,
+                    853655,
+                    1826027,
+                    65731,
+                    901489,
+                    577243,
+                    466257,
+                    369261,
+                ],
+                [
+                    382745,
+                    799601,
+                    909247,
+                    729069,
+                    467902,
+                    44328,
+                    34610,
+                    698150,
+                    823460,
+                    903959,
+                    853665,
+                    551830,
+                    610856,
+                    670702,
+                    488960,
+                    951111,
+                    323046,
+                    446298,
+                    931161,
+                    31385,
+                    496951,
+                    264724,
+                    224916,
+                    169684,
+                ],
+            )
+        ],
+    ]
+    optimal = [
+        "1111010000",
+        "01110",
+        "110010",
+        "1001000",
+        "10111011",
+        "0101001",
+        "101010111000011",
+        "110111000110100100000111",
+    ]
+
+    for truck, item, opt in zip(trucks, items, optimal):
+        profit = sum(
+            item.value for item, present in zip(item, opt) if int(present)
+        )
+        solution = mkp(item, [truck])
+        sol_values = sum(
+            sum(item.value for item in _set) for _set in solution.values()
+        )
+        print("{:>7.2%} of optimal profit".format(sol_values / profit))
+
+
+if __name__ == "__main__":
+    known_tests_single()
