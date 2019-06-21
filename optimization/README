@@ -1,1 +1,10 @@
 Set of exercises on graph theory and NP-completeness.
+
+A Fortran wrapper for the multiple knapsack optimal solver found in [1] is
+available, due to the unavaibility of such solutions in [2]. It needs
+`gfortran` to be compiled. Note that the compiler's protection against stack
+smashing is disabled, since the program complains after it finishes execution.
+Surely the warning emitted by the compiler should have to do with this.
+
+[1] http://www.or.deis.unibo.it/knapsack.html
+[2] https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_multiple/
